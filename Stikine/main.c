@@ -1,19 +1,27 @@
 #include <msp430.h> // Base header files
 #include <projectTypes.h> // pull in custom datatypes
+#include <pinDefs.h>
 
 /*
  * main.c
  */
 
-static inline void BoardInit(void);
-static inline void TimerInit(void);
+// Stuff specific to the value line boards
+#ifdef __MSP430G2553__
+static inline void BoardInitValue(void);
+static inline void TimerInitValue(void);
+#endif
 
 int main(void)
 {
-	BoardInit();
-	TimerInit();
 
-    P1OUT |= BIT0 + BIT6; // Turn LED 1 out
+// Value line inits
+#ifdef __MSP430G2553__
+	BoardInitValue();
+	TimerInitValue();
+#endif
+
+    LED1Reg |= LED1;
 
     __bis_SR_register(LPM0_bits + GIE); // Enter LPM0 w/ interrupt
 
@@ -24,7 +32,9 @@ int main(void)
  * Static inlines
  */
 
-static inline void BoardInit()
+#ifdef __MSP430G2553
+
+static inline void BoardInitValue()
 {
 	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
@@ -55,16 +65,16 @@ static inline void BoardInit()
 	P3DIR = 0XFF;
 }
 
-static inline void TimerInit()
+static inline void TimerInitValue()
 {
-	// Timer A0
+	// Timer A0 Slow Clock
 	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
 	TAR = 0; // Initial count value is 0
 	TACCR0 = 11999; // Count up to 12,000
 	TACCTL0 = CCIE; // Enable interrupt on TACCR0
 	TACTL |= MC_1; // Start counting up to TACCR0
 
-	// Timer A1
+	// Timer A1 Fast Clock
 	TA1CTL = TASSEL_2 + MC_0;
 	TA1R = 0;
 	TA1CCR0 = 49999; // Count up to 50000
@@ -72,6 +82,7 @@ static inline void TimerInit()
 	TA1CTL |= MC_1; // Start counting up to TACCR0
 
 }
+#endif
 
 /**************************************************************************
  * Interrupt service routuines
@@ -81,7 +92,7 @@ static inline void TimerInit()
 void __attribute__((__interrupt__(TIMER0_A0_VECTOR))) Timer1_A0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	P1OUT ^= BIT0; // Toggle the LEDs
+	LED1Reg ^= LED1; // Toggle the LED
 }
 
 void __attribute__((__interrupt__(TIMER1_A0_VECTOR))) Timer1_A1_ISR(void)
@@ -92,7 +103,7 @@ void __attribute__((__interrupt__(TIMER1_A0_VECTOR))) Timer1_A1_ISR(void)
 
 	if(i >= 20)
 	{
-		P1OUT ^= BIT6;
+		LED2Reg ^= LED2;
 		i=0;
 	}
 	else
