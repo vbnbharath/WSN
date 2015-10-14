@@ -1,0 +1,95 @@
+Source:,/home/kleinjt/repos/ee646_wireless_sensor_networks_project/antenna_node/antenna_node.sch
+Date:,Fri Sep 18 10:08:01 2015
+Tool:,Eeschema (after 2015-mar-04 BZR unknown)-product
+Generator:,/usr/local/share/doc/kicad/scripts/bom-in-python/bom_csv_grouped_by_value.py
+Component Count:,57
+
+Individual Components:
+
+Item,Qty,Reference(s),Value,LibPart,Footprint,Datasheet,DIST_PN
+,,C1,100 pF NPO,device:C_Small,Capacitors_SMD:C_0603,,445-1281-1-ND
+,,C10,1000 nF,device:C_Small,Capacitors_SMD:C_0603,,490-1543-1-ND
+,,C11,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C12,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C13,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C14,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C15,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C17,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C18,1 nF,device:C_Small,Capacitors_SMD:C_0603,,1276-2170-1-ND
+,,C19,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C2,1.8 pF,device:C_Small,Capacitors_SMD:C_0603,,712-1328-1-ND
+,,C20,220 uF,device:CP_Small,sensornode:CAP_POL_6p60mm,,565-3673-1-ND
+,,C21,1 nF,device:C_Small,Capacitors_SMD:C_0603,,1276-2170-1-ND
+,,C22,1000 nF,device:C_Small,Capacitors_SMD:C_0603,,490-1543-1-ND
+,,C23,100 pF NPO,device:C_Small,Capacitors_SMD:C_0603,,445-1281-1-ND
+,,C24,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C25,1 nF,device:C_Small,Capacitors_SMD:C_0603,,1276-2170-1-ND
+,,C26,470 nF,device:C_Small,Capacitors_SMD:C_0603,,490-3295-1-ND
+,,C27,10 pF,device:C_Small,Capacitors_SMD:C_0603,,1276-2154-1-ND
+,,C28,10 pF,device:C_Small,Capacitors_SMD:C_0603,,1276-2154-1-ND
+,,C29,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C3,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C4,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C5,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C6,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C7,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C8,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,C9,100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+,,D1,RED,device:Led_Small,LEDs:LED-0603,,160-1447-1-ND
+,,L1,5.6 nH,device:L_Small,Resistors_SMD:R_0603,,490-1164-1-ND
+,,L2,2.2 kOhm,device:L_Small,Resistors_SMD:R_0603,,240-2377-1-ND
+,,L3,2.2 kOhm,device:L_Small,Resistors_SMD:R_0603,,240-2377-1-ND
+,,L4,2.2 kOhm,device:L_Small,Resistors_SMD:R_0603,,240-2377-1-ND
+,,L5,2.2 kOhm,device:L_Small,Resistors_SMD:R_0603,,240-2377-1-ND
+,,P1,CONN_01X03,conn:CONN_01X03,Connect:PINHEAD1-3,,609-3461-ND
+,,P2,CONN_01X03,conn:CONN_01X03,Connect:PINHEAD1-3,,609-3461-ND
+,,P3,CONN_01X02,conn:CONN_01X02,sensornode:BC2AAPC,,BC2AAPC-ND
+,,P4,DIL16,conn:DIL16,sensornode:CHS-08TA,,
+,,P5,CONN_01X06,conn:CONN_01X06,sensornode:LPPB061NGCN-RC,,S9010E-06-ND
+,,P6,CONN_01X03,conn:CONN_01X03,sensornode:U.FL-COAX,,
+,,Q1,Q_PMOS_GDS,device:Q_PMOS_GDS,Housings_SOT-23_SOT-143_TSOT-6:SOT-23_Handsoldering,,568-12594-1-ND
+,,R1,56k,device:R_Small,Resistors_SMD:R_0603,,P56.0KHCT-ND
+,,R10,0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R11,DNP,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R12,DNP,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R13,0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R2,1,device:R,Resistors_SMD:R_0603,,RL0816S-1R0-F
+,,R3,56k,device:R_Small,Resistors_SMD:R_0603,,P56.0KHCT-ND
+,,R4,0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R5,0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R6,0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R7,0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R8,DNP,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+,,R9,56k,device:R_Small,Resistors_SMD:R_0603,,P56.0KHCT-ND
+,,SW1,SW_PUSH,device:SW_PUSH,sensornode:PTS820J20MSMTRLFS,,CKN10505CT-ND
+,,SW2,SW_PUSH,device:SW_PUSH,sensornode:PTS820J20MSMTRLFS,,CKN10505CT-ND
+,,Y1,Crystal_Small,device:Crystal_Small,Resistors_SMD:R_1210_HandSoldering,,300-8815-1-ND
+
+
+
+Collated Components:
+
+Item,Qty,Reference(s),Value,LibPart,Footprint,Datasheet,DIST_PN
+1,2,"C1, C23",100 pF NPO,device:C_Small,Capacitors_SMD:C_0603,,445-1281-1-ND
+2,2,"C10, C22",1000 nF,device:C_Small,Capacitors_SMD:C_0603,,490-1543-1-ND
+3,16,"C11, C12, C13, C14, C15, C17, C19, C24, C29, C3, C4, C5, C6, C7, C8, C9",100 nF,device:C_Small,Capacitors_SMD:C_0603,,490-9735-1-ND
+4,3,"C18, C21, C25",1 nF,device:C_Small,Capacitors_SMD:C_0603,,1276-2170-1-ND
+5,1,C2,1.8 pF,device:C_Small,Capacitors_SMD:C_0603,,712-1328-1-ND
+6,1,C20,220 uF,device:CP_Small,sensornode:CAP_POL_6p60mm,,565-3673-1-ND
+7,1,C26,470 nF,device:C_Small,Capacitors_SMD:C_0603,,490-3295-1-ND
+8,2,"C27, C28",10 pF,device:C_Small,Capacitors_SMD:C_0603,,1276-2154-1-ND
+9,1,D1,RED,device:Led_Small,LEDs:LED-0603,,160-1447-1-ND
+10,1,L1,5.6 nH,device:L_Small,Resistors_SMD:R_0603,,490-1164-1-ND
+11,4,"L2, L3, L4, L5",2.2 kOhm,device:L_Small,Resistors_SMD:R_0603,,240-2377-1-ND
+12,2,"P1, P2",CONN_01X03,conn:CONN_01X03,Connect:PINHEAD1-3,,609-3461-ND
+13,1,P3,CONN_01X02,conn:CONN_01X02,sensornode:BC2AAPC,,BC2AAPC-ND
+14,1,P4,DIL16,conn:DIL16,sensornode:CHS-08TA,,
+15,1,P5,CONN_01X06,conn:CONN_01X06,sensornode:LPPB061NGCN-RC,,S9010E-06-ND
+16,1,P6,CONN_01X03,conn:CONN_01X03,sensornode:U.FL-COAX,,
+17,1,Q1,Q_PMOS_GDS,device:Q_PMOS_GDS,Housings_SOT-23_SOT-143_TSOT-6:SOT-23_Handsoldering,,568-12594-1-ND
+18,3,"R1, R3, R9",56k,device:R_Small,Resistors_SMD:R_0603,,P56.0KHCT-ND
+19,6,"R10, R13, R4, R5, R6, R7",0,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+20,3,"R11, R12, R8",DNP,device:R,Resistors_SMD:R_0603,,P0.0GCT-ND
+21,1,R2,1,device:R,Resistors_SMD:R_0603,,RL0816S-1R0-F
+22,2,"SW1, SW2",SW_PUSH,device:SW_PUSH,sensornode:PTS820J20MSMTRLFS,,CKN10505CT-ND
+23,1,Y1,Crystal_Small,device:Crystal_Small,Resistors_SMD:R_1210_HandSoldering,,300-8815-1-ND

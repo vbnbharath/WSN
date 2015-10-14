@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/kleinjt/repos/ee646_wireless_sensor_networks_project/antenna_node/antenna_node.sch</source>
+    <date>Fri Sep 18 10:08:01 2015</date>
+    <tool>Eeschema (after 2015-mar-04 BZR unknown)-product</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>antenna_node.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C19">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB2C69</tstamp>
+    </comp>
+    <comp ref="C20">
+      <value>220 uF</value>
+      <footprint>sensornode:CAP_POL_6p60mm</footprint>
+      <fields>
+        <field name="DIST_PN">565-3673-1-ND</field>
+      </fields>
+      <libsource lib="device" part="CP_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB2CCB</tstamp>
+    </comp>
+    <comp ref="C21">
+      <value>1 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">1276-2170-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB2E33</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>1</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">RL0816S-1R0-F</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB3136</tstamp>
+    </comp>
+    <comp ref="P5">
+      <value>CONN_01X06</value>
+      <footprint>sensornode:LPPB061NGCN-RC</footprint>
+      <fields>
+        <field name="DIST_PN">S9010E-06-ND</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X06"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB3D5D</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>RED</value>
+      <footprint>LEDs:LED-0603</footprint>
+      <fields>
+        <field name="DIST_PN">160-1447-1-ND</field>
+      </fields>
+      <libsource lib="device" part="Led_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB3EEF</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>CONN_01X03</value>
+      <footprint>Connect:PINHEAD1-3</footprint>
+      <fields>
+        <field name="DIST_PN">609-3461-ND</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X03"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB4599</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100 pF NPO</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">445-1281-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB4E9B</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>1.8 pF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">712-1328-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB50D7</tstamp>
+    </comp>
+    <comp ref="L1">
+      <value>5.6 nH</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-1164-1-ND</field>
+      </fields>
+      <libsource lib="device" part="L_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB5245</tstamp>
+    </comp>
+    <comp ref="P3">
+      <value>CONN_01X02</value>
+      <footprint>sensornode:BC2AAPC</footprint>
+      <fields>
+        <field name="DIST_PN">BC2AAPC-ND</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X02"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EB9CAF</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>56k</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P56.0KHCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBC492</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBBD45</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBC2AE</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBC895</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBCA5A</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBD6D4</tstamp>
+    </comp>
+    <comp ref="C13">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBDAA3</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBE0C9</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC1633</tstamp>
+    </comp>
+    <comp ref="C15">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC2FCE</tstamp>
+    </comp>
+    <comp ref="L2">
+      <value>2.2 kOhm</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">240-2377-1-ND</field>
+      </fields>
+      <libsource lib="device" part="L_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC36A2</tstamp>
+    </comp>
+    <comp ref="C12">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC3D23</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>0</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC80C9</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>0</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC8B00</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>0</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC91FB</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>0</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC930F</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>DNP</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EC9AB5</tstamp>
+    </comp>
+    <comp ref="L3">
+      <value>2.2 kOhm</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">240-2377-1-ND</field>
+      </fields>
+      <libsource lib="device" part="L_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ECDD7F</tstamp>
+    </comp>
+    <comp ref="C17">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ECE715</tstamp>
+    </comp>
+    <comp ref="C25">
+      <value>1 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">1276-2170-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED0C89</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>56k</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P56.0KHCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED1525</tstamp>
+    </comp>
+    <comp ref="SW2">
+      <value>SW_PUSH</value>
+      <footprint>sensornode:PTS820J20MSMTRLFS</footprint>
+      <fields>
+        <field name="DIST_PN">CKN10505CT-ND</field>
+      </fields>
+      <libsource lib="device" part="SW_PUSH"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED26F6</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value>SW_PUSH</value>
+      <footprint>sensornode:PTS820J20MSMTRLFS</footprint>
+      <fields>
+        <field name="DIST_PN">CKN10505CT-ND</field>
+      </fields>
+      <libsource lib="device" part="SW_PUSH"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED2F96</tstamp>
+    </comp>
+    <comp ref="C18">
+      <value>1 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">1276-2170-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED35CB</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EBE651</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>1000 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-1543-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EDC9B6</tstamp>
+    </comp>
+    <comp ref="C14">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EDE38C</tstamp>
+    </comp>
+    <comp ref="L4">
+      <value>2.2 kOhm</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">240-2377-1-ND</field>
+      </fields>
+      <libsource lib="device" part="L_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EE3839</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>56k</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P56.0KHCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EE767E</tstamp>
+    </comp>
+    <comp ref="C22">
+      <value>1000 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-1543-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EECD03</tstamp>
+    </comp>
+    <comp ref="C24">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EED2D3</tstamp>
+    </comp>
+    <comp ref="L5">
+      <value>2.2 kOhm</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">240-2377-1-ND</field>
+      </fields>
+      <libsource lib="device" part="L_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ECCFF6</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>CONN_01X03</value>
+      <footprint>Connect:PINHEAD1-3</footprint>
+      <fields>
+        <field name="DIST_PN">609-3461-ND</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X03"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ECF990</tstamp>
+    </comp>
+    <comp ref="C26">
+      <value>470 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-3295-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED2D9F</tstamp>
+    </comp>
+    <comp ref="C23">
+      <value>100 pF NPO</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">445-1281-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED53BD</tstamp>
+    </comp>
+    <comp ref="Y1">
+      <value>Crystal_Small</value>
+      <footprint>Resistors_SMD:R_1210_HandSoldering</footprint>
+      <fields>
+        <field name="DIST_PN">300-8815-1-ND</field>
+      </fields>
+      <libsource lib="device" part="Crystal_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED7C94</tstamp>
+    </comp>
+    <comp ref="C27">
+      <value>10 pF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">1276-2154-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED9DDF</tstamp>
+    </comp>
+    <comp ref="C28">
+      <value>10 pF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">1276-2154-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED9ECD</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>0</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED03B4</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>0</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED0BA8</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>DNP</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED0D5B</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>DNP</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
+      <fields>
+        <field name="DIST_PN">P0.0GCT-ND</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED1B64</tstamp>
+    </comp>
+    <comp ref="P6">
+      <value>CONN_01X03</value>
+      <footprint>sensornode:U.FL-COAX</footprint>
+      <libsource lib="conn" part="CONN_01X03"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55ED1E35</tstamp>
+    </comp>
+    <comp ref="C29">
+      <value>100 nF</value>
+      <footprint>Capacitors_SMD:C_0603</footprint>
+      <fields>
+        <field name="DIST_PN">490-9735-1-ND</field>
+      </fields>
+      <libsource lib="device" part="C_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EE0423</tstamp>
+    </comp>
+    <comp ref="P4">
+      <value>DIL16</value>
+      <footprint>sensornode:CHS-08TA</footprint>
+      <libsource lib="conn" part="DIL16"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EEE369</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>Q_PMOS_GDS</value>
+      <footprint>Housings_SOT-23_SOT-143_TSOT-6:SOT-23_Handsoldering</footprint>
+      <fields>
+        <field name="DIST_PN">568-12594-1-ND</field>
+      </fields>
+      <libsource lib="device" part="Q_PMOS_GDS"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>55EFF2C3</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="device" part="CP_Small">
+      <description>Polarised capacitor</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>Elko*</fp>
+        <fp>TantalC*</fp>
+        <fp>C*elec</fp>
+        <fp>c_elec*</fp>
+        <fp>SMD*_Pol</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="C_Small">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="Crystal_Small">
+      <description>Two pin crystal</description>
+      <footprints>
+        <fp>Crystal_</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="L_Small">
+      <description>Inductor</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="Led_Small">
+      <description>Led</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">Led_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="Q_PMOS_GDS">
+      <description>Transistor P-MOSFET (general)</description>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_PMOS_GDS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="D" type="openCol"/>
+        <pin num="3" name="S" type="openEm"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R_Small">
+      <description>Resistor</description>
+      <footprints>
+        <fp>Resistor_*</fp>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="SW_PUSH">
+      <description>Push Button</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_PUSH</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X02">
+      <footprints>
+        <fp>Pin_Header_Straight_1X02</fp>
+        <fp>Pin_Header_Angled_1X02</fp>
+        <fp>Socket_Strip_Straight_1X02</fp>
+        <fp>Socket_Strip_Angled_1X02</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X03">
+      <footprints>
+        <fp>Pin_Header_Straight_1X03</fp>
+        <fp>Pin_Header_Angled_1X03</fp>
+        <fp>Socket_Strip_Straight_1X03</fp>
+        <fp>Socket_Strip_Angled_1X03</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X03</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X06">
+      <footprints>
+        <fp>Pin_Header_Straight_1X06</fp>
+        <fp>Pin_Header_Angled_1X06</fp>
+        <fp>Socket_Strip_Straight_1X06</fp>
+        <fp>Socket_Strip_Angled_1X06</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X06</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="DIL16">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">DIL16</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+        <pin num="10" name="10" type="passive"/>
+        <pin num="11" name="11" type="passive"/>
+        <pin num="12" name="12" type="passive"/>
+        <pin num="13" name="13" type="passive"/>
+        <pin num="14" name="14" type="passive"/>
+        <pin num="15" name="15" type="passive"/>
+        <pin num="16" name="16" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="device">
+      <uri>/usr/local/share/kicad/library/device.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>/usr/local/share/kicad/library/conn.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(C8-Pad2)">
+      <node ref="C8" pin="2"/>
+    </net>
+    <net code="2" name="Net-(C8-Pad1)">
+      <node ref="C8" pin="1"/>
+    </net>
+    <net code="3" name="Net-(C10-Pad1)">
+      <node ref="C9" pin="1"/>
+      <node ref="C10" pin="1"/>
+    </net>
+    <net code="4" name="/RST">
+      <node ref="R9" pin="2"/>
+      <node ref="C25" pin="1"/>
+      <node ref="SW2" pin="1"/>
+      <node ref="P5" pin="4"/>
+    </net>
+    <net code="8" name="/AUXSW0">
+      <node ref="SW1" pin="1"/>
+      <node ref="C18" pin="1"/>
+    </net>
+    <net code="9" name="/MCU_RXD">
+      <node ref="R4" pin="2"/>
+      <node ref="R6" pin="2"/>
+    </net>
+    <net code="10" name="/MCU_TXD">
+      <node ref="R5" pin="2"/>
+      <node ref="R7" pin="2"/>
+    </net>
+    <net code="11" name="Net-(P2-Pad2)">
+      <node ref="P2" pin="2"/>
+    </net>
+    <net code="12" name="Net-(P2-Pad3)">
+      <node ref="P2" pin="3"/>
+    </net>
+    <net code="13" name="/MSP_VCORE">
+      <node ref="C26" pin="1"/>
+    </net>
+    <net code="14" name="/SWDEBUG">
+      <node ref="P4" pin="1"/>
+    </net>
+    <net code="17" name="Net-(C22-Pad1)">
+      <node ref="L5" pin="1"/>
+      <node ref="C22" pin="1"/>
+      <node ref="C24" pin="1"/>
+    </net>
+    <net code="22" name="/SWADDR4">
+      <node ref="P4" pin="3"/>
+    </net>
+    <net code="23" name="Net-(P5-Pad6)">
+      <node ref="R6" pin="1"/>
+      <node ref="R7" pin="1"/>
+      <node ref="P5" pin="6"/>
+    </net>
+    <net code="24" name="/SWADDR0">
+      <node ref="P4" pin="7"/>
+    </net>
+    <net code="25" name="/SWADDR1">
+      <node ref="P4" pin="6"/>
+    </net>
+    <net code="26" name="/SWADDR2">
+      <node ref="P4" pin="5"/>
+    </net>
+    <net code="27" name="/SWADDR3">
+      <node ref="P4" pin="4"/>
+    </net>
+    <net code="28" name="/SWADDR5">
+      <node ref="P4" pin="2"/>
+    </net>
+    <net code="29" name="/XTAL_EN">
+      <node ref="C14" pin="1"/>
+    </net>
+    <net code="30" name="/AUXLED0">
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="31" name="Net-(C17-Pad1)">
+      <node ref="C17" pin="1"/>
+      <node ref="L3" pin="1"/>
+    </net>
+    <net code="34" name="Net-(P5-Pad2)">
+      <node ref="R8" pin="1"/>
+      <node ref="P5" pin="2"/>
+    </net>
+    <net code="35" name="/TST">
+      <node ref="P5" pin="3"/>
+    </net>
+    <net code="36" name="Net-(P5-Pad1)">
+      <node ref="P5" pin="1"/>
+      <node ref="R5" pin="1"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="37" name="GND">
+      <node ref="C19" pin="2"/>
+      <node ref="C21" pin="2"/>
+      <node ref="P5" pin="5"/>
+      <node ref="C20" pin="2"/>
+      <node ref="C13" pin="2"/>
+      <node ref="C11" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C6" pin="2"/>
+      <node ref="C7" pin="2"/>
+      <node ref="C15" pin="2"/>
+      <node ref="C12" pin="2"/>
+      <node ref="C5" pin="2"/>
+      <node ref="C25" pin="2"/>
+      <node ref="C17" pin="2"/>
+      <node ref="C22" pin="2"/>
+      <node ref="C9" pin="2"/>
+      <node ref="C18" pin="2"/>
+      <node ref="SW1" pin="2"/>
+      <node ref="SW2" pin="2"/>
+      <node ref="R3" pin="2"/>
+      <node ref="C10" pin="2"/>
+      <node ref="C14" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="P1" pin="1"/>
+      <node ref="R1" pin="1"/>
+      <node ref="P3" pin="2"/>
+      <node ref="C24" pin="2"/>
+      <node ref="P4" pin="13"/>
+      <node ref="C28" pin="1"/>
+      <node ref="C27" pin="1"/>
+      <node ref="P4" pin="16"/>
+      <node ref="P4" pin="15"/>
+      <node ref="P4" pin="14"/>
+      <node ref="P4" pin="12"/>
+      <node ref="P4" pin="11"/>
+      <node ref="P4" pin="10"/>
+      <node ref="Q1" pin="1"/>
+      <node ref="P2" pin="1"/>
+      <node ref="P6" pin="3"/>
+      <node ref="C29" pin="2"/>
+      <node ref="C23" pin="2"/>
+      <node ref="C26" pin="2"/>
+      <node ref="P6" pin="2"/>
+      <node ref="R12" pin="1"/>
+    </net>
+    <net code="39" name="Net-(L4-Pad1)">
+      <node ref="L4" pin="1"/>
+      <node ref="P4" pin="8"/>
+    </net>
+    <net code="41" name="Net-(P4-Pad9)">
+      <node ref="P4" pin="9"/>
+      <node ref="Q1" pin="3"/>
+    </net>
+    <net code="42" name="Net-(C28-Pad2)">
+      <node ref="C28" pin="2"/>
+      <node ref="Y1" pin="2"/>
+    </net>
+    <net code="43" name="VCC">
+      <node ref="C12" pin="1"/>
+      <node ref="L2" pin="2"/>
+      <node ref="R8" pin="2"/>
+      <node ref="C21" pin="1"/>
+      <node ref="C29" pin="1"/>
+      <node ref="L3" pin="2"/>
+      <node ref="C5" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R9" pin="1"/>
+      <node ref="L4" pin="2"/>
+      <node ref="C19" pin="1"/>
+      <node ref="C6" pin="1"/>
+      <node ref="C13" pin="1"/>
+      <node ref="C23" pin="1"/>
+      <node ref="C7" pin="1"/>
+      <node ref="L5" pin="2"/>
+      <node ref="C20" pin="1"/>
+    </net>
+    <net code="44" name="Net-(R10-Pad1)">
+      <node ref="R13" pin="2"/>
+      <node ref="R12" pin="2"/>
+      <node ref="R10" pin="1"/>
+    </net>
+    <net code="45" name="Net-(C27-Pad2)">
+      <node ref="C27" pin="2"/>
+      <node ref="Y1" pin="1"/>
+    </net>
+    <net code="46" name="Net-(C1-Pad2)">
+      <node ref="R13" pin="1"/>
+      <node ref="R11" pin="1"/>
+      <node ref="C1" pin="2"/>
+    </net>
+    <net code="47" name="Net-(P6-Pad1)">
+      <node ref="P6" pin="1"/>
+      <node ref="R11" pin="2"/>
+    </net>
+    <net code="52" name="Net-(C15-Pad1)">
+      <node ref="L2" pin="1"/>
+      <node ref="C15" pin="1"/>
+    </net>
+    <net code="55" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="R3" pin="1"/>
+    </net>
+    <net code="56" name="Net-(R1-Pad2)">
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="57" name="Net-(C1-Pad1)">
+      <node ref="C2" pin="1"/>
+      <node ref="L1" pin="1"/>
+      <node ref="C1" pin="1"/>
+    </net>
+    <net code="58" name="Net-(P1-Pad2)">
+      <node ref="R2" pin="2"/>
+      <node ref="P1" pin="2"/>
+      <node ref="P3" pin="1"/>
+    </net>
+    <net code="59" name="Net-(P1-Pad3)">
+      <node ref="Q1" pin="2"/>
+      <node ref="R2" pin="1"/>
+      <node ref="P1" pin="3"/>
+    </net>
+    <net code="60" name="Net-(L1-Pad2)">
+      <node ref="L1" pin="2"/>
+    </net>
+    <net code="62" name="Net-(C11-Pad1)">
+      <node ref="C11" pin="1"/>
+    </net>
+    <net code="63" name="Net-(R10-Pad2)">
+      <node ref="R10" pin="2"/>
+    </net>
+  </nets>
+</export>
