@@ -69,9 +69,9 @@ static inline void BoardInitValue()
 
 	UCA0CTL0 = 0; // No parity, 8 chars, one stop bit, UART, Asynch
 	UCA0CTL1 |= UCSSEL_2; // Use SMCLK for USCI module
-	UCA0BR0 = 1; // Settings for 57600 Oversample Baud
-	UCA0BR0 = 0;
-	UCA0MCTL = UCBRS_7 + UCBRF_0 + UCOS16; // Modulation and oversample
+	UCA0BR0 = 6; // Settings for 57600 Oversample Baud Rate
+	UCA0BR1 = 0;
+	UCA0MCTL = UCBRS_6 + UCBRF_8 + UCOS16; // Modulation and oversample
 	UCA0STAT = 0; // Clear status register
 
 	// Pinsets for UART
@@ -80,7 +80,9 @@ static inline void BoardInitValue()
 
 	UCA0CTL1 &= ~UCSWRST; // USCI Start
 
+	__delay_cycles(1000);
 
+	UCA0TXBUF = 66;
 }
 
 static inline void TimerInitValue()
@@ -90,6 +92,7 @@ static inline void TimerInitValue()
 	TAR = 0; // Initial count value is 0
 	TACCR0 = 11999; // Count up to 12,000
 	TACCTL0 = CCIE; // Enable interrupt on TACCR0
+	TACCTL0 &= ~CCIFG;
 	TACTL |= MC_1; // Start counting up to TACCR0
 
 	// Timer A1 Fast Clock
@@ -97,6 +100,7 @@ static inline void TimerInitValue()
 	TA1R = 0;
 	TA1CCR0 = 49999; // Count up to 50000
 	TA1CCTL0 = CCIE; // Enable interrupt on timer TA1CCR0
+	TA1CCTL0 &= ~CCIFG;
 	TA1CTL |= MC_1; // Start counting up to TACCR0
 
 }
