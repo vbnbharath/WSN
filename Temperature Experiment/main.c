@@ -71,7 +71,7 @@ static inline void BoardInitValue()
 	UCA0CTL1 |= UCSSEL_2; // Use SMCLK for USCI module
 	UCA0BR0 = 6; // Settings for 57600 Oversample Baud Rate
 	UCA0BR1 = 0;
-	UCA0MCTL = UCBRS_6 + UCBRF_8 + UCOS16; // Modulation and oversample
+	UCA0MCTL = UCBRF_8 + UCOS16; // Modulation and oversample
 	UCA0STAT = 0; // Clear status register
 
 	// Pinsets for UART

@@ -1,6 +1,7 @@
 #include <msp430.h> // Base header files
-#include <projectTypes.h> // pull in custom datatypes
+#include <stdint.h> // pull in standard datatypes
 #include <pinDefs.h>
+#include <Spi_Library.h>
 
 /*
  * main.c
@@ -14,6 +15,7 @@ static inline void TimerInitValue(void);
 
 int main(void)
 {
+	uint8_t registerValue;
 
 // Value line inits
 #ifdef __MSP430G2553__
@@ -21,9 +23,13 @@ int main(void)
 	TimerInitValue();
 #endif
 
-    LED1Reg |= LED1;
+	SPI_Init(); // Start SPI
 
-    __bis_SR_register(LPM0_bits + GIE); // Enter LPM0 w/ interrupt
+	SPI_Send(0x02, 0xFF);
+	registerValue = SPI_Read(0x02);
+
+
+    __bis_SR_register(LPM0_bits /*+ GIE*/); // Enter LPM0 w/ interrupt
 
     return 0; // Never get here
 }
@@ -46,14 +52,6 @@ static inline void BoardInitValue()
 
 	// Default pinsets for low power consumption
 
-	// Set the mode of all ports to IO
-	P1SEL = 0;
-	P2SEL2 = 0;
-	P2SEL = 0;
-	P2SEL2 = 0;
-	P3SEL = 0;
-	P3SEL2 = 0;
-
 	// Set the default output to low
 	P1OUT = 0;
 	P2OUT = 0;
@@ -63,6 +61,14 @@ static inline void BoardInitValue()
 	P1DIR = 0xFF;
 	P2DIR = 0xFF;
 	P3DIR = 0XFF;
+
+	// Set the mode of all ports to IO
+	P1SEL = 0;
+	P1SEL2 = 0;
+	P2SEL = 0;
+	P2SEL2 = 0;
+	P3SEL = 0;
+	P3SEL2 = 0;
 }
 
 static inline void TimerInitValue()
