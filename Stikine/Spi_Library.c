@@ -21,7 +21,7 @@ static uint8_t Address_Bad(uint8_t address)
 	}
 }
 
-static uint8_t Wait_For_CCWake()
+static void Wait_For_CCWake()
 {
 	// Spinlock until radio wakes TODO: Make this interrupt based and LPM0 instead
 	while(Port_In & SOMI); // If SOMI is HI, chip is sleeping

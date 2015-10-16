@@ -15,8 +15,6 @@ static inline void TimerInitValue(void);
 
 int main(void)
 {
-	uint8_t registerValue;
-
 // Value line inits
 #ifdef __MSP430G2553__
 	BoardInitValue();
@@ -26,7 +24,6 @@ int main(void)
 	SPI_Init(); // Start SPI
 
 	SPI_Send(0x02, 0xFF);
-	registerValue = SPI_Read(0x02);
 
 
     __bis_SR_register(LPM0_bits /*+ GIE*/); // Enter LPM0 w/ interrupt

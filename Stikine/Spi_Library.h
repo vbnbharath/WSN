@@ -42,6 +42,7 @@
 void SPI_Init(void);
 uint8_t SPI_Send(uint8_t, uint8_t);
 uint8_t SPI_Read(uint8_t);
+uint8_t SPI_Send_Burst(uint8_t, uint8_t*);
 
 
 #endif /* SPI_LIBRARY_H_ */
