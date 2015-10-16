@@ -21,6 +21,12 @@ static uint8_t Address_Bad(uint8_t address)
 	}
 }
 
+static uint8_t Wait_For_CCWake()
+{
+	// Spinlock until radio wakes TODO: Make this interrupt based and LPM0 instead
+	while(Port_In & SOMI); // If SOMI is HI, chip is sleeping
+}
+
 
 // Init function
 void SPI_Init(void)
@@ -71,8 +77,7 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 
 	CS_Register &= ~CS; // Pull CS low
 
-	// Spinlock until radio wakes TODO: Make this interrupt based and LPM0 instead
-//	while( !(Port_In & SOMI));
+	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = address; // Send address
 
@@ -103,8 +108,7 @@ uint8_t SPI_Read(uint8_t address)
 
 	CS_Register &= ~CS; // Pull CS low
 
-	// Spinlock until radio wakes TODO: Make this interrupt based and LPM0 instead
-//	while( !(P1IN & SOMI));
+	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = address + BIT7; // Send address with MSB HI, indicates read
 

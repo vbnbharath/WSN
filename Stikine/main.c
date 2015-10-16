@@ -1,7 +1,7 @@
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
-#include <pinDefs.h>
-#include <Spi_Library.h>
+#include <pinDefs.h> // Pin defines
+#include <Spi_Library.h> // SPI control for the
 
 /*
  * main.c
