@@ -27,7 +27,6 @@ static void Wait_For_CCWake()
 	while(Port_In & SOMI); // If SOMI is HI, chip is sleeping
 }
 
-
 // Init function
 void SPI_Init(void)
 {
@@ -70,6 +69,8 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 {
 	uint8_t status; // The return value
 
+	USCI_Interrupt_Flags &= ~00001111; // Clear the flags
+
 	if(Address_Bad(address))
 	{
 		return BIT7;
@@ -82,20 +83,21 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 	// TX buffer empties into shift register in one cycle, so we can write twice without delay
 	USCI_TX_Reg = address; // Send address
 	USCI_TX_Reg = value; // Send the actual value,
-
 	// Spinlock until TX finish to ensure CS is held until the transmission is complete
 	while(!(USCI_Interrupt_Flags & UCB0RXBUF));
 
-	CS_Register |= CS; // Pull CS HI
-
 	status = USCI_RX_Reg; // Read the status byte from the input buffer
+	CS_Register |= CS; // Pull CS HI
 
 	return status;
 }
 
-uint8_t SPI_Read(uint8_t address, uint8_t *out)
+uint8_t SPI_Read(uint8_t address, volatile uint8_t *out)
 {
 	uint8_t status;
+
+	*out = USCI_RX_Reg; // Clear the flags
+
 	// Check for valid address
 	if(Address_Bad(address))
 	{
@@ -126,6 +128,8 @@ uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
 	int i;
 	uint8_t status;
 
+	USCI_Interrupt_Flags &= ~00001111; // Clear the flags
+
 	if(Address_Bad(address))
 	{
 		return BIT7;
@@ -153,6 +157,8 @@ uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length)
 {
 	int i;
 	uint8_t status;
+
+	USCI_Interrupt_Flags &= ~00001111; // Clear the flags
 
 	if(Address_Bad(address))
 	{

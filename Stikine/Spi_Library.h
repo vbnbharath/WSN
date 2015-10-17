@@ -41,7 +41,7 @@
 
 void SPI_Init(void);
 uint8_t SPI_Send(uint8_t address, uint8_t value);
-uint8_t SPI_Read(uint8_t address, uint8_t* out);
+uint8_t SPI_Read(uint8_t address, volatile uint8_t* out);
 uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length);
 uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length);
 
