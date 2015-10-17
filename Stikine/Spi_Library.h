@@ -40,9 +40,10 @@
 /*************************** Function prototypes ******************************/
 
 void SPI_Init(void);
-uint8_t SPI_Send(uint8_t, uint8_t);
-uint8_t SPI_Read(uint8_t);
-uint8_t SPI_Send_Burst(uint8_t, uint8_t*);
+uint8_t SPI_Send(uint8_t address, uint8_t value);
+uint8_t SPI_Read(uint8_t address, uint8_t* out);
+uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length);
+uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length);
 
 
 #endif /* SPI_LIBRARY_H_ */

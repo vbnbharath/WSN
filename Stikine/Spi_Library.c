@@ -11,7 +11,7 @@
 
 static uint8_t Address_Bad(uint8_t address)
 {
-	if(address & BIT7) // If BIT7 hi throw error
+	if(address & (BIT7 + BIT6)) // If BIT7 hi throw error
 	{
 		return 1;
 	}
@@ -23,7 +23,7 @@ static uint8_t Address_Bad(uint8_t address)
 
 static void Wait_For_CCWake()
 {
-	// Spinlock until radio wakes TODO: Make this interrupt based and LPM0 instead
+	// Spinlock until radio wakes
 	while(Port_In & SOMI); // If SOMI is HI, chip is sleeping
 }
 
@@ -72,22 +72,19 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 
 	if(Address_Bad(address))
 	{
-		return 0;
+		return BIT7;
 	}
 
 	CS_Register &= ~CS; // Pull CS low
 
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
+	// TX buffer empties into shift register in one cycle, so we can write twice without delay
 	USCI_TX_Reg = address; // Send address
+	USCI_TX_Reg = value; // Send the actual value,
 
-	// Spinlock until TX finish TODO: Also make this interrupt based and LPM0 instead
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
-
-	USCI_TX_Reg = value; // Send the actual value
-
-	// Spinlock until TX finish, makes function blocking, can call it repeatedly without worries of buffer overwrites.
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
+	// Spinlock until TX finish to ensure CS is held until the transmission is complete
+	while(!(USCI_Interrupt_Flags & UCB0RXBUF));
 
 	CS_Register |= CS; // Pull CS HI
 
@@ -96,14 +93,13 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 	return status;
 }
 
-uint8_t SPI_Read(uint8_t address)
+uint8_t SPI_Read(uint8_t address, uint8_t *out)
 {
-	uint8_t register_value;
-
-	// Check for valid address TODO: Consider making the register value an OUT parameter and return a status value instead?
+	uint8_t status;
+	// Check for valid address
 	if(Address_Bad(address))
 	{
-		return 0;
+		return BIT7;
 	}
 
 	CS_Register &= ~CS; // Pull CS low
@@ -111,18 +107,72 @@ uint8_t SPI_Read(uint8_t address)
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = address + BIT7; // Send address with MSB HI, indicates read
-
-	// Spinlock until TX finish TODO: Also make this interrupt based and LPM0 instead
 	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
-
+	status = USCI_RX_Reg; // Save the status byte
 	USCI_TX_Reg = 0xFF; // Gotta send it something to make the SPI hardware run, this will be ignored by the CC110l
 
-	// Spinlock until RX finish TODO: Also make this interrupt based and LPM0 instead
+	// Spinlock until RX finish
 	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
 
-	register_value = USCI_RX_Reg; // Grab the value
+	*out = USCI_RX_Reg; // Grab the value
 
 	CS_Register |= CS; // Pull CS HI
 
-	return register_value;
+	return status;
+}
+
+uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
+{
+	int i;
+	uint8_t status;
+
+	if(Address_Bad(address))
+	{
+		return BIT7;
+	}
+
+	CS_Register &= ~CS; // Pull CS low
+	Wait_For_CCWake(); // Wait for SOMI to go LO
+
+	USCI_TX_Reg = address + BIT6; // Send address with burst bit set
+	USCI_TX_Reg = value[0]; // Send address
+
+	for(i=1; i< length; i++)
+	{
+		while(!(USCI_Interrupt_Flags & UCB0TXIFG)); // Wait for ready
+		USCI_TX_Reg = value[i];
+	}
+
+	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
+	CS_Register |= CS; // Pull CS HI
+	status = USCI_RX_Reg; // Read the status byte from the input buffer
+	return status;
+}
+
+uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length)
+{
+	int i;
+	uint8_t status;
+
+	if(Address_Bad(address))
+	{
+		return BIT7;
+	}
+
+	CS_Register &= ~CS; // Pull CS low
+	Wait_For_CCWake(); // Wait for SOMI to go LO
+
+	USCI_TX_Reg = address + BIT6 + BIT7; // Send address with burst bit set and read bit set
+	while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
+	status = USCI_RX_Reg;
+
+	for(i = 0; i < length; i++)
+	{
+		USCI_TX_Reg = 0xFF;
+		while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
+		out[i] = USCI_RX_Reg;
+	}
+
+	CS_Register |= CS; // Pull CS HI
+	return status;
 }

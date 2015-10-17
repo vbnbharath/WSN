@@ -1,7 +1,8 @@
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
 #include <pinDefs.h> // Pin defines
-#include <Spi_Library.h> // SPI control for the
+#include <Spi_Library.h> // SPI control for the radio
+#include <CC110l.h> // Literals for helping with the radio
 
 /*
  * main.c
@@ -12,9 +13,12 @@
 static inline void BoardInitValue(void);
 static inline void TimerInitValue(void);
 #endif
+static inline void Radio_Init(void);
 
 int main(void)
 {
+	uint8_t testVal;
+
 // Value line inits
 #ifdef __MSP430G2553__
 	BoardInitValue();
@@ -22,8 +26,10 @@ int main(void)
 #endif
 
 	SPI_Init(); // Start SPI
+	Radio_Init(); // Prep the radio
 
-	SPI_Send(0x02, 0xFF);
+	SPI_Read(IOCFG0, &testVal);
+
 
 
     __bis_SR_register(LPM0_bits /*+ GIE*/); // Enter LPM0 w/ interrupt
@@ -86,6 +92,38 @@ static inline void TimerInitValue()
 
 }
 #endif
+
+static inline void Radio_Init()
+{
+	//
+	// Rf settings for CC110L
+	// This is the very bottom option on the dropdown list
+	// 250 kBaud, Dev.: 127 kHz, Mod.: GFSK, RX BW: 540 kHz
+	SPI_Send(IOCFG0,0xFF);       //GDO0 Output Pin Configuration
+//	SPI_Send(IOCFG0,0x06);       //GDO0 Output Pin Configuration
+//	SPI_Send(PKTCTRL0,0x05);     //Packet Automation Control
+//	SPI_Send(FSCTRL1,0x12);      //Frequency Synthesizer Control
+//	SPI_Send(FREQ2,0x21);        //Frequency Control Word, High Byte
+//	SPI_Send(FREQ1,0x62);        //Frequency Control Word, Middle Byte
+//	SPI_Send(FREQ0,0x76);        //Frequency Control Word, Low Byte
+//	SPI_Send(MDMCFG4,0x2D);      //Modem Configuration
+//	SPI_Send(MDMCFG3,0x3B);      //Modem Configuration
+//	SPI_Send(MDMCFG2,0x93);      //Modem Configuration
+//	SPI_Send(DEVIATN,0x62);      //Modem Deviation Setting
+//	SPI_Send(MCSM0,0x18);        //Main Radio Control State Machine Configuration
+//	SPI_Send(FOCCFG,0x1D);       //Frequency Offset Compensation Configuration
+//	SPI_Send(BSCFG,0x1C);        //Bit Synchronization Configuration
+//	SPI_Send(AGCCTRL2,0xC7);     //AGC Control
+//	SPI_Send(AGCCTRL1,0x00);     //AGC Control
+//	SPI_Send(AGCCTRL0,0xB0);     //AGC Control
+//	SPI_Send(0x20,0xFB);		 //Use setting from SmartRF Studio
+//	SPI_Send(FREND1,0xB6);       //Front End RX Configuration
+//	SPI_Send(FSCAL3,0xEA);       //Frequency Synthesizer Calibration
+//	SPI_Send(FSCAL2,0x2A);       //Frequency Synthesizer Calibration
+//	SPI_Send(FSCAL1,0x00);       //Frequency Synthesizer Calibration
+//	SPI_Send(FSCAL0,0x1F);       //Frequency Synthesizer Calibration
+//	SPI_Send(TEST0,0x09);        //Various Test Settings
+}
 
 /**************************************************************************
  * Interrupt service routuines
