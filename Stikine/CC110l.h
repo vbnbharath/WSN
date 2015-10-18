@@ -120,7 +120,7 @@
 #define PKTSTATUS    0x38        // Current GDOx status and packet status
 #define VCO_VC_DAC   0x39        // Current setting from PLL cal module
 #define TXBYTES      0x3A        // Underflow and # of bytes in TXFIFO
-#define RXBYTES      0x3B        // Overflow and # of bytes in RXFIFO
+#define RXBYTES      0x3B | 0xC0        // Overflow and # of bytes in RXFIFO
 #define NUM_RXBYTES  0x7F        // Mask "# of bytes" field in _RXBYTES
 
 // Other memory locations
@@ -131,10 +131,15 @@
 // Masks for appended status bytes
 #define LQI_RX       0x01        // Position of LQI byte
 #define CRC_OK       0x80        // Mask "CRC_OK" bit within LQI byte
+#define FIFO_Bytes	 0b00001111	 // Mask the number of FIFO bytes in the status byte
 
 // Definitions to support burst/single access:
 #define WRITE_BURST  0x40
 #define READ_SINGLE  0x80
 #define READ_BURST   0xC0
+
+// Definitions for strobes
+#define Get_TX_FIFO 0x00
+#define Get_RX_FIFO 0x80
 
 

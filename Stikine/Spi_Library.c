@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <msp430.h>
 #include <Spi_Library.h>
+#include <CC110l.h>
 
 static uint8_t Address_Bad(uint8_t address)
 {
@@ -60,6 +61,11 @@ void SPI_Init(void)
 
 	// Ready to go, release software reset
 	USCI_Control_Reg1 &= ~UCSWRST;
+	// Setup the RX flag pin
+	MSP_RX_Port_DIR &= ~MSP_RX_Pin; // Set the RX pin for input
+	MSP_RX_Port_OUT &= ~MSP_RX_Pin; // Set the RX pin to pull down
+	MSP_RX_Port_REN |= MSP_RX_Pin;	// Enable pullup resistor
+
 }
 
 // Sends one value to the radio, returns the radio status.
@@ -92,7 +98,7 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 	return status;
 }
 
-uint8_t SPI_Read(uint8_t address, volatile uint8_t *out)
+uint8_t SPI_Read(uint8_t address, uint8_t *out)
 {
 	uint8_t status;
 
@@ -108,7 +114,7 @@ uint8_t SPI_Read(uint8_t address, volatile uint8_t *out)
 
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
-	USCI_TX_Reg = address + BIT7; // Send address with MSB HI, indicates read
+	USCI_TX_Reg = address | READ_SINGLE; // Send address with MSB HI, indicates read
 	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
 	status = USCI_RX_Reg; // Save the status byte
 	USCI_TX_Reg = 0xFF; // Gotta send it something to make the SPI hardware run, this will be ignored by the CC110l
@@ -128,8 +134,6 @@ uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
 	int i;
 	uint8_t status;
 
-	USCI_Interrupt_Flags &= ~00001111; // Clear the flags
-
 	if(Address_Bad(address))
 	{
 		return BIT7;
@@ -138,7 +142,7 @@ uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
 	CS_Register &= ~CS; // Pull CS low
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
-	USCI_TX_Reg = address + BIT6; // Send address with burst bit set
+	USCI_TX_Reg = address | WRITE_BURST; // Send address with burst bit set
 	USCI_TX_Reg = value[0]; // Send address
 
 	for(i=1; i< length; i++)
@@ -155,10 +159,10 @@ uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
 
 uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length)
 {
-	int i;
+	uint8_t i;
 	uint8_t status;
 
-	USCI_Interrupt_Flags &= ~00001111; // Clear the flags
+	i = USCI_RX_Reg; // Clear the flags
 
 	if(Address_Bad(address))
 	{
@@ -168,7 +172,7 @@ uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length)
 	CS_Register &= ~CS; // Pull CS low
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
-	USCI_TX_Reg = address + BIT6 + BIT7; // Send address with burst bit set and read bit set
+	USCI_TX_Reg = address | READ_BURST; // Send address with burst bit set and read bit set
 	while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
 	status = USCI_RX_Reg;
 
@@ -178,6 +182,23 @@ uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length)
 		while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
 		out[i] = USCI_RX_Reg;
 	}
+
+	CS_Register |= CS; // Pull CS HI
+	return status;
+}
+
+uint8_t SPI_Strobe(uint8_t strobe, uint8_t FIFO)
+{
+	uint8_t status;
+
+	status = USCI_RX_Reg; // Clear UCB RX flag
+
+	CS_Register &= ~CS; // Pull CS low
+	Wait_For_CCWake(); // Wait for SOMI to go LO
+
+	USCI_TX_Reg = strobe | FIFO; // Pick either the TX or RX FIFO for the
+	while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
+	status = USCI_RX_Reg;
 
 	CS_Register |= CS; // Pull CS HI
 	return status;
