@@ -2,7 +2,7 @@
 
 TARGET	= sensor_node
 MCU	= msp430fr5739
-SOURCES	= main.c spi.c delay.c TI_CC_spi.c CC1100-CC2500.c
+SOURCES	= main.c delay.c TI_CC_spi.c CC1100-CC2500.c
 PROG = rf2500 
 #rf2500 
 
@@ -56,6 +56,10 @@ clean:
 	-$(RM) $(TARGET).elf
 	-$(RM) $(SOURCES:.c=.lst)
 	-$(RM) $(DEPEND)
+
+
+serial:
+	sudo picocom -b 9600 /dev/ttyACM0
 
 install: $(TARGET).elf
 	mspdebug $(PROG) "prog $(TARGET).elf"

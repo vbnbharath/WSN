@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <signal.h>
 
-#include "spi.h"
 #include "pins.h"
 #include "delay.h"
 #include "include.h"
@@ -157,12 +156,13 @@ void __attribute__((interrupt(PORT2_VECTOR))) port2_isr(void)
 int main(void)
 {
     init_watchdog();
-    init_clock();
+//    init_clock();
     init_gpio();
     init_cc();
 
     char len = 2;
 
+    LEDOUT |= LED1;
     for(;;) {
         if(SWDEBUG_IN & SWDEBUG_PIN) {
             if (RFReceivePacket(rxBuffer,&len)) {
