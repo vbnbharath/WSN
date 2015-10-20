@@ -1,34 +1,39 @@
-/*
- * Spi_Library.c
+/**
+ *\file SPI_Library.c
+ *\brief Setup and control library for the SPI link to the CC110l
  *
- *  Created on: Oct 16, 2015
- *      Author: cgoss
+ * Ports and pins for this library are defined in SPI_Library.h, there are ifdef blocks to target different controllers.
  */
 
 #include <stdint.h>
 #include <msp430.h>
-#include <Spi_Library.h>
 #include <CC110l.h>
+#include <SPI_Pins.h>
 
+// Function to check that address passed into SPI functions is valid
 static uint8_t Address_Bad(uint8_t address)
 {
 	if(address & (BIT7 + BIT6)) // If BIT7 hi throw error
 	{
-		return 1;
+		return 1; // Return 1 if bad
 	}
 	else
 	{
-		return 0;
+		return 0; // Return 0 if good
 	}
 }
 
+// Function to spinwait if the radio is not in "ready" state
 static void Wait_For_CCWake()
 {
 	// Spinlock until radio wakes
 	while(Port_In & SOMI); // If SOMI is HI, chip is sleeping
 }
 
-// Init function
+/**
+ * \brief Initialization function for the SPI link
+ *
+ */
 void SPI_Init(void)
 {
 	// Configure controller IO for SPI pins
@@ -68,9 +73,14 @@ void SPI_Init(void)
 
 }
 
-// Sends one value to the radio, returns the radio status.
-// If the address is bogus a value of 0 is returned
-// 0 is never returned by the radio
+/**
+ * \brief A function for sending a single byte to the radio
+ *
+ *
+ * @param address The register in the CC110l that the byte is to be written to.
+ * @param value The value to write to the target register
+ * @return The status byte from the CC110l
+ */
 uint8_t SPI_Send(uint8_t address, uint8_t value)
 {
 	uint8_t status; // The return value
