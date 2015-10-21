@@ -9,6 +9,7 @@
 #include <msp430.h>
 #include <CC110l.h>
 #include <SPI_Pins.h>
+#include <SPI_Library.h>
 
 // Function to check that address passed into SPI functions is valid
 static uint8_t Address_Bad(uint8_t address)
@@ -34,6 +35,9 @@ static void Wait_For_CCWake()
  * \brief Initialization function for the SPI link
  *
  */
+
+// It might just be smarter to dispose of the defines and bust this out
+// into the init functions, have a specific one for each board.
 void SPI_Init(void)
 {
 	// Configure controller IO for SPI pins
@@ -125,12 +129,12 @@ uint8_t SPI_Read(uint8_t address, uint8_t *out)
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = address | READ_SINGLE; // Send address with MSB HI, indicates read
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag));
 	status = USCI_RX_Reg; // Save the status byte
 	USCI_TX_Reg = 0xFF; // Gotta send it something to make the SPI hardware run, this will be ignored by the CC110l
 
 	// Spinlock until RX finish
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag));
 
 	*out = USCI_RX_Reg; // Grab the value
 
@@ -157,11 +161,11 @@ uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
 
 	for(i=1; i< length; i++)
 	{
-		while(!(USCI_Interrupt_Flags & UCB0TXIFG)); // Wait for ready
+		while(!(USCI_Interrupt_Flags & USCI_TX_Flag)); // Wait for ready
 		USCI_TX_Reg = value[i];
 	}
 
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG));
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag));
 	CS_Register |= CS; // Pull CS HI
 	status = USCI_RX_Reg; // Read the status byte from the input buffer
 	return status;
@@ -183,13 +187,13 @@ uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length)
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = address | READ_BURST; // Send address with burst bit set and read bit set
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag)); // Wait for ready
 	status = USCI_RX_Reg;
 
 	for(i = 0; i < length; i++)
 	{
 		USCI_TX_Reg = 0xFF;
-		while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
+		while(!(USCI_Interrupt_Flags & USCI_RX_Flag)); // Wait for ready
 		out[i] = USCI_RX_Reg;
 	}
 
@@ -207,9 +211,31 @@ uint8_t SPI_Strobe(uint8_t strobe, uint8_t FIFO)
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = strobe | FIFO; // Pick either the TX or RX FIFO for the
-	while(!(USCI_Interrupt_Flags & UCB0RXIFG)); // Wait for ready
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag)); // Wait for ready
 	status = USCI_RX_Reg;
 
 	CS_Register |= CS; // Pull CS HI
+	return status;
+}
+
+uint8_t SPI_Read_Status(uint8_t status_reg, uint8_t* out)
+{
+	uint8_t status;
+	status = USCI_RX_Reg;
+
+	CS_Register &= ~CS; // Pull CS low
+	Wait_For_CCWake(); // Wait for SOMI to go LO
+
+	USCI_TX_Reg = status_reg | 0xC0; // Send status register address
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag)); // Wait for status byte
+	status = USCI_RX_Reg;
+
+	USCI_TX_Reg = 0xFF; // Send garbage
+	while(!(USCI_Interrupt_Flags & USCI_RX_Flag)); // Wait for register value
+
+	CS_Register |= CS; // Pull CS HI
+
+	*out = USCI_RX_Reg;
+
 	return status;
 }

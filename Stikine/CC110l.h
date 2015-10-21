@@ -120,7 +120,7 @@
 #define PKTSTATUS    0x38        // Current GDOx status and packet status
 #define VCO_VC_DAC   0x39        // Current setting from PLL cal module
 #define TXBYTES      0x3A        // Underflow and # of bytes in TXFIFO
-#define RXBYTES      0x3B | 0xC0        // Overflow and # of bytes in RXFIFO
+#define RXBYTES      0x3B        // Overflow and # of bytes in RXFIFO
 #define NUM_RXBYTES  0x7F        // Mask "# of bytes" field in _RXBYTES
 
 // Other memory locations

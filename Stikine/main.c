@@ -12,7 +12,6 @@
 #include <CC110l.h> // Literals for helping with the radio
 #include <MSP_Init.h> // Code to set initial board state
 #include <SPI_Library.h> // SPI control for the radio
-#include <SPI_Pins.h>
 
 /**
  * \brief Main control sequence for sensor node
@@ -29,19 +28,22 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	status[0] = SPI_Send(GDO_RX, 0);
-	status[1] = SPI_Read(GDO_RX, &value);
-
+	status[0] = SPI_Read_Status(MARCSTATE, &value);
 	__bis_SR_register(LPM3_bits + GIE);
     return 0; // Never get here
 }
 
 
+#ifdef __MSP430G2553__
+#define Slow_Timer_Vector_0 TIMER0_A0_VECTOR
+#define Fast_Timer_Vector_0 TIMER1_A0_VECTOR
+#define GDO_Pin_Vector PORT1_VECTOR
+#endif
 
 /**
  * \brief Interrupt service routine for slow timer
  */
-void __attribute__((__interrupt__(TIMER0_A0_VECTOR)))TimerA_0_ISR(void)
+void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
 	LED1Reg ^= LED1;
@@ -50,7 +52,7 @@ void __attribute__((__interrupt__(TIMER0_A0_VECTOR)))TimerA_0_ISR(void)
 /**
  *  \brief Interrupt service routine for fast timer.
  */
-void __attribute__((__interrupt__(TIMER1_A0_VECTOR)))TimerA_1_ISR(void)
+void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
 {
 	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
 }
@@ -58,12 +60,8 @@ void __attribute__((__interrupt__(TIMER1_A0_VECTOR)))TimerA_1_ISR(void)
 /**
  * \brief Interrupt service routine for packet received pin from CC100l
  */
-void __attribute__((__interrupt__(MSP_RX_Port_IV)))MSP_RX_ISR(void)
+void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
 
 }
-
-/**
- * \brief Interrupt service routine for pushbutton on the MSP430
- */
 

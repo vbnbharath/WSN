@@ -18,13 +18,6 @@
 #define SPCLK BIT5
 #define CS BIT4
 
-// GDO Pins on MSP430
-#define MSP_RX_Pin BIT3					// Pin that the GDO flagging for RX is attached to
-
-// GDO Register on CC110l, all 3 GDO pins have the same capabilities. By just mapping the registers here
-// can define the GDO pins by behavior.
-#define GDO_RX	IOCFG0					// Register controlling the GDO pin used to signal RX receive.
-
 // SPI Registers
 #define Port_Reg_Sel P1SEL 				// Port function select 1
 #define Port_Reg_Sel2 P1SEL2 			// Port function select 2
@@ -41,13 +34,16 @@
 #define USCI_TX_Reg UCB0TXBUF			// Transmit buffer
 #define USCI_RX_Reg UCB0RXBUF			// Receive buffer
 
+// Register masks
+#define USCI_RX_Flag UCB0RXIFG			// Mask for RX complete
+#define USCI_TX_Flag UCB0TXIFG			// Mask for TX complete
+
 // GDO Ports on MSP430
 #define MSP_RX_Port_DIR		P1DIR	// Direction register
 #define MSP_RX_Port_OUT		P1OUT	// Out value register
 #define MSP_RX_Port_REN		P1REN	// Resistor enable register
 #define MSP_RX_Port_IN		P1IN	// In value register
 #define MSP_RX_Port_IE		P1IE	// Interrupt enable register
-#define MSP_RX_Port_IV		PORT1_VECTOR	// Port Interrupt vector
 #define MSP_RX_Port_IFG		P1IFG	// Port interrupt flag
 #endif
 /*************************** End Value line pindefs ******************************/
