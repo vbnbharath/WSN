@@ -31,13 +31,9 @@ static void Wait_For_CCWake()
 	while(Port_In & SOMI); // If SOMI is HI, chip is sleeping
 }
 
-/**
- * \brief Initialization function for the SPI link
- *
- */
-
 // It might just be smarter to dispose of the defines and bust this out
-// into the init functions, have a specific one for each board.
+// into the init functions, have a specific one for each board. Then we could just
+// put the very few remaining outward facing values with the function prototypes
 void SPI_Init(void)
 {
 	// Configure controller IO for SPI pins
@@ -77,14 +73,6 @@ void SPI_Init(void)
 
 }
 
-/**
- * \brief A function for sending a single byte to the radio
- *
- *
- * @param address The register in the CC110l that the byte is to be written to.
- * @param value The value to write to the target register
- * @return The status byte from the CC110l
- */
 uint8_t SPI_Send(uint8_t address, uint8_t value)
 {
 	uint8_t status; // The return value
@@ -111,6 +99,7 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 
 	return status;
 }
+
 
 uint8_t SPI_Read(uint8_t address, uint8_t *out)
 {
@@ -157,7 +146,7 @@ uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length)
 	Wait_For_CCWake(); // Wait for SOMI to go LO
 
 	USCI_TX_Reg = address | WRITE_BURST; // Send address with burst bit set
-	USCI_TX_Reg = value[0]; // Send address
+	USCI_TX_Reg = value[0]; // Send first value.
 
 	for(i=1; i< length; i++)
 	{

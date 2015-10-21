@@ -28,7 +28,6 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	status[0] = SPI_Read_Status(MARCSTATE, &value);
 	__bis_SR_register(LPM3_bits + GIE);
     return 0; // Never get here
 }
