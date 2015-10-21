@@ -14,10 +14,6 @@
 #include <SPI_Library.h> // SPI control for the radio
 #include <SPI_Pins.h>
 
-#define transmitter
-
-volatile uint8_t statusVal[10];
-
 /**
  * \brief Main control sequence for sensor node
  * @return Constant 0, but it has nowhere to go.
@@ -25,25 +21,19 @@ volatile uint8_t statusVal[10];
 int main(void)
 {
 // Value line inits
+	volatile uint8_t value;
+	volatile uint8_t status[2];
 
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-#ifdef receiver
+	status[0] = SPI_Send(GDO_RX, 0);
+	status[1] = SPI_Read(GDO_RX, &value);
 
-	SPI_Strobe(SRX, Get_RX_FIFO);// Clear RX FIFO
 	__bis_SR_register(LPM3_bits + GIE);
-
     return 0; // Never get here
-#endif
-
-#ifdef transmitter
-
-    __bis_SR_register(LPM3_bits + GIE); // Go to sleep
-    return 0;
-#endif
 }
 
 
@@ -54,7 +44,7 @@ int main(void)
 void __attribute__((__interrupt__(TIMER0_A0_VECTOR)))TimerA_0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	LPM3_EXIT; // Wake up!
+	LED1Reg ^= LED1;
 }
 
 /**
@@ -62,19 +52,7 @@ void __attribute__((__interrupt__(TIMER0_A0_VECTOR)))TimerA_0_ISR(void)
  */
 void __attribute__((__interrupt__(TIMER1_A0_VECTOR)))TimerA_1_ISR(void)
 {
-	static int i = 0;
-
 	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
-
-	if(i >= 20)
-	{
-		LED2Reg ^= LED2;
-		i=0;
-	}
-	else
-	{
-		i++;
-	}
 }
 
 /**
@@ -82,40 +60,10 @@ void __attribute__((__interrupt__(TIMER1_A0_VECTOR)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(MSP_RX_Port_IV)))MSP_RX_ISR(void)
 {
-    volatile uint8_t testVal[64];
-	volatile uint8_t bytes_in_FIFO;
-	volatile uint8_t rBytesVal;
 
-	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
-
-	rBytesVal = SPI_Strobe(SNOP, Get_RX_FIFO);
-	bytes_in_FIFO = rBytesVal & FIFO_Bytes;
-
-	statusVal[2] = SPI_Read_Burst(RXFIFO, testVal, bytes_in_FIFO);
-	SPI_Strobe(SIDLE, Get_RX_FIFO); // start RX again
-	__delay_cycles(1000000);
-	SPI_Strobe(SRX, Get_RX_FIFO); // start RX again
-
-	P1OUT ^= BIT0;
 }
 
 /**
  * \brief Interrupt service routine for pushbutton on the MSP430
  */
 
-void __attribute__((__interrupt__(PORT1_VECTOR)))Button_ISR(void)
-{
-	uint8_t pinState;
-	volatile uint8_t status;
-	P1IFG &= ~BIT3; // Clear interrupt flag
-
-	pinState = P1IN & BIT3;
-	__delay_cycles(100);
-
-	if(pinState == (P1IN & BIT3))
-		{
-			SPI_Send(TXFIFO, 0x01);
-			SPI_Send(TXFIFO, 0xFF);
-			status = SPI_Strobe(STX, Get_TX_FIFO);
-		}
-}
