@@ -1,4 +1,4 @@
-update=Tue Oct 20 21:03:45 2015
+update=Thu Oct 22 22:50:17 2015
 version=1
 last_client=kicad
 [pcbnew]
@@ -20,9 +20,6 @@ SolderMaskMinWidth=0.000000000000
 DrawSegmentWidth=0.200000000000
 BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
-[cvpcb]
-version=1
-NetIExt=net
 [general]
 version=1
 [eeschema]
@@ -71,3 +68,6 @@ LibName39=/home/kleinjt/repos/WSN/hardware/lib/m10478-a3
 LibName40=/home/kleinjt/repos/WSN/hardware/lib/74aup1g19
 LibName41=/home/kleinjt/repos/WSN/hardware/lib/74aup1g157
 LibName42=/home/kleinjt/repos/WSN/hardware/lib/sn74lvc1g18
+[cvpcb]
+version=1
+NetIExt=net
