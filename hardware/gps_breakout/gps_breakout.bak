@@ -41,6 +41,7 @@ LIBS:m10478-a3
 LIBS:74aup1g19
 LIBS:74aup1g157
 LIBS:sn74lvc1g18
+LIBS:silkscreen_label
 LIBS:gps_breakout-cache
 EELAYER 25 0
 EELAYER END
@@ -205,7 +206,7 @@ F 3 "" H 1950 4250 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 Text Label 1900 4150 2    60   ~ 0
-MSP_TCK
+MSP_TST
 Wire Wire Line
 	2600 3950 2800 3950
 $Comp
@@ -943,8 +944,6 @@ NoConn ~ 8050 2800
 NoConn ~ 7950 2800
 Wire Wire Line
 	7850 2800 7850 3050
-Wire Wire Line
-	7150 2400 7150 2900
 $Comp
 L GND #PWR032
 U 1 1 5629299F
@@ -1025,8 +1024,6 @@ Wire Wire Line
 Connection ~ 7850 2950
 Wire Wire Line
 	7150 2300 7050 2300
-Wire Wire Line
-	7050 2300 7050 2900
 $Comp
 L +3V3 #PWR036
 U 1 1 56295020
@@ -1159,4 +1156,29 @@ F 3 "" H 6700 3300 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	6700 3300 6600 3300
+Wire Wire Line
+	7050 2300 7050 2550
+Wire Wire Line
+	7050 2550 7150 2550
+Wire Wire Line
+	7150 2550 7150 2900
+Wire Wire Line
+	7150 2400 7100 2400
+Wire Wire Line
+	7100 2400 7100 2650
+Wire Wire Line
+	7100 2650 7050 2650
+Wire Wire Line
+	7050 2650 7050 2900
+$Comp
+L silkscreen_label U?
+U 1 1 562C04C2
+P 9650 6250
+F 0 "U?" H 9450 6450 60  0000 C CNN
+F 1 "silkscreen_label" H 9600 6600 60  0000 C CNN
+F 2 "" H 9650 6250 60  0000 C CNN
+F 3 "" H 9650 6250 60  0000 C CNN
+	1    9650 6250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

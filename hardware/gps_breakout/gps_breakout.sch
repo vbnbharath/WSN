@@ -41,6 +41,7 @@ LIBS:m10478-a3
 LIBS:74aup1g19
 LIBS:74aup1g157
 LIBS:sn74lvc1g18
+LIBS:silkscreen_label
 LIBS:gps_breakout-cache
 EELAYER 25 0
 EELAYER END
@@ -1169,4 +1170,15 @@ Wire Wire Line
 	7100 2650 7050 2650
 Wire Wire Line
 	7050 2650 7050 2900
+$Comp
+L silkscreen_label U4
+U 1 1 562C04C2
+P 9650 6250
+F 0 "U4" H 9450 6450 60  0000 C CNN
+F 1 "silkscreen_label" H 9600 6600 60  0000 C CNN
+F 2 "sensornode:gunter" H 9650 6250 60  0001 C CNN
+F 3 "" H 9650 6250 60  0000 C CNN
+	1    9650 6250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

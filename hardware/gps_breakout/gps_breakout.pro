@@ -1,4 +1,4 @@
-update=Thu Oct 22 22:50:17 2015
+update=Sat Oct 24 14:10:57 2015
 version=1
 last_client=kicad
 [pcbnew]
@@ -22,6 +22,9 @@ BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
 [general]
 version=1
+[cvpcb]
+version=1
+NetIExt=net
 [eeschema]
 version=1
 LibDir=
@@ -68,6 +71,4 @@ LibName39=/home/kleinjt/repos/WSN/hardware/lib/m10478-a3
 LibName40=/home/kleinjt/repos/WSN/hardware/lib/74aup1g19
 LibName41=/home/kleinjt/repos/WSN/hardware/lib/74aup1g157
 LibName42=/home/kleinjt/repos/WSN/hardware/lib/sn74lvc1g18
-[cvpcb]
-version=1
-NetIExt=net
+LibName43=/home/kleinjt/repos/WSN/hardware/lib/silkscreen_label

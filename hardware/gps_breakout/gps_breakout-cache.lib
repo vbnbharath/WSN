@@ -365,4 +365,16 @@ X SHELL4 9 500 -200 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# silkscreen_label
+#
+DEF silkscreen_label U 0 40 Y Y 1 F N
+F0 "U" -200 200 60 H V C CNN
+F1 "silkscreen_label" -50 350 60 H V C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+S -300 50 200 -150 0 1 0 N
+ENDDRAW
+ENDDEF
+#
 #End Library
