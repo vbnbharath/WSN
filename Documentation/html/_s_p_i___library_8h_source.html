@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('_s_p_i___library_8h_source.html','');}
 <div class="title">SPI_Library.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_s_p_i___library_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Spi_Library.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Oct 16, 2015</span></div>
@@ -119,41 +119,41 @@ $(document).ready(function(){initNavTree('_s_p_i___library_8h_source.html','');}
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Outward facing pins/registers for the radio</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifdef __MSP430G2553__</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// GDO Pins on MSP430</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define MSP_RX_Pin BIT3                 // Pin that the GDO flagging for RX is attached to</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define GDO_RX  IOCFG0                  // Register controlling the GDO pin used to signal RX receive.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_s_p_i___library_8h.html#a292196e767158c66f03cbcc244fc802b">SPI_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8h.html#aabf72034a6f247cd08d8bfc651129e93">SPI_Send</a>(uint8_t address, uint8_t value);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8h.html#a1f5dae77a438cc14d2286590b1768811">SPI_Read</a>(uint8_t address, uint8_t* out);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8h.html#a1f7eca85804b4c8cde6314b5562d52c4">SPI_Send_Burst</a>(uint8_t address, uint8_t* value, uint8_t length);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8h.html#a8811cc7044570e78a7d29671a6b670ba">SPI_Read_Burst</a>(uint8_t address, uint8_t* out, uint8_t length);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8h.html#ac25bdf7cadc2429611e0aa1bb416e8be">SPI_Strobe</a>(uint8_t strobe, uint8_t FIFO);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8h.html#a030f83b4c2ce4a1ce824e4174c888ab8">SPI_Read_Status</a>(uint8_t status_reg, uint8_t* out);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SPI_LIBRARY_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="_s_p_i___library_8h_html_aabf72034a6f247cd08d8bfc651129e93"><div class="ttname"><a href="_s_p_i___library_8h.html#aabf72034a6f247cd08d8bfc651129e93">SPI_Send</a></div><div class="ttdeci">uint8_t SPI_Send(uint8_t address, uint8_t value)</div><div class="ttdoc">A function for sending a single byte to the radio. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:76</div></div>
-<div class="ttc" id="_s_p_i___library_8h_html_a030f83b4c2ce4a1ce824e4174c888ab8"><div class="ttname"><a href="_s_p_i___library_8h.html#a030f83b4c2ce4a1ce824e4174c888ab8">SPI_Read_Status</a></div><div class="ttdeci">uint8_t SPI_Read_Status(uint8_t status_reg, uint8_t *out)</div><div class="ttdoc">Reads a value from one of the special status registers in the CC110l. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:210</div></div>
-<div class="ttc" id="_s_p_i___library_8h_html_ac25bdf7cadc2429611e0aa1bb416e8be"><div class="ttname"><a href="_s_p_i___library_8h.html#ac25bdf7cadc2429611e0aa1bb416e8be">SPI_Strobe</a></div><div class="ttdeci">uint8_t SPI_Strobe(uint8_t strobe, uint8_t FIFO)</div><div class="ttdoc">Sends a strobe command to the CC110l. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:193</div></div>
-<div class="ttc" id="_s_p_i___library_8h_html_a1f5dae77a438cc14d2286590b1768811"><div class="ttname"><a href="_s_p_i___library_8h.html#a1f5dae77a438cc14d2286590b1768811">SPI_Read</a></div><div class="ttdeci">uint8_t SPI_Read(uint8_t address, uint8_t *out)</div><div class="ttdoc">Reads a single register. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:104</div></div>
-<div class="ttc" id="_s_p_i___library_8h_html_a1f7eca85804b4c8cde6314b5562d52c4"><div class="ttname"><a href="_s_p_i___library_8h.html#a1f7eca85804b4c8cde6314b5562d52c4">SPI_Send_Burst</a></div><div class="ttdeci">uint8_t SPI_Send_Burst(uint8_t address, uint8_t *value, uint8_t length)</div><div class="ttdoc">Makes a burst write into a set of registers, beginning with the register pointed by the address value...</div><div class="ttdef"><b>Definition:</b> SPI_Library.c:135</div></div>
-<div class="ttc" id="_s_p_i___library_8h_html_a8811cc7044570e78a7d29671a6b670ba"><div class="ttname"><a href="_s_p_i___library_8h.html#a8811cc7044570e78a7d29671a6b670ba">SPI_Read_Burst</a></div><div class="ttdeci">uint8_t SPI_Read_Burst(uint8_t address, uint8_t *out, uint8_t length)</div><div class="ttdoc">Makes a burst read of the registers in the CC110l. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:163</div></div>
-<div class="ttc" id="_s_p_i___library_8h_html_a292196e767158c66f03cbcc244fc802b"><div class="ttname"><a href="_s_p_i___library_8h.html#a292196e767158c66f03cbcc244fc802b">SPI_Init</a></div><div class="ttdeci">void SPI_Init(void)</div><div class="ttdoc">Initialization function for the SPI link. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:37</div></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define MSP_RX_Pin BIT3                 // Pin that the GDO flagging for RX is attached to</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define GDO_RX  IOCFG0                  // Register controlling the GDO pin used to signal RX receive.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_s_p_i___library_8c.html#a292196e767158c66f03cbcc244fc802b">SPI_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8c.html#aabf72034a6f247cd08d8bfc651129e93">SPI_Send</a>(uint8_t address, uint8_t value);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8c.html#a1f5dae77a438cc14d2286590b1768811">SPI_Read</a>(uint8_t address, uint8_t* out);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8c.html#a1f7eca85804b4c8cde6314b5562d52c4">SPI_Send_Burst</a>(uint8_t address, uint8_t* value, uint8_t length);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8c.html#a8811cc7044570e78a7d29671a6b670ba">SPI_Read_Burst</a>(uint8_t address, uint8_t* out, uint8_t length);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8c.html#ac25bdf7cadc2429611e0aa1bb416e8be">SPI_Strobe</a>(uint8_t strobe, uint8_t FIFO);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;uint8_t <a class="code" href="_s_p_i___library_8c.html#a030f83b4c2ce4a1ce824e4174c888ab8">SPI_Read_Status</a>(uint8_t status_reg, uint8_t* out);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SPI_LIBRARY_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="_s_p_i___library_8c_html_aabf72034a6f247cd08d8bfc651129e93"><div class="ttname"><a href="_s_p_i___library_8c.html#aabf72034a6f247cd08d8bfc651129e93">SPI_Send</a></div><div class="ttdeci">uint8_t SPI_Send(uint8_t address, uint8_t value)</div><div class="ttdoc">A function for sending a single byte to the radio. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:76</div></div>
+<div class="ttc" id="_s_p_i___library_8c_html_a1f7eca85804b4c8cde6314b5562d52c4"><div class="ttname"><a href="_s_p_i___library_8c.html#a1f7eca85804b4c8cde6314b5562d52c4">SPI_Send_Burst</a></div><div class="ttdeci">uint8_t SPI_Send_Burst(uint8_t address, uint8_t *value, uint8_t length)</div><div class="ttdoc">Makes a burst write into a set of registers, beginning with the register pointed by the address value...</div><div class="ttdef"><b>Definition:</b> SPI_Library.c:135</div></div>
+<div class="ttc" id="_s_p_i___library_8c_html_a292196e767158c66f03cbcc244fc802b"><div class="ttname"><a href="_s_p_i___library_8c.html#a292196e767158c66f03cbcc244fc802b">SPI_Init</a></div><div class="ttdeci">void SPI_Init(void)</div><div class="ttdoc">Initialization function for the SPI link. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:37</div></div>
+<div class="ttc" id="_s_p_i___library_8c_html_a1f5dae77a438cc14d2286590b1768811"><div class="ttname"><a href="_s_p_i___library_8c.html#a1f5dae77a438cc14d2286590b1768811">SPI_Read</a></div><div class="ttdeci">uint8_t SPI_Read(uint8_t address, uint8_t *out)</div><div class="ttdoc">Reads a single register. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:104</div></div>
+<div class="ttc" id="_s_p_i___library_8c_html_a8811cc7044570e78a7d29671a6b670ba"><div class="ttname"><a href="_s_p_i___library_8c.html#a8811cc7044570e78a7d29671a6b670ba">SPI_Read_Burst</a></div><div class="ttdeci">uint8_t SPI_Read_Burst(uint8_t address, uint8_t *out, uint8_t length)</div><div class="ttdoc">Makes a burst read of the registers in the CC110l. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:163</div></div>
+<div class="ttc" id="_s_p_i___library_8c_html_ac25bdf7cadc2429611e0aa1bb416e8be"><div class="ttname"><a href="_s_p_i___library_8c.html#ac25bdf7cadc2429611e0aa1bb416e8be">SPI_Strobe</a></div><div class="ttdeci">uint8_t SPI_Strobe(uint8_t strobe, uint8_t FIFO)</div><div class="ttdoc">Sends a strobe command to the CC110l. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:193</div></div>
+<div class="ttc" id="_s_p_i___library_8c_html_a030f83b4c2ce4a1ce824e4174c888ab8"><div class="ttname"><a href="_s_p_i___library_8c.html#a030f83b4c2ce4a1ce824e4174c888ab8">SPI_Read_Status</a></div><div class="ttdeci">uint8_t SPI_Read_Status(uint8_t status_reg, uint8_t *out)</div><div class="ttdoc">Reads a value from one of the special status registers in the CC110l. </div><div class="ttdef"><b>Definition:</b> SPI_Library.c:210</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_7e8d4b8e07c0407d31f9f7f14bd327a1.html">Stikine</a></li><li class="navelem"><a class="el" href="_s_p_i___library_8h.html">SPI_Library.h</a></li>
+    <li class="navelem"><a class="el" href="dir_7e8d4b8e07c0407d31f9f7f14bd327a1.html">Stikine</a></li><li class="navelem"><b>SPI_Library.h</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>

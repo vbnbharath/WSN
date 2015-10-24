@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>Stikine: pinDefs.h Source File</title>
+<title>Stikine: Radio_LBT.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('pin_defs_8h_source.html','');});
+$(document).ready(function(){initNavTree('_radio___l_b_t_8h.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -101,42 +101,62 @@ $(document).ready(function(){initNavTree('pin_defs_8h_source.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">pinDefs.h</div>  </div>
+<div class="title">Radio_LBT.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * pinDefs.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Oct 14, 2015</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Author: cgoss</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef PINDEFS_H_</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define PINDEFS_H_</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*************************** Begin Value line pindefs ******************************/</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifdef __MSP430G2553__</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// Registers</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define LED1Reg P1OUT</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define LED2Reg P1OUT</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Pins</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define LED1 BIT0</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define LED2 BIT6</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif              // Value line pindefs end</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PINDEFS_H_ */</span><span class="preprocessor"></span></div>
-</div><!-- fragment --></div><!-- contents -->
+
+<p>Library for transmitting using listen before talk with acknowledgement.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="_radio___l_b_t_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Enumerated type for transmit statuses</div></td></tr>
+<tr class="memitem:a9ea8776ed870286764cea56e58956269"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_radio___l_b_t_8h.html#a9ea8776ed870286764cea56e58956269">LBT_Status</a> { <a class="el" href="_radio___l_b_t_8h.html#a9ea8776ed870286764cea56e58956269a75831e37a7d6f48374ad22954db65c21">Transmit_Success</a>, 
+<a class="el" href="_radio___l_b_t_8h.html#a9ea8776ed870286764cea56e58956269a09f07da08d64cc83ba3f58050b0060b1">Radio_Not_Idle</a>
+ }<tr class="separator:a9ea8776ed870286764cea56e58956269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a69dbddbf8c3bf6024a44b2d25d490213"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69dbddbf8c3bf6024a44b2d25d490213"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>LBT_Send</b> (uint8_t *message, uint8_t length)</td></tr>
+<tr class="separator:a69dbddbf8c3bf6024a44b2d25d490213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Library for transmitting using listen before talk with acknowledgement. </p>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a9ea8776ed870286764cea56e58956269"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_radio___l_b_t_8h.html#a9ea8776ed870286764cea56e58956269">LBT_Status</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a9ea8776ed870286764cea56e58956269a75831e37a7d6f48374ad22954db65c21"></a>Transmit_Success&#160;</td><td class="fielddoc">
+<p>Transmission was successful. </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9ea8776ed870286764cea56e58956269a09f07da08d64cc83ba3f58050b0060b1"></a>Radio_Not_Idle&#160;</td><td class="fielddoc">
+<p>Radio was not in an idle. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_7e8d4b8e07c0407d31f9f7f14bd327a1.html">Stikine</a></li><li class="navelem"><b>pinDefs.h</b></li>
+    <li class="navelem"><a class="el" href="dir_7e8d4b8e07c0407d31f9f7f14bd327a1.html">Stikine</a></li><li class="navelem"><a class="el" href="_radio___l_b_t_8h.html">Radio_LBT.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>

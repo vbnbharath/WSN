@@ -66,11 +66,13 @@ void SPI_Init(void)
 
 	// Ready to go, release software reset
 	USCI_Control_Reg1 &= ~UCSWRST;
+
 	// Setup the RX flag pin
 	MSP_RX_Port_DIR &= ~MSP_RX_Pin; // Set the RX pin for input
 	MSP_RX_Port_OUT &= ~MSP_RX_Pin; // Set the RX pin to pull down
-	MSP_RX_Port_REN |= MSP_RX_Pin;	// Enable pullup resistor
-
+	MSP_RX_Port_REN |= MSP_RX_Pin;	// Enable resistor
+	MSP_RX_Port_IFG	&= ~MSP_RX_Pin; // Clear existing interrupt flags
+	MSP_RX_Port_IE |= MSP_RX_Pin;  	// Enable interrupts on the RX pin
 }
 
 uint8_t SPI_Send(uint8_t address, uint8_t value)

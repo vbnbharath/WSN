@@ -12,6 +12,7 @@
 #include <CC110l.h> // Literals for helping with the radio
 #include <MSP_Init.h> // Code to set initial board state
 #include <SPI_Library.h> // SPI control for the radio
+#include <Radio_LBT.h>
 
 /**
  * \brief Main control sequence for sensor node
@@ -19,15 +20,21 @@
  */
 int main(void)
 {
-// Value line inits
-	volatile uint8_t value;
 	volatile uint8_t status[2];
+	volatile uint8_t value;
+	uint8_t foo;
+	foo = 0xFF;
 
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
-	Radio_Init(); // Prep the radio
+//	Radio_Init(); // Prep the radio
 
+	SPI_Strobe(SRX, Get_TX_FIFO);
+	status[0] = SPI_Send(GDO_RX, 0x06);
+	status[1] = SPI_Read(GDO_RX, &value);
+
+	LBT_Send(0xFF, &foo, 1);
 	__bis_SR_register(LPM3_bits + GIE);
     return 0; // Never get here
 }
@@ -61,6 +68,6 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
-
+	LPM3_EXIT; // Wake up on interrupt
 }
 
