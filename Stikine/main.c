@@ -39,6 +39,15 @@ int main(void)
 #define GDO_Pin_Vector PORT1_VECTOR
 #endif
 
+#ifdef __MSP430FR5739__
+#define Slow_Timer_Vector_0 TIMER0_A0_VECTOR
+#define Fast_Timer_Vector_0 TIMER1_A0_VECTOR
+#define GDO_Pin_Vector PORT1_VECTOR
+#endif
+
+
+
+
 /**
  * \brief Interrupt service routine for slow timer
  */

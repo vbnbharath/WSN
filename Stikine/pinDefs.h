@@ -19,7 +19,19 @@
 #define LED1 BIT0
 #define LED2 BIT6
 
+#endif				// Value line pindefs end
 
+
+#ifdef __MSP430FR5739__
+#define LED1Reg PJOUT
+#define LED2Reg PJOUT
+
+#define LED1Dir PJDIR
+#define LED2Dir PJDIR
+
+
+#define LED1 BIT1
+#define LED2 BIT1
 #endif				// Value line pindefs end
 
 

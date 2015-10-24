@@ -36,6 +36,36 @@ void Board_Init()
 	P3DIR = 0XFF;
 }
 
+#endif
+
+#ifdef __MSP430FRr5739__
+void Board_Init()
+{
+	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
+    /*
+	// Clock setup
+	DCOCTL = CALDCO_1MHZ;
+	BCSCTL1 = CALBC1_1MHZ;
+	BCSCTL2 = SELM_0; // Source MCLK and SMCLK from DCO
+	BCSCTL3 = XCAP_3; // 32768 crystal, internal load caps at 12.5pF
+    */
+	// Default pinsets for low power consumption
+
+	// Set the default output to low
+	P1OUT = 0;
+	P2OUT = 0;
+	P3OUT = 0;
+    PJOUT = 0;
+
+	// Set the direction to out
+	P1DIR = 0xFF;
+	P2DIR = 0xFF;
+	P3DIR = 0XFF;
+	PJDIR = 0XFF;
+}
+#endif
+
+
 void Timer_Init()
 {
 
@@ -54,8 +84,6 @@ void Timer_Init()
 	TA1CTL |= MC_1; // Start counting up to TACCR0
 
 }
-#endif
-
 
 
 void Radio_Init()
