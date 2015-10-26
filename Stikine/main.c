@@ -8,8 +8,8 @@
 
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
-#include "CC110l.h" // Literals for helping with the radio
 
+#include "CC110l.h" // Literals for helping with the radio
 #include "pinDefs.h" // Pin defines
 #include "MSP_Init.h" // Code to set initial board state
 #include "SPI_Library.h" // SPI control for the radio
@@ -54,7 +54,7 @@ int main(void)
  */
 void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
-	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
+    SLOW_TIMER_CTL0 &= ~CCIFG; // Clear the interrupt flag
 	LED1Reg ^= LED1;
 }
 

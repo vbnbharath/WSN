@@ -5,10 +5,10 @@
  *      Author: cgoss
  */
 
-#include<MSP430.h>
-#include<CC110l.h>
-#include<SPI_Library.h>
-#include<SPI_Pins.h>
+#include <msp430.h>
+#include "CC110l.h"
+#include "SPI_Library.h"
+#include "SPI_Pins.h"
 
 /*--------------------------------------------- Value Line ---------------------- */
 #ifdef __MSP430G2553__
@@ -35,10 +35,28 @@ void Board_Init()
 	P2DIR = 0xFF;
 	P3DIR = 0XFF;
 }
+void Timer_Init()
+{
+
+	// Timer A0 Slow Clock
+	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
+	TAR = 0; // Initial count value is 0
+	TACCR0 = 65535; // Count up to 12,000
+	TACCTL0 = CCIE; // Enable interrupt on TACCR0
+	TACTL |= MC_1; // Start counting up to TACCR0
+
+	// Timer A1 Fast Clock
+	TA1CTL = TASSEL_2 + MC_0;
+	TA1R = 0;
+	TA1CCR0 = 49999; // Count up to 50000
+	TA1CCTL0 = CCIE; // Enable interrupt on timer TA1CCR0
+	TA1CTL |= MC_1; // Start counting up to TACCR0
+
+}
 
 #endif
 
-#ifdef __MSP430FRr5739__
+#ifdef __MSP430FR5739__
 void Board_Init()
 {
 	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
@@ -63,18 +81,16 @@ void Board_Init()
 	P3DIR = 0XFF;
 	PJDIR = 0XFF;
 }
-#endif
-
 
 void Timer_Init()
 {
 
 	// Timer A0 Slow Clock
-	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
-	TAR = 0; // Initial count value is 0
-	TACCR0 = 65535; // Count up to 12,000
-	TACCTL0 = CCIE; // Enable interrupt on TACCR0
-	TACTL |= MC_1; // Start counting up to TACCR0
+	TA0CTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
+	TA0R = 0; // Initial count value is 0
+	TA0CCR0 = 65535; // Count up to 12,000
+	TA0CCTL0 = CCIE; // Enable interrupt on TACCR0
+	TA0CTL |= MC_1; // Start counting up to TACCR0
 
 	// Timer A1 Fast Clock
 	TA1CTL = TASSEL_2 + MC_0;
@@ -84,6 +100,12 @@ void Timer_Init()
 	TA1CTL |= MC_1; // Start counting up to TACCR0
 
 }
+
+
+#endif
+
+
+
 
 
 void Radio_Init()

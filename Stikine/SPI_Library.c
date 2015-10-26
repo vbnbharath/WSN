@@ -7,9 +7,10 @@
 
 #include <stdint.h>
 #include <msp430.h>
-#include <CC110l.h>
-#include <SPI_Pins.h>
-#include <SPI_Library.h>
+
+#include "CC110l.h"
+#include "SPI_Pins.h"
+#include "SPI_Library.h"
 
 // Function to check that address passed into SPI functions is valid
 static uint8_t Address_Bad(uint8_t address)
@@ -37,9 +38,17 @@ static void Wait_For_CCWake()
 void SPI_Init(void)
 {
 	// Configure controller IO for SPI pins
+
+    #ifdef __MSP430G2553__
 	// Both Sel and Sel2 values for the respective pins should be set HI
-	Port_Reg_Sel |= SOMI + SIMO + SPCLK;
 	Port_Reg_Sel2 |= SOMI + SIMO + SPCLK;
+	Port_Reg_Sel |= SOMI + SIMO + SPCLK;
+    #endif
+
+    #ifdef __MSP430FR5739__
+    Port_Reg_Sel2 |= SOMI + SIMO;
+    Port_Reg_Sel2_SCLK |= SPCLK;
+    #endif
 
 	// Configure the GPIO for chip select
 	CS_RegisterDir |= CS;
@@ -62,7 +71,11 @@ void SPI_Init(void)
 
 	// Clear the status register and interrupt flags before use
 	USCI_Status_Reg = 0;
+
+    #ifdef __MSP430G2553__
+    // I think this implicitly reset when UCSWRST is set, this register doesn't exist in msp430fr5739.h
 	USCI_Interrupt_Flags = 0;
+    #endif
 
 	// Ready to go, release software reset
 	USCI_Control_Reg1 &= ~UCSWRST;
@@ -77,7 +90,9 @@ uint8_t SPI_Send(uint8_t address, uint8_t value)
 {
 	uint8_t status; // The return value
 
+    #ifdef __MSP430G2553__
 	USCI_Interrupt_Flags &= ~00001111; // Clear the flags
+    #endif
 
 	if(Address_Bad(address))
 	{

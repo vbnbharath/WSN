@@ -18,6 +18,14 @@
 
 #endif
 
+#ifdef __MSP430FR5739__
+// GDO Pins on MSP430
+#define MSP_RX_Pin BIT2					// Pin that the GDO flagging for RX is attached to
+#define GDO_RX	IOCFG0					// Register controlling the GDO pin used to signal RX receive.
+#endif
+
+
+
 /**
  * \brief Initialization function for the SPI link
  *
