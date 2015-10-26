@@ -8,10 +8,11 @@
 
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
-#include <pinDefs.h> // Pin defines
-#include <CC110l.h> // Literals for helping with the radio
-#include <MSP_Init.h> // Code to set initial board state
-#include <SPI_Library.h> // SPI control for the radio
+#include "CC110l.h" // Literals for helping with the radio
+
+#include "pinDefs.h" // Pin defines
+#include "MSP_Init.h" // Code to set initial board state
+#include "SPI_Library.h" // SPI control for the radio
 
 /**
  * \brief Main control sequence for sensor node
