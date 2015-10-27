@@ -3,9 +3,24 @@
 # grid
 
 # localization model
+import geopy
+import numpy as np
+
 from gps_driver import init_gps, get_location
 from radio_driver import init_radio, get_rssi
-import geopy
+
+LAT = 0
+LON = 1
+
+DBM_10 = 0 # 10 dBm
+DBM_M10 = 0  # -10 dBm
+
+# given a rssi and tx power, estimate the path length 
+# (for more complex models, maybe include frequency, base station height..)
+
+# define some propagation models
+def freespace_model(rssi, txpower = DBM_10):
+    return 0
 
 class localizer:
     def __init__(self, gps_port = GPS_PORT, radio_port = RADIO_PORT):
@@ -33,3 +48,4 @@ class localizer:
     def print_location_map():
         # dump location map to terminal
         pass
+
