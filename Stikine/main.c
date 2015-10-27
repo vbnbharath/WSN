@@ -8,11 +8,11 @@
 
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
-#include <pinDefs.h> // Pin defines
-#include <CC110l.h> // Literals for helping with the radio
-#include <MSP_Init.h> // Code to set initial board state
-#include <SPI_Library.h> // SPI control for the radio
-#include <Radio_LBT.h>
+#include "pinDefs.h" // Pin defines
+#include "CC110l.h" // Literals for helping with the radio
+#include "MSP_Init.h" // Code to set initial board state
+#include "SPI_Library.h" // SPI control for the radio
+#include "Radio_LBT.h"
 
 /**
  * \brief Main control sequence for sensor node
@@ -20,23 +20,37 @@
  */
 int main(void)
 {
-	volatile uint8_t status[2];
+	volatile uint8_t status[4];
 	volatile uint8_t value;
-	uint8_t foo;
-	foo = 0xFF;
+	volatile LBT_Status RadStatus;
 
+
+
+//	uint8_t foo[50];
+//	foo[0] = 0x30;
+//
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
-//	Radio_Init(); // Prep the radio
+	Radio_Init(); // Prep the radio
+//
+//	__bis_SR_register(GIE);
+//	status[3] = SPI_Read_Status(PKTSTATUS, &status[3]);
+//
+//	RadStatus = LBT_Send(0xFF, foo, 50);
+//	status[2] = SPI_Strobe(SNOP, Get_TX_FIFO);
+//	__bis_SR_register(LPM3_bits);
+//    return 0; // Never get here
 
-	SPI_Strobe(SRX, Get_TX_FIFO);
-	status[0] = SPI_Send(GDO_RX, 0x06);
-	status[1] = SPI_Read(GDO_RX, &value);
+	SPI_Send(TXFIFO, 0x02);
+	SPI_Send(TXFIFO, 0xFF);
+	SPI_Send(TXFIFO, 0xAA);
 
-	LBT_Send(0xFF, &foo, 1);
-	__bis_SR_register(LPM3_bits + GIE);
-    return 0; // Never get here
+	SPI_Send(GDO_RX, 0x0E);
+	SPI_Read(GDO_RX, &value);
+	SPI_Strobe(STX, Get_TX_FIFO);
+
+	return 0;
 }
 
 
@@ -68,6 +82,7 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
 	LPM3_EXIT; // Wake up on interrupt
 }
 

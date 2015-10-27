@@ -14,8 +14,10 @@
 
 /// \name GDO Pins on MSP430
 //@{
-#define MSP_RX_Pin BIT0					// Pin that the GDO flagging for RX is attached to
-#define GDO_RX	IOCFG2					// Register controlling the GDO pin used to signal RX receive.
+#define MSP_RX_Pin BIT0					///> Pin that the GDO flagging for RX is attached to
+#define GDO_RX	IOCFG2					///> Register controlling the GDO pin used to signal RX receive.
+#define MSP_RX_Port_IFG	P1IFG			///> Port interrupt flag
+#define MSP_RX_Port_IE	P1IE			///> Interrupt enable register
 //@}
 #endif
 
