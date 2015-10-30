@@ -7,7 +7,7 @@ import geopy
 import numpy as np
 import configparser
 import time 
-
+import simplekml
 
 from gps_driver import init_gps, get_location, wait_for_fix
 from radio_driver import init_radio, get_rssi
@@ -31,13 +31,32 @@ GPS_FREQUENCY = 1 # hz
 def freespace_dist_pdf(rssi, grid, txpower, error):
     return 0
 
-class measurement():
+class node():
     # take in a lat/long/err tuple for gps driver
-    def __init__(self, location, rssi, addr):
+
+    def __init__(self, addr):
+        self.addr = addr
+        self.measurements = {}
+
+        self.lat = None
+        self.lon = None
+        self.err = None
+
+    # adds a kml point to a given simplekml object
+    def add_kml(self, kml):
+        kml.newpoint(name = str(self.addr), coords = [(self.lat, self.lon)])
+
+    def __str__(self):
+        if self.lat != None:
+            print('sensor node with addr: {}, location: ({},{}) error: {}'.format(self.addr, self.lat, self.lon, self.err))
+        else:
+            print('sensor node with addr: {}, no location'.format(self.addr))
+
+    class measurement:
+        def __init__(self, location, rssi):
         self.lat = location[LAT]
         self.lon = location[LON]
         self.err = location[ERR]
-        self.addr = addr
         self.rssi = rssi
 
 
@@ -83,20 +102,29 @@ class localizer():
         # process current measurements into a new map
         # use bayes approach to solve for location and transmit power
         # using sets of location and rssi
-        pass
+        # 
 
     def export_location_map(self, filename):
-        # export location map as kml
-        pass
+        kml = simplekml.Kml()
+        
+        for n in self.nodes:
+            n.add_kml(kml)
+
+        kml.save(filename)
 
     def print_location_map(self):
-        # dump location map to terminal
-        pass
-
+        print('current node locations: ')
+        for n in self.nodes:
+            print n
 
 def main():
     gps_port = '/dev/ttyUSB0'
     radio_port = '/dev/ttyUSB1'
+    
+
+    # todo: automate serial port detection,
+    # serial.tools.list_ports
+    # prompt to plug in gps, then radio
 
     loc = localizer(gps_port, radio_port)
 
@@ -108,7 +136,6 @@ def main():
     
     loc.process_location_map()
     loc.print_location_map()
-    loc.export_location_map('loc_map.kml')
 
 
 
