@@ -28,7 +28,17 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
+
+	MSP_RX_Port_IE |= MSP_RX_Pin;
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
+
+	SPI_Send(GDO_RX, 0x0E);
+	SPI_Strobe(SRX, Get_RX_FIFO);
+
+
+
 	__bis_SR_register(LPM3_bits + GIE);
+
     return 0; // Never get here
 }
 
@@ -45,7 +55,7 @@ int main(void)
 void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	LED1Reg ^= LED1;
+
 }
 
 /**
@@ -61,6 +71,13 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
+	volatile uint8_t length;
+	volatile uint8_t Data[64];
+
+	SPI_Read_Status(RXBYTES, &length);
+	SPI_Read_Burst(RXFIFO, Data, length);
+
+	Data[0] = 0;
 
 }
 

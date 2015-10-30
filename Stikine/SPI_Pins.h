@@ -43,8 +43,7 @@
 #define MSP_RX_Port_OUT		P1OUT	// Out value register
 #define MSP_RX_Port_REN		P1REN	// Resistor enable register
 #define MSP_RX_Port_IN		P1IN	// In value register
-#define MSP_RX_Port_IE		P1IE	// Interrupt enable register
-#define MSP_RX_Port_IFG		P1IFG	// Port interrupt flag
+
 #endif
 /*************************** End Value line pindefs ******************************/
 
