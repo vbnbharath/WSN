@@ -36,8 +36,19 @@ DIST_WIDTH = 256
 DIST_RANGE = np.linspace(DIST_MIN, DIST_MAX, DIST_WIDTH)
 
 # use log normal shadowing propagation model
-def log_normal_shadow_path_loss(dist, path_loss_exponent, shadow = finfo(np.double).resolution):
+def log_normal_shadow_path_loss(dist, path_loss_exponent, shadow = 0):
+    shadow = max(shadow, finfo(np.double).resolution)
     return 10 * path_loss_exponent * log10(dist) + normal(loc = 0, scale = shadow)
+
+# estimate memory consumption of the model
+def memory_consumption():
+    # p(rssi | shadow, path, dist, txpower) table
+    rssi_table_bytes = len(DIST_RANGE) * len(RSSI_RANGE) * TXPOWER_WIDTH * PATH_WIDTH * np.float32().nbytes 
+    
+    # p(locations | rssis, measurement_locations)
+    location_bytes = GRID_SIZE * GRID_SIZE * SHADOW_WIDTH * PATH_WIDTH * TXPOWER_WIDTH * len(RSSI_RANGE) 
+
+# maybe use emcee..
 
 # TODO:$
 # so, precompute p(rssi | shadow, path, dist, txpower) table
