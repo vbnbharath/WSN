@@ -118,8 +118,8 @@ class localizer():
             print n
 
 def main():
-    gps_port = '/dev/ttyUSB0'
-    radio_port = '/dev/ttyUSB1'
+    gps_port = '/dev/ttyACM0'
+    radio_port = '/dev/ttyACM1'
     
 
     # todo: automate serial port detection,
