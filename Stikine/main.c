@@ -12,17 +12,22 @@
 #include <CC110l.h> // Literals for helping with the radio
 #include <MSP_Init.h> // Code to set initial board state
 #include <SPI_Library.h> // SPI control for the radio
+typedef enum{
+	Listen,
+	ChangeChannel,
+	Readout_Packet
+}State_T;
 
-/**
- * \brief Main control sequence for sensor node
- * @return Constant 0, but it has nowhere to go.
- */
+State_T state;
+
+
+
 int main(void)
 {
 // Value line inits
 	volatile uint8_t value;
 	volatile uint8_t status[2];
-
+	uint8_t Chan;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
@@ -34,6 +39,39 @@ int main(void)
 
 	SPI_Send(GDO_RX, 0x0E);
 	SPI_Strobe(SRX, Get_RX_FIFO);
+	state = Listen;			//Set initial state to Sweep through channels
+
+	SPI_Send(CHANNR,0);					//Tell radio what channel to use
+	SPI_Strobe(SRX,Get_RX_FIFO);
+
+	while(1)
+	{
+
+		if(state == ChangeChannel)//Change the channel by going to idle, set channel, enter receive then listen for carrier on channel in sleep mode
+		{
+
+			SPI_Strobe(SIDLE, Get_RX_FIFO);			//Tell radio to enter idle mode so the channel can be changed
+			SPI_Send(GDO_RX,0x0E);					//Tell radio to trigger interrupt on carrier sense
+
+			if(Chan > 0)
+			{
+				Chan = 0;								//Reset to channel zero
+			}
+
+			SPI_Send(CHANNR,Chan);					//Tell radio what channel to use
+			SPI_Strobe(SRX,Get_RX_FIFO);		//Tell radio to enter receive mode
+			__delay_cycles(10000);				//Wait while using lots of power (Replace with low power mode + ISR later)
+			Chan++;
+
+		}
+
+		if(state == Listen)  //If carrier found, enter new state, listen to channel for longer time for packet, if no packet found, enter change mode
+		{
+			__delay_cycles(100000);  //Delay longer than before, (Replace with timer and sleep mode later)
+
+//			state = ChangeChannel;		//Change state back to channel sweep, no packet was found on this channel afterall.
+		}
+	}
 
 
 
@@ -56,6 +94,7 @@ void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
 
+
 }
 
 /**
@@ -71,13 +110,29 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
-	volatile uint8_t length;
-	volatile uint8_t Data[64];
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
 
-	SPI_Read_Status(RXBYTES, &length);
-	SPI_Read_Burst(RXFIFO, Data, length);
+	if(state == Listen)
+	{
+		volatile uint8_t length;		//Place to store length of data
+		volatile uint8_t Data[64];		//Place to store data
 
-	Data[0] = 0;
+
+		SPI_Read_Status(RXBYTES, &length);		//Read the length of the stuff in RXFIFO
+		SPI_Read_Burst(RXFIFO, Data, length);		//Read data in RXFIFO
+		//SPI_Read(CHANNR, &Chan);		//Return the channel that had the packet
+		Data[0] = 0;					//Place to place a breakpoint?
+	}
+
+
+	if(state == ChangeChannel)
+	{
+
+		state = Listen;			//Set State to listen when this part is over
+		SPI_Send(GDO_RX,0x07);	//Set Pin to go high on packet with CRC ok received.
+
+	}
+
 
 }
 
