@@ -19,7 +19,7 @@ typedef enum{
 }State_T;
 
 State_T state;
-
+uint8_t Chan;
 
 
 int main(void)
@@ -27,7 +27,7 @@ int main(void)
 // Value line inits
 	volatile uint8_t value;
 	volatile uint8_t status[2];
-	uint8_t Chan;
+
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
@@ -42,7 +42,12 @@ int main(void)
 	state = Listen;			//Set initial state to Sweep through channels
 
 	SPI_Send(CHANNR,0);					//Tell radio what channel to use
-	SPI_Strobe(SRX,Get_RX_FIFO);
+	//SPI_Strobe(SRX,Get_RX_FIFO);
+	while(1)
+	{
+		SPI_Read_Status(PKTSTATUS,&value);
+		value = 0;
+	}
 
 	while(1)
 	{
@@ -53,10 +58,10 @@ int main(void)
 			SPI_Strobe(SIDLE, Get_RX_FIFO);			//Tell radio to enter idle mode so the channel can be changed
 			SPI_Send(GDO_RX,0x0E);					//Tell radio to trigger interrupt on carrier sense
 
-			if(Chan > 0)
-			{
-				Chan = 0;								//Reset to channel zero
-			}
+//			if(Chan > 9)
+//			{
+//				Chan = 0;								//Reset to channel zero
+//			}
 
 			SPI_Send(CHANNR,Chan);					//Tell radio what channel to use
 			SPI_Strobe(SRX,Get_RX_FIFO);		//Tell radio to enter receive mode
@@ -67,9 +72,10 @@ int main(void)
 
 		if(state == Listen)  //If carrier found, enter new state, listen to channel for longer time for packet, if no packet found, enter change mode
 		{
-			__delay_cycles(100000);  //Delay longer than before, (Replace with timer and sleep mode later)
+			__bis_SR_register(LPM3_bits + GIE);
+			//__delay_cycles(100000);  //Delay longer than before, (Replace with timer and sleep mode later)
 
-//			state = ChangeChannel;		//Change state back to channel sweep, no packet was found on this channel afterall.
+			//state = ChangeChannel;		//Change state back to channel sweep, no packet was found on this channel afterall.
 		}
 	}
 
@@ -120,7 +126,7 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 
 		SPI_Read_Status(RXBYTES, &length);		//Read the length of the stuff in RXFIFO
 		SPI_Read_Burst(RXFIFO, Data, length);		//Read data in RXFIFO
-		//SPI_Read(CHANNR, &Chan);		//Return the channel that had the packet
+		SPI_Read(CHANNR, &Chan);		//Return the channel that had the packet
 		Data[0] = 0;					//Place to place a breakpoint?
 	}
 
