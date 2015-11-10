@@ -20,35 +20,27 @@
  */
 int main(void)
 {
-	volatile uint8_t status[4];
-	volatile uint8_t value;
-	volatile LBT_Status RadStatus;
-
-
-
-//	uint8_t foo[50];
-//	foo[0] = 0x30;
-//
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
-//
-//	__bis_SR_register(GIE);
-//	status[3] = SPI_Read_Status(PKTSTATUS, &status[3]);
-//
-//	RadStatus = LBT_Send(0xFF, foo, 50);
-//	status[2] = SPI_Strobe(SNOP, Get_TX_FIFO);
-//	__bis_SR_register(LPM3_bits);
-//    return 0; // Never get here
 
-	SPI_Send(TXFIFO, 0x02);
+	uint8_t message;
+
+	message = 0x1F;
+
+	volatile LBT_Status result;
+
+	MSP_RX_Port_IE |= MSP_RX_Pin;
+	MSP_RX_Port_IES |= MSP_RX_Pin;
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
+
+	SPI_Send(TXFIFO, 0x01);
 	SPI_Send(TXFIFO, 0xFF);
-	SPI_Send(TXFIFO, 0xAA);
-
-	SPI_Send(GDO_RX, 0x0E);
-	SPI_Read(GDO_RX, &value);
+	SPI_Send(GDO_RX, 0x06);
 	SPI_Strobe(STX, Get_TX_FIFO);
+
+	__bis_SR_register(LPM3_bits + GIE);
 
 	return 0;
 }
@@ -66,7 +58,6 @@ int main(void)
 void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	LED1Reg ^= LED1;
 }
 
 /**
@@ -83,6 +74,10 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
-	LPM3_EXIT; // Wake up on interrupt
+//	if()
+
+	SPI_Send(TXFIFO, 0x01);
+	SPI_Send(TXFIFO, 0xFF);
+	SPI_Strobe(STX, Get_TX_FIFO);
 }
 

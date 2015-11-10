@@ -11,7 +11,7 @@
 #include "Radio_LBT.h"
 #include "msp430.h"
 
-LBT_Status LBT_Send(uint16_t address, uint8_t* message, uint8_t length)
+LBT_Status LBT_Send(uint8_t address, uint8_t* message, uint8_t length)
 {
 	uint8_t status;
 	uint8_t state;
@@ -42,6 +42,9 @@ LBT_Status LBT_Send(uint16_t address, uint8_t* message, uint8_t length)
 	}
 
 	SPI_Strobe(SIDLE, Get_TX_FIFO);		// stop the radio
+	SPI_Send(TXFIFO, length + 1);		// Put in the length byte
+	SPI_Send(TXFIFO, address);			// Put in the address after the length and before the payload
+
 	status = SPI_Send_Burst(TXFIFO, message, length);	// Load the TX fifo
 	FIFO_Space = status & FIFO_Bytes;		// Get the space left in the FIFO
 
@@ -51,15 +54,13 @@ LBT_Status LBT_Send(uint16_t address, uint8_t* message, uint8_t length)
 		goto Cleanup;
 	}
 
-	SPI_Strobe(STX, Get_TX_FIFO); // Tell radio to transmit
-
 	// GDO pin is set to pull Hi when packet TX starts, and LO after it's done.
 	// Starting the TX and then enabling the interrupt catches only the second transition
 	MSP_RX_Port_IFG	&= ~MSP_RX_Pin; // Clear existing interrupt flags
 	MSP_RX_Port_IE |= MSP_RX_Pin;  	// Enable interrupts on the RX pin
+	SPI_Strobe(STX, Get_TX_FIFO); // Tell radio to transmit
 
 	LPM3; // Go to sleep while TX happens, GDO pin will wake MSP back up.
-
 	MSP_RX_Port_IE &= ~MSP_RX_Pin;  	// Disable interrupts on the RX pi
 
 	// Change to recieve mode to check for clear channel

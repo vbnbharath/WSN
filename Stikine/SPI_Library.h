@@ -18,6 +18,7 @@
 #define GDO_RX	IOCFG2					///> Register controlling the GDO pin used to signal RX receive.
 #define MSP_RX_Port_IFG	P1IFG			///> Port interrupt flag
 #define MSP_RX_Port_IE	P1IE			///> Interrupt enable register
+#define MSP_RX_Port_IES P1IES			///> Interrupt edge select
 //@}
 #endif
 

@@ -39,6 +39,6 @@ Channel_Busy	///<
  * @param length Length of the message
  * @return LBT_Status enumerable
  */
-LBT_Status LBT_Send(uint16_t address, uint8_t* message, uint8_t length);
+LBT_Status LBT_Send(uint8_t address, uint8_t* message, uint8_t length);
 
 #endif /* RADIO_LBT_H_ */
