@@ -38,6 +38,8 @@ int main(void)
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
 
 	SPI_Send(GDO_RX, 0x0E);
+	SPI_Send(ADDR, 0xF0);		//Set Address of Radio
+	SPI_Send(PKTCTRL1,0x01);	//Set to do address filter with two broadcasts
 	SPI_Strobe(SRX, Get_RX_FIFO);
 	state = Listen;			//Set initial state to Sweep through channels
 
