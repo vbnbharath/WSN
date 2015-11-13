@@ -7,9 +7,15 @@ from scipy.spatial import distance
 import pdb
 
 
-def dbm_to_watt(d):
-    return (10 ** (d/10)) / 1000
+def db_to_lin(d):
+    return (10 ** (d/10))
 
+def lin_to_db(d):
+    return 10 * log10(d)
+
+
+def dbm_to_watt(d):
+    return db_to_lin(d) / 1000
 	
 CELL_SIZE = 2 # meters
 GRID_SIZE = 500 # meters
@@ -49,39 +55,42 @@ DIST_RES = DIST_MAX / DIST_WIDTH
 NTARGETS = 1
 NMEASUREMENTS = 10
 
-# use log normal shadowing propagation model
-def log_normal_shadow_path_loss(dist, path_loss_exponent, shadow = 0):
-    shadow = max(shadow, finfo(np.double).resolution)
-    return 10 * path_loss_exponent * log10(dist) + normal(loc = 0, scale = shadow)
-
-
-# estimate memory consumption of the model
-def memory_consumption():
-    # p(rssi | shadow, path, dist, txpower) table
-    rssi_table_bytes = len(DIST_RANGE) * len(RSSI_RANGE) * TXPOWER_WIDTH * PATH_WIDTH * SHADOW_WIDTH * np.float32().nbytes 
-    print 'rssi lookup table memory consumption (megabytes): {} '.format(rssi_table_bytes / (1024 * 1024))
-    
-    # p(locations | rssis, measurement_locations)
-    location_bytes = (GRID_WIDTH ** 2) * SHADOW_WIDTH * PATH_WIDTH * TXPOWER_WIDTH
-    print 'location grid memory consumption (megabytes): {}'.format(location_bytes / (1024 * 1024))
 
 # calculate the probability of an rssi given propagation model and distance
 # txpow, rssi in watts
 # path_loss is scaling factor for path loss in log normal shadowing model
 # shadow is not done properly, should be scaled on rssi power.... 
-def log_p_rssi_calc(rssi, dist, txpow, path_loss, shadow):
-    d0 = 0
-    d = d0 * 10 ** ((rssi - txpow)/20)
-    p = (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-(((dist - d)**2)/(2 * sigma ** 2))) # pdf of normal
+def log_p_rssi_calc(rssi, dist, txpow, path_loss_exponent, shadow):
+    # first, calculate nominal rssi given dist, txpow, path_loss_exponent
+    # rssi_nom is in linear units
+    rssi_nom = txpow + path_loss_exponent * 10 * np.log10(dist)
+    
+    # next, determine ratio of rssi to rssi_nom in dB
+    rssi_ratio_db = lin_to_db(rssi_nom / rssi)
+
+    # then, find the probability of that ratio 
+    p = (1 / (shadow * np.sqrt(2 * np.pi))) * np.exp(-((rssi_ratio_db**2)/(2 * (shadow ** 2)))) # pdf of normal
+
+    # .. and return the log probability
     return log(p)
 
 # calculates a random rssi given a distance and noise
 # dist - distance in meters
 # txpow - transmit power in dBm
 # path - path loss exponent
-# shadow - log shadowing parameter (TODO: scale this properly based on rssi power..)
+# shadow - log shadowing parameter (dB)
 def calc_random_rssi(dist, txpow, path, shadow):
-    return txpower + path * 10 * np.log10(dist) + np.random.normal(loc = 0, scale = shadow)
+    # calculate rssi
+    rssi = txpow + path * 10 * np.log10(dist)
+
+    # calculate noise scaling
+    if shadow:
+        noise = db_to_lin(np.random.normal(loc = 0, scale = shadow))
+    else:
+        noise = 1
+    
+    # return rssi scaled by log shadow noise
+    return rssi * noise
 
 
 def main():
@@ -94,9 +103,6 @@ def main():
     txpow_actual = 0 # dBm
     shadow_actual = 4 # linear scale? 
     path_actual = 3 # path loss exponent
-
-    # display memory usage with current parameters
-    memory_consumption()
 
     # lookup table of log probabilities
     # with p(rssi | distance, transmit power, shadowing, and path loss exponent)
