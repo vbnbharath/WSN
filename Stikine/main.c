@@ -43,11 +43,6 @@ int main(void)
 
 	SPI_Send(CHANNR,0);					//Tell radio what channel to use
 	//SPI_Strobe(SRX,Get_RX_FIFO);
-	while(1)
-	{
-		SPI_Read_Status(PKTSTATUS,&value);
-		value = 0;
-	}
 
 	while(1)
 	{
