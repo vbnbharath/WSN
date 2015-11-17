@@ -3,13 +3,13 @@
 TARGET	= sensor_node
 MCU	= msp430fr5739
 SOURCES	= main.c delay.c TI_CC_spi.c CC1100-CC2500.c
-PROG = rf2500 
+PROG = uif 
 #rf2500 
 
 DEPEND = $(SOURCES:.c=.d)
 OBJECTS = $(SOURCES:.c=.o)
 
-SUPPORT_FILE_DIRECTORY = /opt/ti/mspgcc/include
+SUPPORT_FILE_DIRECTORY = /usr/msp430-elf/include
 
 INCLUDES = -Iinclude
 CFLAGS   = -I $(SUPPORT_FILE_DIRECTORY) -mmcu=$(MCU) -g -Os -Wall -Wunused $(INCLUDES)
