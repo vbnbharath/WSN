@@ -134,6 +134,12 @@
 #define VCO_VC_DAC   0x39        ///< Current setting from PLL cal module
 #define TXBYTES      0x3A        ///< Underflow and # of bytes in TXFIFO
 #define RXBYTES      0x3B        ///< Overflow and # of bytes in RXFIFO
+
+/// \name Masks for packet status register
+//@{
+#define OverFlow 	0b10000000	 ///< Masks off the overflow bit
+#define FIFO_Level	0b01111111	 ///< Masks off the FIFO level
+
 #define NUM_RXBYTES  0x7F        ///< Mask "# of bytes" field in _RXBYTES
 //@}
 

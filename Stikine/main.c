@@ -20,36 +20,16 @@
  */
 int main(void)
 {
-	volatile uint8_t status[4];
-	volatile uint8_t value;
-	volatile LBT_Status RadStatus;
-
-
-
-//	uint8_t foo[50];
-//	foo[0] = 0x30;
-//
+	volatile uint8_t message = 0xFB;
+	volatile LBT_Status status;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
-//
-//	__bis_SR_register(GIE);
-//	status[3] = SPI_Read_Status(PKTSTATUS, &status[3]);
-//
-//	RadStatus = LBT_Send(0xFF, foo, 50);
-//	status[2] = SPI_Strobe(SNOP, Get_TX_FIFO);
-//	__bis_SR_register(LPM3_bits);
-//    return 0; // Never get here
 
-	SPI_Send(TXFIFO, 0x02);
-	SPI_Send(TXFIFO, 0xFF);
-	SPI_Send(TXFIFO, 0xAA);
+	status = LBT_Send(0xF0, 0xA0, &message, 1);
 
-	SPI_Send(GDO_RX, 0x0E);
-	SPI_Read(GDO_RX, &value);
-	SPI_Strobe(STX, Get_TX_FIFO);
-
+	message = 0;
 	return 0;
 }
 

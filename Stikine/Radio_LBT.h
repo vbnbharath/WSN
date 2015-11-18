@@ -7,7 +7,7 @@
 
 /**
  * \file Radio_LBT.h
- * \brief Library for transmitting using listen before talk with acknowledgement
+ * \brief Library for transmitting using listen before talk
  *
  *
  */
@@ -17,15 +17,17 @@
 #ifndef RADIO_LBT_H_
 #define RADIO_LBT_H_
 
-/// \name Enumerated type for transmit statuses
+/// \name Enumerated type for tx/rx statuses
 //@{
 typedef enum{
 Transmit_Success, 	///< Transmission was successful
-Already_Transmitting,    	///< Radio was already in the process of transmitting
+Radio_Busy,    	///< Radio was not in idle state
 Ack_Timeout,		///< Acknowledgement not Rec'd before timeout expired
 TX_Buffer_Overflow,  ///< Message overflowed the TX FIFO
-TX_Collision,	///< Channel was not clear after transmit
-Channel_Busy	///<
+Channel_Busy,	///< Channel clear assessment returns negative
+RX_Timeout, 	///< Specified listen period reached
+Message_Recieved, ///< Successfully got a message
+RX_Buffer_Overflow ///< RX FIFO was overflowed
 } LBT_Status;
 //@}
 
@@ -39,6 +41,7 @@ Channel_Busy	///<
  * @param length Length of the message
  * @return LBT_Status enumerable
  */
-LBT_Status LBT_Send(uint16_t address, uint8_t* message, uint8_t length);
+LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length);
+LBT_Status LBT_Listen(uint16_t timeoutPeriod, uint8_t *out);
 
 #endif /* RADIO_LBT_H_ */
