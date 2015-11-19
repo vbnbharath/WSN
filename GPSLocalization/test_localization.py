@@ -25,8 +25,8 @@ GRID_SIZE = 500 # meters
 GRID_WIDTH = GRID_SIZE / CELL_SIZE
 GRID_RANGE = np.arange(0, GRID_SIZE, CELL_SIZE)
 
-MIN_SHADOW = 4 
-MAX_SHADOW = 4
+MIN_SHADOW = 5 
+MAX_SHADOW = 5
 SHADOW_WIDTH = 1
 SHADOW_RANGE = np.linspace(MIN_SHADOW, MAX_SHADOW, SHADOW_WIDTH)
 
@@ -35,8 +35,8 @@ MAX_PATH = 3
 PATH_WIDTH = 1 
 PATH_RANGE = np.linspace(MIN_PATH, MAX_PATH, PATH_WIDTH)
 
-MIN_TXPOWER = 20 # dBm
-MAX_TXPOWER = 20 # dBm
+MIN_TXPOWER = 0 # dBm
+MAX_TXPOWER = 0 # dBm
 TXPOWER_WIDTH = 1 
 TXPOWER_RANGE = np.linspace(MIN_TXPOWER, MAX_TXPOWER, TXPOWER_WIDTH)
 # scale from dBm to watts
@@ -69,10 +69,10 @@ def log_p_rssi_calc(rssi, dist, txpow, path_loss_exponent, shadow):
     # rssi_nom is in linear units
     rssi_nom = rssi_calc(dist, txpow, path_loss_exponent)
     
-    # next, determine ratio of rssi to rssi_nom in dB
+    # next, determine difference between rssi and calculated rssi dB
     rssi_diff_db = lin_to_dbm(rssi_nom) - lin_to_dbm(rssi)
     
-    # then, find the probability of that ratio 
+    # then, find the probability of that difference using the given log normal shadowing propagation model 
     p = (1 / (shadow * np.sqrt(2 * np.pi))) * np.exp(-((rssi_diff_db**2)/(2 * (shadow ** 2)))) # pdf of normal
 
     # .. and return the log probability
@@ -108,8 +108,8 @@ def main():
     x_target_actual = 140
     y_target_actual = 140
     
-    txpow_actual = dbm_to_watt(20)
-    shadow_actual = 4 # shadowing
+    txpow_actual = dbm_to_watt(0)
+    shadow_actual = 5 # shadowing
     path_actual = 3 # path loss exponent
     
     print('synthetic target at ({},{})'.format(x_target_actual, y_target_actual))
@@ -165,10 +165,16 @@ def main():
     
     #           now we have a grid with p(rssi | measurements, other parameters)
     #           examine grid, try to identify location, txpower, and propagation model? 
-        grid = np.squeeze(location_grid)
+        grid = np.squeeze(location_grid.copy())
+
+        imshow(grid)
         grid -= np.max(grid.flatten())
+        grid[int(x_target_actual / CELL_SIZE)][int(y_target_actual / CELL_SIZE)] = np.min(grid.flatten())
+        grid.flat[np.argmax(grid)] = np.min(grid.flatten()) 
+
         imshow(grid)
         show()
+        clf()
 
 if __name__ =='__main__':
     main()
