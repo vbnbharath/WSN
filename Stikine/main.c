@@ -8,10 +8,11 @@
 
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
-#include <pinDefs.h> // Pin defines
-#include <CC110l.h> // Literals for helping with the radio
-#include <MSP_Init.h> // Code to set initial board state
-#include <SPI_Library.h> // SPI control for the radio
+#include "pinDefs.h" // Pin defines
+#include "CC110l.h" // Literals for helping with the radio
+#include "MSP_Init.h" // Code to set initial board state
+#include "SPI_Library.h" // SPI control for the radio
+#include "Radio_LBT.h"
 
 /**
  * \brief Main control sequence for sensor node
@@ -19,17 +20,17 @@
  */
 int main(void)
 {
-// Value line inits
-	volatile uint8_t value;
-	volatile uint8_t status[2];
-
+	volatile uint8_t message = 0xFB;
+	volatile LBT_Status status;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	__bis_SR_register(LPM3_bits + GIE);
-    return 0; // Never get here
+	status = LBT_Send(0xF0, 0xA0, &message, 1);
+
+	message = 0;
+	return 0;
 }
 
 
@@ -61,6 +62,7 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
-
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
+	LPM3_EXIT; // Wake up on interrupt
 }
 

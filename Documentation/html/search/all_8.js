@@ -11,7 +11,5 @@ var searchData=
   ['mdmcfg2',['MDMCFG2',['../_c_c110l_8h.html#ac5750cb986d051c6489f85a9051f1038',1,'CC110l.h']]],
   ['mdmcfg3',['MDMCFG3',['../_c_c110l_8h.html#a589e4d4ef33f73e8b2db027147ba7be4',1,'CC110l.h']]],
   ['mdmcfg4',['MDMCFG4',['../_c_c110l_8h.html#a38cf085a5cfeb29e4b1b90ae764047b2',1,'CC110l.h']]],
-  ['msp_5finit_2ec',['MSP_Init.c',['../_m_s_p___init_8c.html',1,'']]],
-  ['msp_5finit_2eh',['MSP_Init.h',['../_m_s_p___init_8h.html',1,'']]],
   ['msp_5frx_5fisr',['MSP_RX_ISR',['../main_8c.html#a249eff783fe7740fa64de432e57dc801',1,'main.c']]]
 ];
