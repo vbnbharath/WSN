@@ -11,5 +11,6 @@
 void Board_Init(void);
 void Timer_Init(void);
 void Radio_Init(void);
+void UART_Init(void);
 
 #endif /* MSP_VALUE_H_ */

@@ -42,7 +42,7 @@ void Timer_Init()
 	// Timer A0 Slow Clock
 	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
 	TAR = 0; // Initial count value is 0
-	TACCR0 = 65535; // Count up to 12,000
+	TACCR0 = 65535; // Count up to 12,000, adjust for different timing.
 	TACCTL0 = CCIE; // Enable interrupt on TACCR0
 	TACTL |= MC_1; // Start counting up to TACCR0
 
@@ -91,4 +91,16 @@ void Radio_Init()
 	SPI_Send(FSCAL0,0x1F);       //Frequency Synthesizer Calibration
 	SPI_Send(TEST0,0x09);        //Various Test Settings
 
+}
+
+void UART_Init()
+{
+	 P1SEL |= BIT1 + BIT2 ; // P1.1 = RXD, P1.2=TXD
+	 P1SEL2 |= BIT1 + BIT2 ; // P1.1 = RXD, P1.2=TXD
+	 UCA0CTL1 = UCSSEL_2; // Use SMCLK
+	 UCA0BR0 = 104; // Set baud rate to 9600 with 1MHz clock (Data Sheet 15.3.13)
+	 UCA0BR1 = 0; // Set baud rate to 9600 with 1MHz clock
+	 UCA0MCTL |= UCBRS0; // Modulation UCBRSx = 1
+	 UCA0CTL1 &= ~UCSWRST; // Initialize USCI state machine
+	 IE2 |= UCA0RXIE; // Enable USCI_A0 RX interrupt
 }

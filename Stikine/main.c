@@ -12,14 +12,8 @@
 #include <CC110l.h> // Literals for helping with the radio
 #include <MSP_Init.h> // Code to set initial board state
 #include <SPI_Library.h> // SPI control for the radio
-typedef enum{
-	Listen,
-	ChangeChannel,
-	Readout_Packet
-}State_T;
+#include "UART.h"
 
-State_T state;
-uint8_t Chan;
 
 
 int main(void)
@@ -28,61 +22,32 @@ int main(void)
 	volatile uint8_t value;
 	volatile uint8_t status[2];
 
-	Board_Init();
-	Timer_Init();
+	Board_Init();	//Start the board
+	Timer_Init();	//Ready the timers
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
+	UART_Init(); //Set up the UART communication
 
 
-	MSP_RX_Port_IE |= MSP_RX_Pin;
-	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
 
-
-	SPI_Strobe(SFRX,Get_RX_FIFO);
-	SPI_Send(GDO_RX, 0x07 | BIT6);
-
+	MSP_RX_Port_IE |= MSP_RX_Pin;		//Enable the interrupt
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin;		//Clear the interrupt flag so it does not trigger immediately.
+	SPI_Strobe(SFRX,Get_RX_FIFO);	//Flush the RX_FIFO
+	SPI_Send(GDO_RX, 0x07 | BIT6);	//Set the radio into receive mode, set the triggering from high to low instead of low to high.
 	SPI_Send(ADDR, 0x05);		//Set Address of Radio
-	SPI_Send(PKTCTRL1,0x07);	//Set to do address filter with no broadcasts
+	SPI_Send(PKTCTRL1,0x07);	//Set to do address filter with broadcasts
+	SPI_Strobe(SRX, Get_RX_FIFO);  //Set to recieve mode
 
-	SPI_Strobe(SRX, Get_RX_FIFO);
-	state = Listen;			//Set initial state to Sweep through channels
 
 	SPI_Send(CHANNR,0);					//Tell radio what channel to use
-	//SPI_Strobe(SRX,Get_RX_FIFO);
-
-	while(1)
-	{
-
-		if(state == ChangeChannel)//Change the channel by going to idle, set channel, enter receive then listen for carrier on channel in sleep mode
-		{
-
-			SPI_Strobe(SIDLE, Get_RX_FIFO);			//Tell radio to enter idle mode so the channel can be changed
-			SPI_Send(GDO_RX,0x0E);					//Tell radio to trigger interrupt on carrier sense
-
-//			if(Chan > 9)
-//			{
-//				Chan = 0;								//Reset to channel zero
-//			}
-
-			SPI_Send(CHANNR,Chan);					//Tell radio what channel to use
-			SPI_Strobe(SRX,Get_RX_FIFO);		//Tell radio to enter receive mode
-			__delay_cycles(10000);				//Wait while using lots of power (Replace with low power mode + ISR later)
-			Chan++;
-
-		}
-
-		if(state == Listen)  //If carrier found, enter new state, listen to channel for longer time for packet, if no packet found, enter change mode
-		{
-			__bis_SR_register(LPM3_bits + GIE);
-			//__delay_cycles(100000);  //Delay longer than before, (Replace with timer and sleep mode later)
-
-			//state = ChangeChannel;		//Change state back to channel sweep, no packet was found on this channel afterall.
-		}
-	}
 
 
 
-	__bis_SR_register(LPM3_bits + GIE);
+
+
+	__bis_SR_register(LPM3_bits + GIE);		//Send into sleep mode (Wont Need After addition of sleep mode function for specific time.
+
+
 
     return 0; // Never get here
 }
@@ -119,27 +84,108 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
 
-	if(state == Listen)
-	{
+		uint8_t Chan;
 		volatile uint8_t length;		//Place to store length of data
 		volatile uint8_t Data[64];		//Place to store data
-
+		volatile uint8_t Message[256];
+		uint8_t NumBuff[5];
 
 		SPI_Read_Status(RXBYTES, &length);		//Read the length of the stuff in RXFIFO
 		SPI_Read_Burst(RXFIFO, Data, length);		//Read data in RXFIFO
 		SPI_Read(CHANNR, &Chan);		//Return the channel that had the packet
-		Data[0] = 0;					//Place to place a breakpoint?
-	}
+		uint8_t Mpos=0;
+		Message[Mpos++] = 'C';
+		Message[Mpos++] = ':';
+		Message[Mpos++] = ' ';
 
+		Convert_to_Decimal(Chan,NumBuff);
 
-	if(state == ChangeChannel)
-	{
+		int i =0;
+		while(i<3)
+		{
+			Message[3+i] = NumBuff[i];
+			i++;
+			Mpos++;
+		}
 
-		state = Listen;			//Set State to listen when this part is over
-		SPI_Send(GDO_RX,0x07);	//Set Pin to go high on packet with CRC ok received.
+		Message[Mpos++] = ' ';
+		Message[Mpos++] = 'D';
+		Message[Mpos++] = ':';
+		Message[Mpos++] = ' ';
 
-	}
+			Convert_to_Decimal(Data[1],NumBuff);
+			i=0;
+				while(i<3)
+				{
+					Message[Mpos] = NumBuff[i];
+					i++;
+					Mpos++;
+				}
+
+		Message[Mpos++] = ' ';
+		Message[Mpos++] = 'S';
+		Message[Mpos++] = ':';
+		Message[Mpos++] = ' ';
+
+		Convert_to_Decimal(Data[2],NumBuff);
+		i=0;
+				while(i<3)
+				{
+					Message[Mpos] = NumBuff[i];
+					i++;
+					Mpos++;
+				}
+		Message[Mpos++] = ' ';
+		Message[Mpos++] = 'R';
+		Message[Mpos++] = ':';
+		Message[Mpos++] = ' ';
+
+		Convert_to_Decimal(Data[length-2],NumBuff);
+
+		i=0;
+		while(i<3)
+						{
+							Message[Mpos] = NumBuff[i];
+							i++;
+						}
+
+		Convert_to_Hex(&Message[Mpos++], &Data[3], length-6);
+
+		UARTSendArray(Message);
+		SPI_Strobe(SRX,Get_RX_FIFO);
+
 
 
 }
+
+void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
+		{
+		static uint8_t Command[7];
+		static uint8_t Pointer=0;
+		static uint8_t Buff;
+		uint8_t Channel=0;
+		uint8_t Number=0;
+		Buff = UCA0RXBUF;
+		int i;
+		if(Buff == 13)
+		{
+			for(i=0;i<Pointer;i++)
+			{
+				Number = Command[i] - '0';
+				Channel = Channel*10 + Number;
+			}
+			SPI_Strobe(SIDLE,Get_RX_FIFO);
+			SPI_Send(CHANNR,Channel);
+			SPI_Strobe(SRX,Get_RX_FIFO);
+			Pointer = 0;
+		}
+		else
+		{
+			Command[Pointer++] = Buff;
+		}
+
+		}
+
+
+
 
