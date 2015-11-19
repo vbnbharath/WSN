@@ -7,9 +7,9 @@
 
 #include <stdint.h>
 #include <msp430.h>
-#include <CC110l.h>
-#include <SPI_Pins.h>
-#include <SPI_Library.h>
+#include "CC110l.h"
+#include "SPI_Pins.h"
+#include "SPI_Library.h"
 
 // Function to check that address passed into SPI functions is valid
 static uint8_t Address_Bad(uint8_t address)
@@ -66,11 +66,11 @@ void SPI_Init(void)
 
 	// Ready to go, release software reset
 	USCI_Control_Reg1 &= ~UCSWRST;
+
 	// Setup the RX flag pin
 	MSP_RX_Port_DIR &= ~MSP_RX_Pin; // Set the RX pin for input
 	MSP_RX_Port_OUT &= ~MSP_RX_Pin; // Set the RX pin to pull down
-	MSP_RX_Port_REN |= MSP_RX_Pin;	// Enable pullup resistor
-
+	MSP_RX_Port_REN |= MSP_RX_Pin;	// Enable resistor
 }
 
 uint8_t SPI_Send(uint8_t address, uint8_t value)
