@@ -35,9 +35,11 @@ int main(void)
 	MSP_RX_Port_IES |= MSP_RX_Pin;
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
 
-	SPI_Send(TXFIFO, 0x01);
-	SPI_Send(TXFIFO, 0xFF);
-	SPI_Send(GDO_RX, 0x06);
+	SPI_Send(TXFIFO, 0x02); // Length 1
+	SPI_Send(TXFIFO, 0x00); // Broadcast Address
+	SPI_Send(TXFIFO, 0xDD); // Payload
+
+	SPI_Send(GDO_RX, 0x06); //
 	SPI_Send(CHANNR, 12);
 	SPI_Strobe(STX, Get_TX_FIFO);
 
@@ -77,8 +79,9 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
 //	if()
 
-	SPI_Send(TXFIFO, 0x01);
+	SPI_Send(TXFIFO, 0x02);
 	SPI_Send(TXFIFO, 0xFF);
+	SPI_Send(TXFIFO, 0xDD);
 	SPI_Strobe(STX, Get_TX_FIFO);
 }
 
