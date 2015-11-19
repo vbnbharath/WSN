@@ -38,6 +38,7 @@ int main(void)
 	SPI_Send(TXFIFO, 0x01);
 	SPI_Send(TXFIFO, 0xFF);
 	SPI_Send(GDO_RX, 0x06);
+	SPI_Send(CHANNR, 12);
 	SPI_Strobe(STX, Get_TX_FIFO);
 
 	__bis_SR_register(LPM3_bits + GIE);
