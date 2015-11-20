@@ -34,6 +34,8 @@ void Board_Init()
 	P1DIR = 0xFF;
 	P2DIR = 0xFF;
 	P3DIR = 0XFF;
+
+	_EINT();
 }
 
 void Timer_Init()

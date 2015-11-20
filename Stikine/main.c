@@ -20,31 +20,16 @@
  */
 int main(void)
 {
+	volatile uint8_t message = 0xFB;
+	volatile LBT_Status status;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	uint8_t message;
+	status = LBT_Send(0xF0, 0xA0, &message, 1);
 
-	message = 0x1F;
-
-	volatile LBT_Status result;
-
-	MSP_RX_Port_IE |= MSP_RX_Pin;
-	MSP_RX_Port_IES |= MSP_RX_Pin;
-	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
-
-	SPI_Send(TXFIFO, 0x02); // Length 1
-	SPI_Send(TXFIFO, 0x00); // Broadcast Address
-	SPI_Send(TXFIFO, 0xDD); // Payload
-
-	SPI_Send(GDO_RX, 0x06); //
-	SPI_Send(CHANNR, 12);
-	SPI_Strobe(STX, Get_TX_FIFO);
-
-	__bis_SR_register(LPM3_bits + GIE);
-
+	message = 0;
 	return 0;
 }
 
@@ -61,6 +46,7 @@ int main(void)
 void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
+	LED1Reg ^= LED1;
 }
 
 /**
@@ -77,11 +63,6 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
-//	if()
-
-	SPI_Send(TXFIFO, 0x02);
-	SPI_Send(TXFIFO, 0xFF);
-	SPI_Send(TXFIFO, 0xDD);
-	SPI_Strobe(STX, Get_TX_FIFO);
+	LPM3_EXIT; // Wake up on interrupt
 }
 
