@@ -47,14 +47,6 @@ void Timer_Init()
 	TACCR0 = 65535; // Count up to 12,000
 	TACCTL0 = CCIE; // Enable interrupt on TACCR0
 	TACTL |= MC_1; // Start counting up to TACCR0
-
-	// Timer A1 Fast Clock
-	TA1CTL = TASSEL_2 + MC_0;
-	TA1R = 0;
-	TA1CCR0 = 49999; // Count up to 50000
-	TA1CCTL0 = CCIE; // Enable interrupt on timer TA1CCR0
-	TA1CTL |= MC_1; // Start counting up to TACCR0
-
 }
 #endif
 

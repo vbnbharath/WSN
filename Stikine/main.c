@@ -14,25 +14,31 @@
 #include "SPI_Library.h" // SPI control for the radio
 #include "Radio_LBT.h"
 
+uint8_t message[50];
+
 /**
  * \brief Main control sequence for sensor node
  * @return Constant 0, but it has nowhere to go.
  */
-int main(void)
-{
-	volatile uint8_t message = 0xFB;
-	volatile LBT_Status status;
+int main(void) {
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	status = LBT_Send(0xF0, 0xA0, &message, 1);
+	int i = 0;
+	while (i < 50) {
+		message[i] = i;
+		i++;
+	}
 
-	message = 0;
+	while (1) {
+		LBT_Send(0xFF, 0xEB, message, 50);
+		LPM3;
+	}
+
 	return 0;
 }
-
 
 #ifdef __MSP430G2553__
 #define Slow_Timer_Vector_0 TIMER0_A0_VECTOR
@@ -43,25 +49,22 @@ int main(void)
 /**
  * \brief Interrupt service routine for slow timer
  */
-void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
-{
+void __attribute__((__interrupt__(Slow_Timer_Vector_0))) TimerA_0_ISR(void) {
 	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	LED1Reg ^= LED1;
+	LPM3_EXIT;
 }
 
 /**
  *  \brief Interrupt service routine for fast timer.
  */
-void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
-{
+void __attribute__((__interrupt__(Fast_Timer_Vector_0))) TimerA_1_ISR(void) {
 	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
 }
 
 /**
  * \brief Interrupt service routine for packet received pin from CC100l
  */
-void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
-{
+void __attribute__((__interrupt__(GDO_Pin_Vector))) MSP_RX_ISR(void) {
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
 	LPM3_EXIT; // Wake up on interrupt
 }

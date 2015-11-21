@@ -62,18 +62,19 @@ LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *messa
 	}
 
 	// Enable interrupt on falling edge
+
 	MSP_RX_Port_IES |= MSP_RX_Pin;
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin;			// Clear interrupt flags
 	MSP_RX_Port_IE |= MSP_RX_Pin;
 
 	SPI_Strobe(STX, Get_TX_FIFO); // Tell radio to transmit
 	LPM3; // Sleep until TX is done, interrupt will wake up the
 
 	return_status = Transmit_Success;
-	SPI_Strobe(STX, Get_TX_FIFO); // Tell radio to transmit
+	SPI_Strobe(SIDLE, Get_TX_FIFO); // Tell radio to idle
 
 	// Clear the interrupt and set the GDO pin back to its old function here. n
 	Cleanup:
-	MSP_RX_Port_IFG &= ~MSP_RX_Pin;			// Clear interrupt flags before exit
 	SPI_Send(GDO_RX, Old_GDO);				// Set the GDO pin back to its old function
 	MSP_RX_Port_IES = Old_MSP_RX_Port_IES;	// Restore the old interrupt edge select value
 	MSP_RX_Port_IE = Old_MSP_RX_Port_IE;	// Restore the old interrupt enable value
