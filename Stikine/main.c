@@ -27,6 +27,7 @@ typedef enum {
 
 // Globals
 volatile uint16_t Timer_Rollover_Count = 0;
+volatile uint8_t Break_Sleep = False;
 
 /**
  * \brief Main control sequence for sensor node
@@ -38,24 +39,25 @@ int main(void)
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
+	uint8_t message = 0xFF;
 
-	while(1)
+	while(True)
 	{
-
+		LBT_Send(0xAA, 0xBB, &message, 1);
+		LBT_Listen(32768);
 	}
 }
 
 
 #ifdef __MSP430G2553__
-#define Slow_Timer_Vector_0 TIMER0_A0_VECTOR
-#define Fast_Timer_Vector_0 TIMER1_A0_VECTOR
+#define Slow_Timer_Vector_1 TIMER0_A1_VECTOR
 #define GDO_Pin_Vector PORT1_VECTOR
 #endif
 
 /**
  * \brief Interrupt service routine for slow timer
  */
-void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
+void __attribute__((__interrupt__(Slow_Timer_Vector_1)))TimerA_0_ISR(void)
 {
 	switch (TA0IV) {
 		case(TA0IV_TAIFG):
@@ -71,19 +73,12 @@ void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 }
 
 /**
- *  \brief Interrupt service routine for fast timer.
- */
-void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
-{
-
-}
-
-/**
  * \brief Interrupt service routine for packet received pin from CC100l
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
+	Break_Sleep = True;
 	LPM3_EXIT; // Wake up on interrupt
 }
 

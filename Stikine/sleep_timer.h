@@ -10,6 +10,6 @@
 
 #include <stdint.h>
 
-void sleep_timer (uint8_t rollovers, uint16_t cycles);
+void Sleep_Timer (uint8_t rollovers, uint16_t cycles);
 
 #endif /* SLEEP_TIMER_H_ */
