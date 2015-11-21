@@ -12,6 +12,10 @@
 #include <CC110l.h> // Literals for helping with the radio
 #include <MSP_Init.h> // Code to set initial board state
 #include <SPI_Library.h> // SPI control for the radio
+#include "sleep_timer.h" // Sleep code for controller
+
+// Globals
+volatile uint16_t Timer_Rollover_Count = 0;
 
 /**
  * \brief Main control sequence for sensor node
@@ -19,10 +23,6 @@
  */
 int main(void)
 {
-// Value line inits
-	volatile uint8_t value;
-	volatile uint8_t status[2];
-
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
@@ -46,17 +46,15 @@ void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
 	switch (TA0IV) {
 		case(TA0IV_TAIFG):
-			//overflow_count++;
+			Timer_Rollover_Count++;
 			break;
 		case(TA0IV_TACCR1):
-			LPM3_EXIT;
+			LPM3_EXIT; // Wake up if CCR1 is hit, used for sleeping function
 			break;
 		case(TA0IV_TACCR2):
 			break;
 		default: break;
 	}
-//	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-//	LED1Reg ^= LED1;
 }
 
 /**
@@ -64,7 +62,7 @@ void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
  */
 void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
 {
-//	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
+
 }
 
 /**
