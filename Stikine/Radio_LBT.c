@@ -10,6 +10,7 @@
 #include "stdint.h"
 #include "Radio_LBT.h"
 #include "msp430.h"
+#include "sleep_timer.h"
 
 LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length)
 {
