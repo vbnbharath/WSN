@@ -13,6 +13,20 @@
 #include "MSP_Init.h" // Code to set initial board state
 #include "SPI_Library.h" // SPI control for the radio
 #include "Radio_LBT.h"
+#include "sleep_timer.h" // Sleep code for controller
+
+typedef enum {
+	Waiting_For_Start,
+	Localizing,
+	Clustering,
+	CH_TDMA_Assignment,
+	CH_Sensing,
+	TDMA_Assignment,
+	Sensing
+} Machine_State;
+
+// Globals
+volatile uint16_t Timer_Rollover_Count = 0;
 
 /**
  * \brief Main control sequence for sensor node
@@ -20,17 +34,15 @@
  */
 int main(void)
 {
-	volatile uint8_t message = 0xFB;
-	volatile LBT_Status status;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	status = LBT_Send(0xF0, 0xA0, &message, 1);
+	while(1)
+	{
 
-	message = 0;
-	return 0;
+	}
 }
 
 
@@ -45,8 +57,17 @@ int main(void)
  */
 void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
-	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	LED1Reg ^= LED1;
+	switch (TA0IV) {
+		case(TA0IV_TAIFG):
+			Timer_Rollover_Count++;
+			break;
+		case(TA0IV_TACCR1):
+			LPM3_EXIT; // Wake up if CCR1 is hit, used for sleeping function
+			break;
+		case(TA0IV_TACCR2):
+			break;
+		default: break;
+	}
 }
 
 /**
@@ -54,7 +75,7 @@ void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
  */
 void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
 {
-	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
+
 }
 
 /**
