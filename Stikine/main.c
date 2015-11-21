@@ -40,15 +40,7 @@ int main(void)
 
 
 	SPI_Send(CHANNR,0);					//Tell radio what channel to use
-
-
-
-
-
 	__bis_SR_register(LPM3_bits + GIE);		//Send into sleep mode (Wont Need After addition of sleep mode function for specific time.
-
-
-
     return 0; // Never get here
 }
 
@@ -94,7 +86,7 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 		SPI_Read_Burst(RXFIFO, Data, length);		//Read data in RXFIFO
 		SPI_Read(CHANNR, &Chan);		//Return the channel that had the packet
 		uint8_t Mpos=0;
-		Message[Mpos++] = 'C';
+		Message[Mpos++] = 'C';			//This section is all formatting the data for UART
 		Message[Mpos++] = ':';
 		Message[Mpos++] = ' ';
 
@@ -147,38 +139,38 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 						{
 							Message[Mpos] = NumBuff[i];
 							i++;
+							Mpos++;
 						}
 
 		Convert_to_Hex(&Message[Mpos++], &Data[3], length-6);
 
 		UARTSendArray(Message);
 		SPI_Strobe(SRX,Get_RX_FIFO);
-
-
-
 }
 
 void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
 		{
-		static uint8_t Command[7];
-		static uint8_t Pointer=0;
-		static uint8_t Buff;
-		uint8_t Channel=0;
-		uint8_t Number=0;
-		Buff = UCA0RXBUF;
+		static uint8_t Command[7];		//Place to store temporary number/commands
+		static uint8_t Pointer=0;		//Pointer stores how many digits were entered
+		static uint8_t Buff;			//Place to store RXBuffer data
+		uint8_t Channel=0;				//Channel Selection
+		uint8_t Number=0;				//Just intermediate number
+		Buff = UCA0RXBUF;				//Set Buff to value in the buffer
 		int i;
+
 		if(Buff == 13)
 		{
 			for(i=0;i<Pointer;i++)
 			{
-				Number = Command[i] - '0';
-				Channel = Channel*10 + Number;
+				Number = Command[i] - '0';			//Set command to number in decimal
+				Channel = Channel*10 + Number;		//Set the channel on digit at a time
 			}
-			SPI_Strobe(SIDLE,Get_RX_FIFO);
-			SPI_Send(CHANNR,Channel);
-			SPI_Strobe(SRX,Get_RX_FIFO);
+			SPI_Strobe(SIDLE,Get_RX_FIFO);			//Put radio idle mode to:
+			SPI_Send(CHANNR,Channel);				//Change frequency after in idle
+			SPI_Strobe(SRX,Get_RX_FIFO);			//Put back into receive mode
 			Pointer = 0;
 		}
+
 		else
 		{
 			Command[Pointer++] = Buff;
