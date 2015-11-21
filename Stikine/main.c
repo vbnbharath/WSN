@@ -44,8 +44,19 @@ int main(void)
  */
 void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
 {
-	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
-	LED1Reg ^= LED1;
+	switch (TA0IV) {
+		case(TA0IV_TAIFG):
+			//overflow_count++;
+			break;
+		case(TA0IV_TACCR1):
+			LPM3_EXIT;
+			break;
+		case(TA0IV_TACCR2):
+			break;
+		default: break;
+	}
+//	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
+//	LED1Reg ^= LED1;
 }
 
 /**
@@ -53,7 +64,7 @@ void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
  */
 void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
 {
-	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
+//	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
 }
 
 /**
