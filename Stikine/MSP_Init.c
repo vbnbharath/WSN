@@ -40,20 +40,27 @@ void Board_Init()
 
 void Timer_Init()
 {
+	// Timer A0 init
+	TA0CTL |= TASSEL_1; // TA clock source is ACLK, input divider 1
+	TA0CTL &= ~(TAIFG);
+	TA0CTL |= TAIE;
+	TA0CCTL1 &= ~(CCIFG);
+	TA0CCTL1 |= CCIE;
+	TA0CTL |= MC_2; // enable TA in continuous mode
 
-	// Timer A0 Slow Clock
-	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
-	TAR = 0; // Initial count value is 0
-	TACCR0 = 65535; // Count up to 12,000
-	TACCTL0 = CCIE; // Enable interrupt on TACCR0
-	TACTL |= MC_1; // Start counting up to TACCR0
-
-	// Timer A1 Fast Clock
-	TA1CTL = TASSEL_2 + MC_0;
-	TA1R = 0;
-	TA1CCR0 = 49999; // Count up to 50000
-	TA1CCTL0 = CCIE; // Enable interrupt on timer TA1CCR0
-	TA1CTL |= MC_1; // Start counting up to TACCR0
+//	// Timer A0 Slow Clock
+//	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
+//	TAR = 0; // Initial count value is 0
+//	TACCR0 = 65535; // Count up to 12,000
+//	TACCTL0 = CCIE; // Enable interrupt on TACCR0
+//	TACTL |= MC_1; // Start counting up to TACCR0
+//
+//	// Timer A1 Fast Clock
+//	TA1CTL = TASSEL_2 + MC_0;
+//	TA1R = 0;
+//	TA1CCR0 = 49999; // Count up to 50000
+//	TA1CCTL0 = CCIE; // Enable interrupt on timer TA1CCR0
+//	TA1CTL |= MC_1; // Start counting up to TACCR0
 
 }
 #endif
