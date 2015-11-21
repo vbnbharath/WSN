@@ -14,23 +14,31 @@
 #include "SPI_Library.h" // SPI control for the radio
 #include "Radio_LBT.h"
 
+typedef enum {
+	Waiting_For_Start,
+	Localizing,
+	Clustering,
+	CH_TDMA_Assignment,
+	CH_Sensing,
+	TDMA_Assignment,
+	Sensing
+} Machine_State;
+
 /**
  * \brief Main control sequence for sensor node
  * @return Constant 0, but it has nowhere to go.
  */
 int main(void)
 {
-	volatile uint8_t message = 0xFB;
-	volatile LBT_Status status;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	status = LBT_Send(0xF0, 0xA0, &message, 1);
+	while(1)
+	{
 
-	message = 0;
-	return 0;
+	}
 }
 
 
