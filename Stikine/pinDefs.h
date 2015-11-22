@@ -10,6 +10,9 @@
 
 
 /*************************** Begin Value line pindefs ******************************/
+#define True 1
+#define False 0
+
 #ifdef __MSP430G2553__
 // Registers
 #define LED1Reg P1OUT

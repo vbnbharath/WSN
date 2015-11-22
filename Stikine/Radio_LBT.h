@@ -31,6 +31,14 @@ RX_Buffer_Overflow ///< RX FIFO was overflowed
 } LBT_Status;
 //@}
 
+struct Listen_Struct {
+	LBT_Status Status;
+	uint8_t address;
+	uint8_t signal;
+	uint8_t length;
+	uint8_t payload[60];
+};
+
 /**
  * \brief Sends a message over the radio using listen before talk
  *
@@ -42,6 +50,6 @@ RX_Buffer_Overflow ///< RX FIFO was overflowed
  * @return LBT_Status enumerable
  */
 LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length);
-LBT_Status LBT_Listen(uint16_t timeoutPeriod, uint8_t *out);
+struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod);
 
 #endif /* RADIO_LBT_H_ */

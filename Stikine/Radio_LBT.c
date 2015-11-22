@@ -37,7 +37,7 @@ LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *messa
 
 	// Change to recieve mode to check for clear channel
 	SPI_Strobe(SRX, Get_TX_FIFO); // Listen before transmit
-	__delay_cycles(10000);
+	Sleep_Timer(0,328); // Sleep 10 ms
 	SPI_Read_Status(PKTSTATUS, &status);	// Get packet status
 
 	if(!(status & BIT4)) // Check for clear channel. If true then a carrier signal was recv'd and a collision occured.
@@ -81,14 +81,16 @@ LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *messa
 	return return_status;
 }
 
-LBT_Status LBT_Listen(uint16_t timeoutPeriod, uint8_t *out)
+struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod)
 {
 	uint8_t Old_GDO;
 	uint8_t Old_MSP_RX_Port_IES;
 	uint8_t Old_MSP_RX_Port_IE;
 	uint8_t status;
 	uint8_t state;
+	uint8_t buffer[64];
 	LBT_Status return_status;
+	struct Listen_Struct retVal;
 
 	// Flush the RX FIFO
 	SPI_Strobe(SFRX, Get_RX_FIFO);
@@ -111,10 +113,9 @@ LBT_Status LBT_Listen(uint16_t timeoutPeriod, uint8_t *out)
 	// Set GDO pin to trigger on rising edge for PKT RX
 	MSP_RX_Port_IES &= ~MSP_RX_Port_IE;
 	MSP_RX_Port_IE |= MSP_RX_Port_IE;
-
 	SPI_Strobe(SRX, Get_RX_FIFO); // Set radio to listen
 
-	LPM3;	// Wait for the specified time
+	Sleep_Timer(0, timeoutPeriod);
 
 	SPI_Read_Status(RXBYTES, &status);	// Get packet status
 
@@ -127,9 +128,19 @@ LBT_Status LBT_Listen(uint16_t timeoutPeriod, uint8_t *out)
 
 	// Read the FIFO buffer into the out variable. IF there is no overflow then contents of the RXBYTES register is just the
 	// number of bytes in the RX FIFO.
-	SPI_Read_Burst(RXFIFO, out, status);
-
+	SPI_Read_Burst(RXFIFO, buffer, status);
 	return_status = Message_Recieved;
+
+	retVal.length = buffer[0] - 5;
+	retVal.address = buffer[1];
+	retVal.signal = buffer[status - 2];
+	retVal.Status = return_status;
+
+	uint8_t i;
+	for(i = 0; i < status - 5; i++)
+	{
+		retVal.payload[i] = buffer[i + 3];
+	}
 
 
 	Cleanup:
@@ -139,5 +150,5 @@ LBT_Status LBT_Listen(uint16_t timeoutPeriod, uint8_t *out)
 	MSP_RX_Port_IES = Old_MSP_RX_Port_IES;	// Restore the old interrupt edge select value
 	MSP_RX_Port_IE = Old_MSP_RX_Port_IE;	// Restore the old interrupt enable value
 
-	return return_status;
+	return retVal;
 }
