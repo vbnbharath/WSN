@@ -10,6 +10,7 @@
 #include "stdint.h"
 #include "Radio_LBT.h"
 #include "msp430.h"
+#include "sleep_timer.h"
 
 LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length)
 {
@@ -19,12 +20,16 @@ LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *messa
 	uint8_t Old_GDO;
 	uint8_t Old_MSP_RX_Port_IES;
 	uint8_t Old_MSP_RX_Port_IE;
+	uint8_t Old_MSP_RX_Port_Out;
 	LBT_Status return_status;
 
 	// Configure machine state
 	SPI_Read(GDO_RX, &Old_GDO);			// Capture and save the old setting for the GDO pin
 	Old_MSP_RX_Port_IES = MSP_RX_Port_IES;	// Save the old interrupt edge select value
 	Old_MSP_RX_Port_IE = MSP_RX_Port_IE;	// Save the old interrupt enable value
+	Old_MSP_RX_Port_Out = MSP_RX_Port_OUT;	// Save the old value of the GDO pin port
+
+	MSP_RX_Port_OUT &= ~MSP_RX_Pin;
 
 	status = SPI_Send(GDO_RX, 0x06);	// Set the GDO to assert on preamble start and TX complete
 	state = status & State_Bits;		// Mask off the state bits from the status byte
@@ -74,9 +79,10 @@ LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *messa
 	Cleanup:
 
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin;			// Clear interrupt flags before exit
-	SPI_Send(GDO_RX, Old_GDO);				// Set the GDO pin back to its old function
 	MSP_RX_Port_IES = Old_MSP_RX_Port_IES;	// Restore the old interrupt edge select value
 	MSP_RX_Port_IE = Old_MSP_RX_Port_IE;	// Restore the old interrupt enable value
+	MSP_RX_Port_OUT = Old_MSP_RX_Port_Out;	// Restore the old port setting
+	SPI_Send(GDO_RX, Old_GDO);				// Set the GDO pin back to its old function
 
 	return return_status;
 }
@@ -86,6 +92,7 @@ struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod)
 	uint8_t Old_GDO;
 	uint8_t Old_MSP_RX_Port_IES;
 	uint8_t Old_MSP_RX_Port_IE;
+	uint8_t Old_MSP_RX_Port_Out;
 	uint8_t status;
 	uint8_t state;
 	uint8_t buffer[64];
@@ -99,6 +106,7 @@ struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod)
 	SPI_Read(GDO_RX, &Old_GDO);			// Capture and save the old setting for the GDO pin
 	Old_MSP_RX_Port_IES = MSP_RX_Port_IES;	// Save the old interrupt edge select value
 	Old_MSP_RX_Port_IE = MSP_RX_Port_IE;	// Save the old interrupt enable value
+	Old_MSP_RX_Port_Out = MSP_RX_Port_OUT;
 
 
 	status = SPI_Send(GDO_RX, 0x07);	// Set the GDO to assert on pkt recieve with crc OK
@@ -145,10 +153,11 @@ struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod)
 
 	Cleanup:
 	// Restore old machine state
-	MSP_RX_Port_IFG &= ~MSP_RX_Pin;			// Clear interrupt flags before exit
-	SPI_Send(GDO_RX, Old_GDO);				// Set the GDO pin back to its old function
-	MSP_RX_Port_IES = Old_MSP_RX_Port_IES;	// Restore the old interrupt edge select value
 	MSP_RX_Port_IE = Old_MSP_RX_Port_IE;	// Restore the old interrupt enable value
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin;			// Clear interrupt flags before exit
+	MSP_RX_Port_IES = Old_MSP_RX_Port_IES;	// Restore the old interrupt edge select value
+	MSP_RX_Port_OUT = Old_MSP_RX_Port_Out;	// Restore the old port setting
+	SPI_Send(GDO_RX, Old_GDO);				// Set the GDO pin back to its old function
 
 	return retVal;
 }
