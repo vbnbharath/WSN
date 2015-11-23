@@ -1,0 +1,9 @@
+RSSI logs taken with one stationary node and one mobile beacon
+
+TI boosterpack boards, default energia radio settings
+maximum transmit power (using wireless test example)
+GPS was a nexus 10 tabet, not a very good GPS in hindsight
+
+stationary node at approximately at 64.85863685,-147.816902,0.8
+
+temperature was about 10 F, taken in taku parking lot (almost entirely empty), both nodes about 1 meter off the ground
