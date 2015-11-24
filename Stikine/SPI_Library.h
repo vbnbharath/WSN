@@ -4,6 +4,13 @@
  *  Created on: Oct 16, 2015
  *      Author: cgoss
  */
+
+/**
+ * \file SPI_Library.h
+ * \brief Library for communicating with CC110l over SPI
+ *
+ */
+
 #include <stdint.h>
 
 #ifndef SPI_LIBRARY_H_
@@ -16,6 +23,7 @@
 //@{
 #define MSP_RX_Pin BIT0					///> Pin that the GDO flagging for RX is attached to
 #define GDO_RX	IOCFG2					///> Register controlling the GDO pin used to signal RX receive.
+#define MSP_RX_Port_OUT P1OUT
 #define MSP_RX_Port_IFG	P1IFG			///> Port interrupt flag
 #define MSP_RX_Port_IE	P1IE			///> Interrupt enable register
 #define MSP_RX_Port_IES P1IES			///> Interrupt edge select

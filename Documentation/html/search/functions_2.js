@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['timera_5f0_5fisr',['TimerA_0_ISR',['../main_8c.html#a39a5d44a12b99aecce08f543fd528445',1,'main.c']]],
-  ['timera_5f1_5fisr',['TimerA_1_ISR',['../main_8c.html#ace52e64096364178d4c78b871b4f2bf1',1,'main.c']]]
+  ['main',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]],
+  ['msp_5frx_5fisr',['MSP_RX_ISR',['../main_8c.html#a249eff783fe7740fa64de432e57dc801',1,'main.c']]]
 ];
