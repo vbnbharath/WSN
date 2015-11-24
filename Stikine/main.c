@@ -56,6 +56,14 @@ int main(void)
 		{
 			state = Wait_For_Start();
 		}
+
+		if(state == Localizing)
+		{
+			while(True)
+			{
+				// Spin here.
+			}
+		}
 	}
 }
 
