@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['false',['False',['../pin_defs_8h.html#a306ebd41c0cd1303b1372c6153f0caf8',1,'pinDefs.h']]],
   ['fifo_5fbytes',['FIFO_Bytes',['../_c_c110l_8h.html#af2964543d5f95ea44e56ac9dbf78aec0',1,'CC110l.h']]],
+  ['fifo_5flevel',['FIFO_Level',['../_c_c110l_8h.html#ade955c36d2c4e3902850236945010243',1,'CC110l.h']]],
   ['fifothr',['FIFOTHR',['../_c_c110l_8h.html#a33642600de6c703bb5122234d4a8dec6',1,'CC110l.h']]],
   ['foccfg',['FOCCFG',['../_c_c110l_8h.html#ae24810e04beb0d2178a92e0673499496',1,'CC110l.h']]],
   ['frend0',['FREND0',['../_c_c110l_8h.html#a779f4559a0136208a2c990ee0ba5124f',1,'CC110l.h']]],

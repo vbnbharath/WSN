@@ -5,7 +5,7 @@
  *      Author: cgoss
  */
 
-#include <CC110l.h>
+#include "CC110l.h"
 
 #ifndef SPI_PINS_H_
 #define SPI_PINS_H_
@@ -43,7 +43,6 @@
 #define MSP_RX_Port_OUT		P1OUT	// Out value register
 #define MSP_RX_Port_REN		P1REN	// Resistor enable register
 #define MSP_RX_Port_IN		P1IN	// In value register
-
 #endif
 /*************************** End Value line pindefs ******************************/
 

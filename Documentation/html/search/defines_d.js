@@ -1,8 +1,27 @@
 var searchData=
 [
-  ['test0',['TEST0',['../_c_c110l_8h.html#ae898d2284301fc88393371e470f8db52',1,'CC110l.h']]],
-  ['test1',['TEST1',['../_c_c110l_8h.html#aef8471770769d5643c8d0e9d49de0678',1,'CC110l.h']]],
-  ['test2',['TEST2',['../_c_c110l_8h.html#a1b5997c11166c594b80d44bfde1cfa9c',1,'CC110l.h']]],
-  ['txbytes',['TXBYTES',['../_c_c110l_8h.html#a9f180f03f3cd38aadc9e61001ba8d872',1,'CC110l.h']]],
-  ['txfifo',['TXFIFO',['../_c_c110l_8h.html#a1daa02e093ccc73ccaf55cddf7cb3732',1,'CC110l.h']]]
+  ['safc',['SAFC',['../_c_c110l_8h.html#aefc6afd072a63b1cbf4faad2a598aa76',1,'CC110l.h']]],
+  ['sb_5ffstxon',['SB_FSTXON',['../_c_c110l_8h.html#ac8c9b53d1d375aea229b44d4bd241373',1,'CC110l.h']]],
+  ['sb_5fidle',['SB_Idle',['../_c_c110l_8h.html#a216a074e2762e5fa63a1baeef161abdd',1,'CC110l.h']]],
+  ['sb_5frx',['SB_RX',['../_c_c110l_8h.html#af9a1c94baecbdd010da295f3a3b4ba15',1,'CC110l.h']]],
+  ['sb_5frx_5fover',['SB_RX_Over',['../_c_c110l_8h.html#adeba6d2439171218748191e2d03ad523',1,'CC110l.h']]],
+  ['sb_5fsettle',['SB_Settle',['../_c_c110l_8h.html#a3b201b92d8119aa11bdfd68ff6593192',1,'CC110l.h']]],
+  ['sb_5ftx',['SB_TX',['../_c_c110l_8h.html#a639b9ca0ca81cbd8bd14ad4d43691e70',1,'CC110l.h']]],
+  ['sb_5ftx_5fover',['SB_TX_Over',['../_c_c110l_8h.html#a73a5eb25cfacfc1072f3052e4267aab8',1,'CC110l.h']]],
+  ['scal',['SCAL',['../_c_c110l_8h.html#a2e5a7fc6242912904ee264d30f7de82c',1,'CC110l.h']]],
+  ['sfrx',['SFRX',['../_c_c110l_8h.html#a793903e47409c82e0b914da66c2d3885',1,'CC110l.h']]],
+  ['sfstxon',['SFSTXON',['../_c_c110l_8h.html#a50567015192abe4cc66cd2c1f2d3af43',1,'CC110l.h']]],
+  ['sftx',['SFTX',['../_c_c110l_8h.html#aaf4806b0f66e2e4909e7d23aa4d4d981',1,'CC110l.h']]],
+  ['sidle',['SIDLE',['../_c_c110l_8h.html#aef368d9ea417d6c5df128fee7164cdd8',1,'CC110l.h']]],
+  ['snop',['SNOP',['../_c_c110l_8h.html#aa3d7d1f0fe23d7285647e73b9d2a8022',1,'CC110l.h']]],
+  ['spwd',['SPWD',['../_c_c110l_8h.html#a20caf81f2a416bdd4d30f40ab96b14c0',1,'CC110l.h']]],
+  ['sres',['SRES',['../_c_c110l_8h.html#a33f928e7de646c2942c2ff3d8b85f0f7',1,'CC110l.h']]],
+  ['srx',['SRX',['../_c_c110l_8h.html#ab2c756686b69cc7d7f8b94a3bb7805d7',1,'CC110l.h']]],
+  ['state_5fbits',['State_Bits',['../_c_c110l_8h.html#a51583b807e735146829f97c6d56fc062',1,'CC110l.h']]],
+  ['stx',['STX',['../_c_c110l_8h.html#aacd744a917e61146ec8b7175b4761683',1,'CC110l.h']]],
+  ['swor',['SWOR',['../_c_c110l_8h.html#a13bc96dbb8fe222006b5d6cbd09601cc',1,'CC110l.h']]],
+  ['sworrst',['SWORRST',['../_c_c110l_8h.html#ab0612d97465763e9a6d0d2153c54ff01',1,'CC110l.h']]],
+  ['sxoff',['SXOFF',['../_c_c110l_8h.html#a2ba866e663962a4971cfaa63ebbf101b',1,'CC110l.h']]],
+  ['sync0',['SYNC0',['../_c_c110l_8h.html#a15ee00f2e8b514a2f2dd3be3ba2cf00d',1,'CC110l.h']]],
+  ['sync1',['SYNC1',['../_c_c110l_8h.html#ad41ec329474c8e0c7d2c9f7bbc729c83',1,'CC110l.h']]]
 ];

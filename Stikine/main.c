@@ -8,20 +8,33 @@
 
 #include <msp430.h> // Base header files
 #include <stdint.h> // pull in standard datatypes
-#include <pinDefs.h> // Pin defines
-#include <CC110l.h> // Literals for helping with the radio
-#include <MSP_Init.h> // Code to set initial board state
-#include <SPI_Library.h> // SPI control for the radio
+#include "pinDefs.h" // Pin defines
+#include "CC110l.h" // Literals for helping with the radio
+#include "MSP_Init.h" // Code to set initial board state
+#include "Radio.h"
+#include "SPI_Library.h" // SPI control for the radio
 #include "UART.h"
 
+typedef enum {
+	Waiting_For_Start,
+	Localizing,
+	Clustering,
+	CH_TDMA_Assignment,
+	CH_Sensing,
+	TDMA_Assignment,
+	Sensing
+} Machine_State;
 
-
+// Globals
+volatile uint16_t Timer_Rollover_Count = 0;
+volatile uint8_t Break_Sleep = False;
+uint8_t Address = 0x55;
+/**
+ * \brief Main control sequence for sensor node
+ * @return Constant 0, but it has nowhere to go.
+ */
 int main(void)
 {
-// Value line inits
-	volatile uint8_t value;
-	volatile uint8_t status[2];
-
 	Board_Init();	//Start the board
 	Timer_Init();	//Ready the timers
 	SPI_Init(); // Start SPI
@@ -30,43 +43,34 @@ int main(void)
 
 
 
+
 	MSP_RX_Port_IE |= MSP_RX_Pin;		//Enable the interrupt
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin;		//Clear the interrupt flag so it does not trigger immediately.
 	SPI_Strobe(SFRX,Get_RX_FIFO);	//Flush the RX_FIFO
 	SPI_Send(GDO_RX, 0x07 | BIT6);	//Set the radio into receive mode, set the triggering from high to low instead of low to high.
-	SPI_Send(ADDR, 0x05);		//Set Address of Radio
+	SPI_Send(ADDR, Address);		//Set Address of Radio
 	SPI_Send(PKTCTRL1,0x07);	//Set to do address filter with broadcasts
 	SPI_Strobe(SRX, Get_RX_FIFO);  //Set to recieve mode
 
 
-	SPI_Send(CHANNR,0);					//Tell radio what channel to use
+	SPI_Send(CHANNR,1);					//Tell radio what channel to use
+	UARTSendArray("k");
 	__bis_SR_register(LPM3_bits + GIE);		//Send into sleep mode (Wont Need After addition of sleep mode function for specific time.
     return 0; // Never get here
 }
 
 
 #ifdef __MSP430G2553__
-#define Slow_Timer_Vector_0 TIMER0_A0_VECTOR
-#define Fast_Timer_Vector_0 TIMER1_A0_VECTOR
+#define Slow_Timer_Vector_1 TIMER0_A1_VECTOR
 #define GDO_Pin_Vector PORT1_VECTOR
 #endif
 
 /**
  * \brief Interrupt service routine for slow timer
  */
-void __attribute__((__interrupt__(Slow_Timer_Vector_0)))TimerA_0_ISR(void)
+void __attribute__((__interrupt__(Slow_Timer_Vector_1)))TimerA_0_ISR(void)
 {
-	TACCTL0 &= ~CCIFG; // Clear the interrupt flag
 
-
-}
-
-/**
- *  \brief Interrupt service routine for fast timer.
- */
-void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
-{
-	TA1CCTL0 &= ~CCIFG; // Clear the interrupt flag
 }
 
 /**
@@ -74,14 +78,15 @@ void __attribute__((__interrupt__(Fast_Timer_Vector_0)))TimerA_1_ISR(void)
  */
 void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 {
-	MSP_RX_Port_IFG &= ~MSP_RX_Pin;
+	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
+
 
 		uint8_t Chan;
 		volatile uint8_t length;		//Place to store length of data
 		volatile uint8_t Data[64];		//Place to store data
 		volatile uint8_t Message[256];
 		uint8_t NumBuff[5];
-
+		UARTSendArray("r");
 		SPI_Read_Status(RXBYTES, &length);		//Read the length of the stuff in RXFIFO
 		SPI_Read_Burst(RXFIFO, Data, length);		//Read data in RXFIFO
 		SPI_Read(CHANNR, &Chan);		//Return the channel that had the packet
@@ -157,6 +162,7 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 
 void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
 		{
+
 		static uint8_t Command[7];		//Place to store temporary number/commands
 		static uint8_t Pointer=0;		//Pointer stores how many digits were entered
 		static uint8_t Buff;			//Place to store RXBuffer data
@@ -170,15 +176,16 @@ void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
 
 			if(Command[0] == 'B')
 			{
-				SPI_Strobe(SIDLE,Get_RX_FIFO);
-
+				uint8_t Message = 0xFF;
+				LBT_Send(0xFF, Address, &Message, 1);
+				UARTSendArray("b");
 
 
 			}
 
 			else
 			{
-
+				UARTSendArray("Channel");
 			for(i=0;i<Pointer;i++)
 			{
 				Number = Command[i] - '0';			//Set command to number in decimal

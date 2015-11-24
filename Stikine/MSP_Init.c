@@ -5,10 +5,10 @@
  *      Author: cgoss
  */
 
-#include<MSP430.h>
-#include<CC110l.h>
-#include<SPI_Library.h>
-#include<SPI_Pins.h>
+#include"MSP430.h"
+#include"CC110l.h"
+#include"SPI_Library.h"
+#include"SPI_Pins.h"
 
 /*--------------------------------------------- Value Line ---------------------- */
 #ifdef __MSP430G2553__

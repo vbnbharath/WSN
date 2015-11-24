@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -112,9 +113,9 @@ $(document).ready(function(){initNavTree('_s_p_i___library_8c.html','');});
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;msp430.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="_c_c110l_8h_source.html">CC110l.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_s_p_i___pins_8h_source.html">SPI_Pins.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_s_p_i___library_8h_source.html">SPI_Library.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="_c_c110l_8h_source.html">CC110l.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_s_p_i___pins_8h_source.html">SPI_Pins.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_s_p_i___library_8h_source.html">SPI_Library.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -142,7 +143,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Setup and control library for the SPI link to the CC110l. </p>
-<p>Ports and pins for this library are defined in <a class="el" href="_s_p_i___library_8h.html">SPI_Library.h</a>, there are ifdef blocks to target different controllers. </p>
+<p>Ports and pins for this library are defined in <a class="el" href="_s_p_i___library_8h.html" title="Library for communicating with CC110l over SPI. ">SPI_Library.h</a>, there are ifdef blocks to target different controllers. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a292196e767158c66f03cbcc244fc802b"></a>
 <div class="memitem">
@@ -349,7 +350,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Makes a burst write into a set of registers, beginning with the register pointed by the address value. </p>
-<p>The first value in the input array is written into the register at address. The second value is written into the next register, and so on.</p>
+<p>The first value in the input array is written into the register at address. The second value is written into the next register, and so on. The status byte is captured from the transmission of the final byte in the burst, and will represent the space left in the TX FIFO just before the final byte is transmitted.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>The address for the first register to write. </td></tr>
@@ -358,7 +359,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The status byte of the CC110l, for a write operation the 4 LSB are the availiable space in the TX FIFO. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The status byte of the CC110l </dd></dl>
 
 </div>
 </div>
@@ -390,8 +391,8 @@ Functions</h2></td></tr>
 <p>The operation of the CC110l is a basic state machine. It will move between states based on either internal events or through strobe commands which are passed to it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">strobe</td><td>One of the strobe commands from <a class="el" href="_c_c110l_8h.html">CC110l.h</a> </td></tr>
-    <tr><td class="paramname">FIFO</td><td>Determines whether the RX or TX FIFO level is returned in the status byte </td></tr>
+    <tr><td class="paramname">strobe</td><td>One of the strobe commands from <a class="el" href="_c_c110l_8h.html" title="Contains definitions for the registers, strobes, and bit masks for the CC110l. ">CC110l.h</a> </td></tr>
+    <tr><td class="paramname">FIFO</td><td>Get_TX_FIFO or Get_RX_FIFO </td></tr>
   </table>
   </dd>
 </dl>

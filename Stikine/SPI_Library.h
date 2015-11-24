@@ -4,6 +4,13 @@
  *  Created on: Oct 16, 2015
  *      Author: cgoss
  */
+
+/**
+ * \file SPI_Library.h
+ * \brief Library for communicating with CC110l over SPI
+ *
+ */
+
 #include <stdint.h>
 
 #ifndef SPI_LIBRARY_H_
@@ -12,11 +19,15 @@
 // Outward facing pins/registers for the radio
 #ifdef __MSP430G2553__
 
-// GDO Pins on MSP430
-#define MSP_RX_Pin BIT3					// Pin that the GDO flagging for RX is attached to
-#define GDO_RX	IOCFG0					// Register controlling the GDO pin used to signal RX receive.
-#define MSP_RX_Port_IE		P1IE	// Interrupt enable register
-#define MSP_RX_Port_IFG		P1IFG	// Port interrupt flag
+/// \name GDO Pins on MSP430
+//@{
+#define MSP_RX_Pin BIT0					///> Pin that the GDO flagging for RX is attached to
+#define GDO_RX	IOCFG2					///> Register controlling the GDO pin used to signal RX receive.
+#define MSP_RX_Port_OUT P1OUT
+#define MSP_RX_Port_IFG	P1IFG			///> Port interrupt flag
+#define MSP_RX_Port_IE	P1IE			///> Interrupt enable register
+#define MSP_RX_Port_IES P1IES			///> Interrupt edge select
+//@}
 #endif
 
 /**
@@ -57,12 +68,15 @@ uint8_t SPI_Read(uint8_t address, uint8_t* out);
 /**
  * \brief Makes a burst write into a set of registers, beginning with the register pointed by the address value.
  *
- * The first value in the input array is written into the register at address. The second value is written into the next register, and so on.
+ * The first value in the input array is written into the register at address.
+ * The second value is written into the next register, and so on.
+ * The status byte is captured from the transmission of the final byte in the burst,
+ * and will represent the space left in the TX FIFO just before the final byte is transmitted.
  *
  * @param address The address for the first register to write.
  * @param value An array of values to write into CC110l registers.
  * @param length The number of values that are going to be written to the CC110l.
- * @return The status byte of the CC110l, for a write operation the 4 LSB are the availiable space in the TX FIFO.
+ * @return The status byte of the CC110l
  */
 
 uint8_t SPI_Send_Burst(uint8_t address, uint8_t* value, uint8_t length);
@@ -89,7 +103,7 @@ uint8_t SPI_Read_Burst(uint8_t address, uint8_t* out, uint8_t length);
  * states based on either internal events or through strobe commands which are passed to it.
  *
  * @param strobe One of the strobe commands from CC110l.h
- * @param FIFO Determines whether the RX or TX FIFO level is returned in the status byte
+ * @param FIFO Get_TX_FIFO or Get_RX_FIFO
  * @return The CC110l status byte
  */
 uint8_t SPI_Strobe(uint8_t strobe, uint8_t FIFO);
