@@ -18,16 +18,29 @@
  * \brief Main control sequence for sensor node
  * @return Constant 0, but it has nowhere to go.
  */
+
 int main(void)
 {
 	volatile uint8_t message = 0xFB;
 	volatile LBT_Status status;
+	volatile uint16_t timeout;
+	//volatile struct LBT_ST C;
+	uint8_t i;
 	Board_Init();
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	status = LBT_Send(0xF0, 0xA0, &message, 1);
+
+	for(i=0;i<16;i++)
+	{
+		status = LBT_Send(0xF0, 0xA0, &message, 1);
+		If(status == Transmit_Success)
+		{
+			Break;
+		}
+		//LBT_Listen()
+	}
 
 	message = 0;
 	return 0;
