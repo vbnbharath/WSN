@@ -14,20 +14,12 @@
 #include "Radio.h"
 #include "SPI_Library.h" // SPI control for the radio
 #include "sleep_timer.h" // Sleep code for controller
-
-typedef enum {
-	Waiting_For_Start,
-	Localizing,
-	Clustering,
-	CH_TDMA_Assignment,
-	CH_Sensing,
-	TDMA_Assignment,
-	Sensing
-} Machine_State;
+#include "states.h" // Enum for the possible machine states.
 
 // Globals
 volatile uint16_t Timer_Rollover_Count = 0;
 volatile uint8_t Break_Sleep = False;
+Machine_State state = Waiting_For_Start;
 
 /**
  * \brief Main control sequence for sensor node
@@ -40,9 +32,14 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
+
+
 	while(True)
 	{
-
+		if(state == Waiting_For_Start)
+		{
+			state = Wait_For_Start();
+		}
 	}
 }
 

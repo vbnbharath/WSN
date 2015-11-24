@@ -1,0 +1,85 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+
+
+Main control code and interrupt definitions for sensor node.  
+
+
+{\ttfamily \#include $<$msp430.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}pin\+Defs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}C\+C110l.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}M\+S\+P\+\_\+\+Init.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Radio.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\+P\+I\+\_\+\+Library.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sleep\+\_\+timer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}states.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em Main control sequence for sensor node. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a39a5d44a12b99aecce08f543fd528445}{Timer\+A\+\_\+0\+\_\+\+I\+S\+R} (void)
+\begin{DoxyCompactList}\small\item\em Interrupt service routine for slow timer. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a249eff783fe7740fa64de432e57dc801}{M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R} (void)
+\begin{DoxyCompactList}\small\item\em Interrupt service routine for packet received pin from C\+C100l. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint16\+\_\+t \hyperlink{main_8c_a7d1a8a7702ccf1396765b36f5842f781}{Timer\+\_\+\+Rollover\+\_\+\+Count} = 0
+\item 
+volatile uint8\+\_\+t \hyperlink{main_8c_a62757ff97f14648950ece3c497498c2e}{Break\+\_\+\+Sleep} = \hyperlink{pin_defs_8h_a306ebd41c0cd1303b1372c6153f0caf8}{False}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main control code and interrupt definitions for sensor node. 
+
+Initializes both the M\+S\+P430 controller and the attached C\+C110l radio. After completing the initialization process the controller goes into L\+P\+M3 and waits. 
+
+\subsection{Function Documentation}
+\hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{}\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection[{main(void)}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}
+
+
+Main control sequence for sensor node. 
+
+\begin{DoxyReturn}{Returns}
+Constant 0, but it has nowhere to go. 
+\end{DoxyReturn}
+\hypertarget{main_8c_a249eff783fe7740fa64de432e57dc801}{}\index{main.\+c@{main.\+c}!M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R@{M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R}}
+\index{M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R@{M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R}!main.\+c@{main.\+c}}
+\subsubsection[{M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R(void)}]{\setlength{\rightskip}{0pt plus 5cm}void M\+S\+P\+\_\+\+R\+X\+\_\+\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{main_8c_a249eff783fe7740fa64de432e57dc801}
+
+
+Interrupt service routine for packet received pin from C\+C100l. 
+
+\hypertarget{main_8c_a39a5d44a12b99aecce08f543fd528445}{}\index{main.\+c@{main.\+c}!Timer\+A\+\_\+0\+\_\+\+I\+S\+R@{Timer\+A\+\_\+0\+\_\+\+I\+S\+R}}
+\index{Timer\+A\+\_\+0\+\_\+\+I\+S\+R@{Timer\+A\+\_\+0\+\_\+\+I\+S\+R}!main.\+c@{main.\+c}}
+\subsubsection[{Timer\+A\+\_\+0\+\_\+\+I\+S\+R(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Timer\+A\+\_\+0\+\_\+\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{main_8c_a39a5d44a12b99aecce08f543fd528445}
+
+
+Interrupt service routine for slow timer. 
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8c_a62757ff97f14648950ece3c497498c2e}{}\index{main.\+c@{main.\+c}!Break\+\_\+\+Sleep@{Break\+\_\+\+Sleep}}
+\index{Break\+\_\+\+Sleep@{Break\+\_\+\+Sleep}!main.\+c@{main.\+c}}
+\subsubsection[{Break\+\_\+\+Sleep}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\+\_\+t Break\+\_\+\+Sleep = {\bf False}}\label{main_8c_a62757ff97f14648950ece3c497498c2e}
+\hypertarget{main_8c_a7d1a8a7702ccf1396765b36f5842f781}{}\index{main.\+c@{main.\+c}!Timer\+\_\+\+Rollover\+\_\+\+Count@{Timer\+\_\+\+Rollover\+\_\+\+Count}}
+\index{Timer\+\_\+\+Rollover\+\_\+\+Count@{Timer\+\_\+\+Rollover\+\_\+\+Count}!main.\+c@{main.\+c}}
+\subsubsection[{Timer\+\_\+\+Rollover\+\_\+\+Count}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint16\+\_\+t Timer\+\_\+\+Rollover\+\_\+\+Count = 0}\label{main_8c_a7d1a8a7702ccf1396765b36f5842f781}

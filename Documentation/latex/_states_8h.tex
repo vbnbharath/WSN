@@ -1,0 +1,51 @@
+\hypertarget{_states_8h}{}\section{States.\+h File Reference}
+\label{_states_8h}\index{States.\+h@{States.\+h}}
+
+
+The contains the enumeration of possible states for the main control loop.  
+
+
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19}{Machine\+\_\+\+State} \{ \\*
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f}{Waiting\+\_\+\+For\+\_\+\+Start}, 
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f}{Localizing}, 
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e}{Clustering}, 
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906}{C\+H\+\_\+\+T\+D\+M\+A\+\_\+\+Assignment}, 
+\\*
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2}{C\+H\+\_\+\+Sensing}, 
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a}{T\+D\+M\+A\+\_\+\+Assignment}, 
+\hyperlink{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363}{Sensing}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The contains the enumeration of possible states for the main control loop. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19}{}\index{States.\+h@{States.\+h}!Machine\+\_\+\+State@{Machine\+\_\+\+State}}
+\index{Machine\+\_\+\+State@{Machine\+\_\+\+State}!States.\+h@{States.\+h}}
+\subsubsection[{Machine\+\_\+\+State}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Machine\+\_\+\+State}}\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Waiting\+\_\+\+For\+\_\+\+Start@{Waiting\+\_\+\+For\+\_\+\+Start}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!Waiting\+\_\+\+For\+\_\+\+Start@{Waiting\+\_\+\+For\+\_\+\+Start}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f}{}Waiting\+\_\+\+For\+\_\+\+Start\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f}
+}]Startup state, waiting for the signal to begin localization. \index{Localizing@{Localizing}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!Localizing@{Localizing}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f}{}Localizing\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f}
+}]Localizing state performs periodic pings so that the localization beacon can hear them. \index{Clustering@{Clustering}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!Clustering@{Clustering}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e}{}Clustering\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e}
+}]Begins the time clustering process. \index{C\+H\+\_\+\+T\+D\+M\+A\+\_\+\+Assignment@{C\+H\+\_\+\+T\+D\+M\+A\+\_\+\+Assignment}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!C\+H\+\_\+\+T\+D\+M\+A\+\_\+\+Assignment@{C\+H\+\_\+\+T\+D\+M\+A\+\_\+\+Assignment}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906}{}C\+H\+\_\+\+T\+D\+M\+A\+\_\+\+Assignment\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906}
+}]Cluster head state in which it assignes T\+D\+M\+A slots to child nodes. \index{C\+H\+\_\+\+Sensing@{C\+H\+\_\+\+Sensing}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!C\+H\+\_\+\+Sensing@{C\+H\+\_\+\+Sensing}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2}{}C\+H\+\_\+\+Sensing\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2}
+}]Cluster head state, normal mode of operation. \index{T\+D\+M\+A\+\_\+\+Assignment@{T\+D\+M\+A\+\_\+\+Assignment}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!T\+D\+M\+A\+\_\+\+Assignment@{T\+D\+M\+A\+\_\+\+Assignment}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a}{}T\+D\+M\+A\+\_\+\+Assignment\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a}
+}]Child node state, waiting for T\+D\+M\+A assignment from cluster head. \index{Sensing@{Sensing}!States.\+h@{States.\+h}}\index{States.\+h@{States.\+h}!Sensing@{Sensing}}\item[{\em 
+\hypertarget{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363}{}Sensing\label{_states_8h_a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363}
+}]Normal operation mode for child nodes. \end{description}
+\end{Desc}

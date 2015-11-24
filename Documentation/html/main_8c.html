@@ -103,7 +103,6 @@ $(document).ready(function(){initNavTree('main_8c.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -121,22 +120,8 @@ $(document).ready(function(){initNavTree('main_8c.html','');});
 <code>#include &quot;<a class="el" href="_radio_8h_source.html">Radio.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_s_p_i___library_8h_source.html">SPI_Library.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="sleep__timer_8h_source.html">sleep_timer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_states_8h_source.html">states.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a1fded6e3acf9cbcb7b68e43bdc4ada19"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19">Machine_State</a> { <br />
-&#160;&#160;<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f">Waiting_For_Start</a>, 
-<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f">Localizing</a>, 
-<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e">Clustering</a>, 
-<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906">CH_TDMA_Assignment</a>, 
-<br />
-&#160;&#160;<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2">CH_Sensing</a>, 
-<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a">TDMA_Assignment</a>, 
-<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363">Sensing</a>
-<br />
- }<tr class="separator:a1fded6e3acf9cbcb7b68e43bdc4ada19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
@@ -159,36 +144,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main control code and interrupt definitions for sensor node. </p>
 <p>Initializes both the MSP430 controller and the attached CC110l radio. After completing the initialization process the controller goes into LPM3 and waits. </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19">Machine_State</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f"></a>Waiting_For_Start&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f"></a>Localizing&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e"></a>Clustering&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906"></a>CH_TDMA_Assignment&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2"></a>CH_Sensing&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a"></a>TDMA_Assignment&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363"></a>Sensing&#160;</td><td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <div class="memitem">
 <div class="memproto">
@@ -274,7 +230,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_7e8d4b8e07c0407d31f9f7f14bd327a1.html">Stikine</a></li><li class="navelem"><a class="el" href="main_8c.html">main.c</a></li>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_a68ce9f702b01e936f36b0bc23d4b891.html">Stikine</a></li><li class="navelem"><a class="el" href="main_8c.html">main.c</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>

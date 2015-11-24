@@ -1,0 +1,52 @@
+.TH "States.h" 3 "Mon Nov 23 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+States.h \- The contains the enumeration of possible states for the main control loop\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMachine_State\fP { \fBWaiting_For_Start\fP, \fBLocalizing\fP, \fBClustering\fP, \fBCH_TDMA_Assignment\fP, \fBCH_Sensing\fP, \fBTDMA_Assignment\fP, \fBSensing\fP }"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The contains the enumeration of possible states for the main control loop\&. 
+
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBMachine_State\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIWaiting_For_Start \fP\fP
+Startup state, waiting for the signal to begin localization\&. 
+.TP
+\fB\fILocalizing \fP\fP
+Localizing state performs periodic pings so that the localization beacon can hear them\&. 
+.TP
+\fB\fIClustering \fP\fP
+Begins the time clustering process\&. 
+.TP
+\fB\fICH_TDMA_Assignment \fP\fP
+Cluster head state in which it assignes TDMA slots to child nodes\&. 
+.TP
+\fB\fICH_Sensing \fP\fP
+Cluster head state, normal mode of operation\&. 
+.TP
+\fB\fITDMA_Assignment \fP\fP
+Child node state, waiting for TDMA assignment from cluster head\&. 
+.TP
+\fB\fISensing \fP\fP
+Normal operation mode for child nodes\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

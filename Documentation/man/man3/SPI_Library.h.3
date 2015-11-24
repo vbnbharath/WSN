@@ -1,0 +1,170 @@
+.TH "SPI_Library.h" 3 "Mon Nov 23 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SPI_Library.h \- Library for communicating with CC110l over SPI\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSPI_Init\fP (void)"
+.br
+.RI "\fIInitialization function for the SPI link\&. \fP"
+.ti -1c
+.RI "uint8_t \fBSPI_Send\fP (uint8_t address, uint8_t value)"
+.br
+.RI "\fIA function for sending a single byte to the radio\&. \fP"
+.ti -1c
+.RI "uint8_t \fBSPI_Read\fP (uint8_t address, uint8_t *out)"
+.br
+.RI "\fIReads a single register\&. \fP"
+.ti -1c
+.RI "uint8_t \fBSPI_Send_Burst\fP (uint8_t address, uint8_t *value, uint8_t length)"
+.br
+.RI "\fIMakes a burst write into a set of registers, beginning with the register pointed by the address value\&. \fP"
+.ti -1c
+.RI "uint8_t \fBSPI_Read_Burst\fP (uint8_t address, uint8_t *out, uint8_t length)"
+.br
+.RI "\fIMakes a burst read of the registers in the CC110l\&. \fP"
+.ti -1c
+.RI "uint8_t \fBSPI_Strobe\fP (uint8_t strobe, uint8_t FIFO)"
+.br
+.RI "\fISends a strobe command to the CC110l\&. \fP"
+.ti -1c
+.RI "uint8_t \fBSPI_Read_Status\fP (uint8_t status_reg, uint8_t *out)"
+.br
+.RI "\fIReads a value from one of the special status registers in the CC110l\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Library for communicating with CC110l over SPI\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "void SPI_Init (void)"
+
+.PP
+Initialization function for the SPI link\&. Uses the Port/Pin mapping values in \fBSPI_Pins\&.h\fP to configure the necessary registers for SPI communication with the CC110l\&. These mappings are device specific and would need to be changed depending on which MSP430 is being targetted, and which USCI module is being used\&. The preferred method of handling multiple boards is to use #ifdef blocks targetted at the define value used with the MSP430\&.h file\&. 
+.SS "uint8_t SPI_Read (uint8_t address, uint8_t * out)"
+
+.PP
+Reads a single register\&. Fetches the value stored in the specified register\&. Returns the status byte and copies the register value into the out parameter
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddress\fP The register to be read\&. 
+.br
+\fIout\fP Pointer to write the stored register value into\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The status byte from the CC110l, for a read operation the 4 LSB of the byte represent the new data in the RX FIFO\&. 
+.RE
+.PP
+
+.SS "uint8_t SPI_Read_Burst (uint8_t address, uint8_t * out, uint8_t length)"
+
+.PP
+Makes a burst read of the registers in the CC110l\&. A succession of registers in the CC110l will be copied into the array\&. The register value at the provided address will be written into the first position of the array, the next register into the second position in the array, and so on\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddress\fP The beginning register address\&. 
+.br
+\fIout\fP Pointer to the array the register values are going to be written into\&. 
+.br
+\fIlength\fP The number of elements to read\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The CC110l status byte 
+.RE
+.PP
+
+.SS "uint8_t SPI_Read_Status (uint8_t status_reg, uint8_t * out)"
+
+.PP
+Reads a value from one of the special status registers in the CC110l\&. The CC110l has a set of special read only status registers\&. They contain information such as the version number of the chip, the current state machine state, and the FIFO buffer levels\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatus_reg\fP The status register to read the value from\&. 
+.br
+\fIout\fP A pointer to the value that the status register should be written into\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The CC110l status byte\&. 
+.RE
+.PP
+
+.SS "uint8_t SPI_Send (uint8_t address, uint8_t value)"
+
+.PP
+A function for sending a single byte to the radio\&. Writes a byte to the specified register\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddress\fP The register in the CC110l that the byte is to be written to\&. 
+.br
+\fIvalue\fP The value to write to the target register\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The status byte from the CC110l\&. For a write operation the 4 LSB of the byte will represent the space left in the TX_FIFO\&. 
+.RE
+.PP
+
+.SS "uint8_t SPI_Send_Burst (uint8_t address, uint8_t * value, uint8_t length)"
+
+.PP
+Makes a burst write into a set of registers, beginning with the register pointed by the address value\&. The first value in the input array is written into the register at address\&. The second value is written into the next register, and so on\&. The status byte is captured from the transmission of the final byte in the burst, and will represent the space left in the TX FIFO just before the final byte is transmitted\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddress\fP The address for the first register to write\&. 
+.br
+\fIvalue\fP An array of values to write into CC110l registers\&. 
+.br
+\fIlength\fP The number of values that are going to be written to the CC110l\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The status byte of the CC110l 
+.RE
+.PP
+
+.SS "uint8_t SPI_Strobe (uint8_t strobe, uint8_t FIFO)"
+
+.PP
+Sends a strobe command to the CC110l\&. The operation of the CC110l is a basic state machine\&. It will move between states based on either internal events or through strobe commands which are passed to it\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrobe\fP One of the strobe commands from \fBCC110l\&.h\fP 
+.br
+\fIFIFO\fP Get_TX_FIFO or Get_RX_FIFO 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The CC110l status byte 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

@@ -1,0 +1,907 @@
+\hypertarget{_c_c110l_8h}{}\section{C\+C110l.\+h File Reference}
+\label{_c_c110l_8h}\index{C\+C110l.\+h@{C\+C110l.\+h}}
+
+
+Contains definitions for the registers, strobes, and bit masks for the C\+C110l.  
+
+
+\subsection*{Macros}
+\begin{Indent}{\bf Configuration Registers}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a9da836dbbf177b6f1912355cf62cb73d}{I\+O\+C\+F\+G2}~0x00
+\begin{DoxyCompactList}\small\item\em G\+D\+O2 output pin configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a53a1d054e4f61a08fce122ac0fbd520e}{I\+O\+C\+F\+G1}~0x01
+\begin{DoxyCompactList}\small\item\em G\+D\+O1 output pin configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aa05cfcf3fc75713dc691d1ead9e05736}{I\+O\+C\+F\+G0}~0x02
+\begin{DoxyCompactList}\small\item\em G\+D\+O0 output pin configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a33642600de6c703bb5122234d4a8dec6}{F\+I\+F\+O\+T\+H\+R}~0x03
+\begin{DoxyCompactList}\small\item\em R\+X F\+I\+F\+O and T\+X F\+I\+F\+O thresholds. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ad41ec329474c8e0c7d2c9f7bbc729c83}{S\+Y\+N\+C1}~0x04
+\begin{DoxyCompactList}\small\item\em Sync word, high byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a15ee00f2e8b514a2f2dd3be3ba2cf00d}{S\+Y\+N\+C0}~0x05
+\begin{DoxyCompactList}\small\item\em Sync word, low byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aeb4aac5f7c9599c10c864d0353cf6bce}{P\+K\+T\+L\+E\+N}~0x06
+\begin{DoxyCompactList}\small\item\em Packet length. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a677bd90f5ee6fe7cf9e1388785b6b1bc}{P\+K\+T\+C\+T\+R\+L1}~0x07
+\begin{DoxyCompactList}\small\item\em Packet automation control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a47cb7d5d48dd0e71781409815d4fbbfa}{P\+K\+T\+C\+T\+R\+L0}~0x08
+\begin{DoxyCompactList}\small\item\em Packet automation control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ac9f31f726d2933782e2efda7136a25fd}{A\+D\+D\+R}~0x09
+\begin{DoxyCompactList}\small\item\em Device address. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a27cd13ed559b193e4a35fc9a6005b1ae}{C\+H\+A\+N\+N\+R}~0x0\+A
+\begin{DoxyCompactList}\small\item\em Channel number. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a8ff86e3979c5f096719c1aaacedd2a82}{F\+S\+C\+T\+R\+L1}~0x0\+B
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_af50bd30a5ae1be32bf83c054552cbc8a}{F\+S\+C\+T\+R\+L0}~0x0\+C
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a1c7beac2b32c50b9c86877e146c442c3}{F\+R\+E\+Q2}~0x0\+D
+\begin{DoxyCompactList}\small\item\em Frequency control word, high byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a80cabcfa28f947501898b1cdc2ffa5df}{F\+R\+E\+Q1}~0x0\+E
+\begin{DoxyCompactList}\small\item\em Frequency control word, middle byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_adf6c435c455a2f169dd8b0361cdcbb1c}{F\+R\+E\+Q0}~0x0\+F
+\begin{DoxyCompactList}\small\item\em Frequency control word, low byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a38cf085a5cfeb29e4b1b90ae764047b2}{M\+D\+M\+C\+F\+G4}~0x10
+\begin{DoxyCompactList}\small\item\em Modem configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a589e4d4ef33f73e8b2db027147ba7be4}{M\+D\+M\+C\+F\+G3}~0x11
+\begin{DoxyCompactList}\small\item\em Modem configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ac5750cb986d051c6489f85a9051f1038}{M\+D\+M\+C\+F\+G2}~0x12
+\begin{DoxyCompactList}\small\item\em Modem configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a3caad8c7db9e2a843da62486ba20a5bc}{M\+D\+M\+C\+F\+G1}~0x13
+\begin{DoxyCompactList}\small\item\em Modem configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a6ad36a2fd474d8b4c094b6a68ebe36a2}{M\+D\+M\+C\+F\+G0}~0x14
+\begin{DoxyCompactList}\small\item\em Modem configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_afda7e6f9fb7386c73859497a6bfcf12c}{D\+E\+V\+I\+A\+T\+N}~0x15
+\begin{DoxyCompactList}\small\item\em Modem deviation setting. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aa049f54d36d36cd25df7fb1a80913fc1}{M\+C\+S\+M2}~0x16
+\begin{DoxyCompactList}\small\item\em Main Radio Cntrl State Machine config. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_af9d17a0852a5dc803395aa5a5e9998f0}{M\+C\+S\+M1}~0x17
+\begin{DoxyCompactList}\small\item\em Main Radio Cntrl State Machine config. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a8b544cfc24a995246f2a973e327b48e1}{M\+C\+S\+M0}~0x18
+\begin{DoxyCompactList}\small\item\em Main Radio Cntrl State Machine config. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ae24810e04beb0d2178a92e0673499496}{F\+O\+C\+C\+F\+G}~0x19
+\begin{DoxyCompactList}\small\item\em Frequency Offset Compensation config. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a9ad1a221b397cdae7cebcf1c248b2b30}{B\+S\+C\+F\+G}~0x1\+A
+\begin{DoxyCompactList}\small\item\em Bit Synchronization configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a617370d4b4b2a1a1368739ee172ecf19}{A\+G\+C\+C\+T\+R\+L2}~0x1\+B
+\begin{DoxyCompactList}\small\item\em A\+G\+C control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a2620a8b1c9a344fb7989502946689848}{A\+G\+C\+C\+T\+R\+L1}~0x1\+C
+\begin{DoxyCompactList}\small\item\em A\+G\+C control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a2b146a11145e2370da8db5044aba0afc}{A\+G\+C\+C\+T\+R\+L0}~0x1\+D
+\begin{DoxyCompactList}\small\item\em A\+G\+C control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a7553c7d007023e8c870cb949480a46e8}{W\+O\+R\+E\+V\+T1}~0x1\+E
+\begin{DoxyCompactList}\small\item\em High byte Event 0 timeout. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a2c80b405ab8435d969d16663085a35d1}{W\+O\+R\+E\+V\+T0}~0x1\+F
+\begin{DoxyCompactList}\small\item\em Low byte Event 0 timeout. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a186156bc9caf0835e59d796d768834f7}{W\+O\+R\+C\+T\+R\+L}~0x20
+\begin{DoxyCompactList}\small\item\em Wake On Radio control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a07c63bb610a23f75a0b3ebfef8ae65e7}{F\+R\+E\+N\+D1}~0x21
+\begin{DoxyCompactList}\small\item\em Front end R\+X configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a779f4559a0136208a2c990ee0ba5124f}{F\+R\+E\+N\+D0}~0x22
+\begin{DoxyCompactList}\small\item\em Front end T\+X configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ac86903ecd6b7d9921060ec81cb3a8ab3}{F\+S\+C\+A\+L3}~0x23
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer calibration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a85adcb436e62701a8a35af467e70e16b}{F\+S\+C\+A\+L2}~0x24
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer calibration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a88d4df9c7bb9e0e8f5bc0ab2266de1f3}{F\+S\+C\+A\+L1}~0x25
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer calibration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a335ebafae859135220b54e93e8deeec5}{F\+S\+C\+A\+L0}~0x26
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer calibration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a46f432c892af43d8a437e077bafaae07}{R\+C\+C\+T\+R\+L1}~0x27
+\begin{DoxyCompactList}\small\item\em R\+C oscillator configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a034b2b62a2deaa00e2fac556c0c4bf0c}{R\+C\+C\+T\+R\+L0}~0x28
+\begin{DoxyCompactList}\small\item\em R\+C oscillator configuration. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a778654dd7a32e2e6c25dc0c1de5e072f}{F\+S\+T\+E\+S\+T}~0x29
+\begin{DoxyCompactList}\small\item\em Frequency synthesizer cal control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a64646998088bad22debf7f6529bc9164}{P\+T\+E\+S\+T}~0x2\+A
+\begin{DoxyCompactList}\small\item\em Production test. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ac3aaf5c3eec5b58c5be975b8b842d8e9}{A\+G\+C\+T\+E\+S\+T}~0x2\+B
+\begin{DoxyCompactList}\small\item\em A\+G\+C test. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a1b5997c11166c594b80d44bfde1cfa9c}{T\+E\+S\+T2}~0x2\+C
+\begin{DoxyCompactList}\small\item\em Various test settings. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aef8471770769d5643c8d0e9d49de0678}{T\+E\+S\+T1}~0x2\+D
+\begin{DoxyCompactList}\small\item\em Various test settings. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ae898d2284301fc88393371e470f8db52}{T\+E\+S\+T0}~0x2\+E
+\begin{DoxyCompactList}\small\item\em Various test settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Strobe commands}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a33f928e7de646c2942c2ff3d8b85f0f7}{S\+R\+E\+S}~0x30
+\begin{DoxyCompactList}\small\item\em Reset chip. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a50567015192abe4cc66cd2c1f2d3af43}{S\+F\+S\+T\+X\+O\+N}~0x31
+\begin{DoxyCompactList}\small\item\em Enable/calibrate freq synthesizer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a2ba866e663962a4971cfaa63ebbf101b}{S\+X\+O\+F\+F}~0x32
+\begin{DoxyCompactList}\small\item\em Turn off crystal oscillator. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a2e5a7fc6242912904ee264d30f7de82c}{S\+C\+A\+L}~0x33
+\begin{DoxyCompactList}\small\item\em Calibrate freq synthesizer \& disable. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ab2c756686b69cc7d7f8b94a3bb7805d7}{S\+R\+X}~0x34
+\begin{DoxyCompactList}\small\item\em Enable R\+X. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aacd744a917e61146ec8b7175b4761683}{S\+T\+X}~0x35
+\begin{DoxyCompactList}\small\item\em Enable T\+X. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aef368d9ea417d6c5df128fee7164cdd8}{S\+I\+D\+L\+E}~0x36
+\begin{DoxyCompactList}\small\item\em Exit R\+X / T\+X. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aefc6afd072a63b1cbf4faad2a598aa76}{S\+A\+F\+C}~0x37
+\begin{DoxyCompactList}\small\item\em A\+F\+C adjustment of freq synthesizer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a13bc96dbb8fe222006b5d6cbd09601cc}{S\+W\+O\+R}~0x38
+\begin{DoxyCompactList}\small\item\em Start automatic R\+X polling sequence. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a20caf81f2a416bdd4d30f40ab96b14c0}{S\+P\+W\+D}~0x39
+\begin{DoxyCompactList}\small\item\em Enter pwr down mode when C\+Sn goes hi. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a793903e47409c82e0b914da66c2d3885}{S\+F\+R\+X}~0x3\+A
+\begin{DoxyCompactList}\small\item\em Flush the R\+X F\+I\+F\+O buffer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aaf4806b0f66e2e4909e7d23aa4d4d981}{S\+F\+T\+X}~0x3\+B
+\begin{DoxyCompactList}\small\item\em Flush the T\+X F\+I\+F\+O buffer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ab0612d97465763e9a6d0d2153c54ff01}{S\+W\+O\+R\+R\+S\+T}~0x3\+C
+\begin{DoxyCompactList}\small\item\em Reset real time clock. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aa3d7d1f0fe23d7285647e73b9d2a8022}{S\+N\+O\+P}~0x3\+D
+\begin{DoxyCompactList}\small\item\em No operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Status registers}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_abf47da671d641e6da1802fd95e52e23b}{P\+A\+R\+T\+N\+U\+M}~0x30
+\begin{DoxyCompactList}\small\item\em Part number. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a1c6d5de492ac61ad29aec7aa9a436bbf}{V\+E\+R\+S\+I\+O\+N}~0x31
+\begin{DoxyCompactList}\small\item\em Current version number. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a34d16356d5a3448a2aacd8c80ff25270}{F\+R\+E\+Q\+E\+S\+T}~0x32
+\begin{DoxyCompactList}\small\item\em Frequency offset estimate. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a78336b0d46d50c8312a6b29044554ab3}{L\+Q\+I}~0x33
+\begin{DoxyCompactList}\small\item\em Demodulator estimate for link quality. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a91888bdc573835ec5a22972f6c7d69ba}{R\+S\+S\+I}~0x34
+\begin{DoxyCompactList}\small\item\em Received signal strength indication. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_aa469366522b44a259354ca58ccde0f93}{M\+A\+R\+C\+S\+T\+A\+T\+E}~0x35
+\begin{DoxyCompactList}\small\item\em Control state machine state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_afceafb2c4cfe329e00aca3170cef8b55}{W\+O\+R\+T\+I\+M\+E1}~0x36
+\begin{DoxyCompactList}\small\item\em High byte of W\+O\+R timer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a1da1e27efc55ce042befbac710370731}{W\+O\+R\+T\+I\+M\+E0}~0x37
+\begin{DoxyCompactList}\small\item\em Low byte of W\+O\+R timer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a92460c1fb268e0f30a23bb7163ffb465}{P\+K\+T\+S\+T\+A\+T\+U\+S}~0x38
+\begin{DoxyCompactList}\small\item\em Current G\+D\+Ox status and packet status. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a548602f9bb60705a5af3978d93786e41}{V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C}~0x39
+\begin{DoxyCompactList}\small\item\em Current setting from P\+L\+L cal module. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a9f180f03f3cd38aadc9e61001ba8d872}{T\+X\+B\+Y\+T\+E\+S}~0x3\+A
+\begin{DoxyCompactList}\small\item\em Underflow and \# of bytes in T\+X\+F\+I\+F\+O. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a8eca6a8fbb83bb59880f98786169519a}{R\+X\+B\+Y\+T\+E\+S}~0x3\+B
+\begin{DoxyCompactList}\small\item\em Overflow and \# of bytes in R\+X\+F\+I\+F\+O. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Masks for packet status register}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a2c4932ebcc1e0bcb3e4a7d8d8307453a}{Over\+Flow}~0b10000000
+\begin{DoxyCompactList}\small\item\em Masks off the overflow bit. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ade955c36d2c4e3902850236945010243}{F\+I\+F\+O\+\_\+\+Level}~0b01111111
+\begin{DoxyCompactList}\small\item\em Masks off the F\+I\+F\+O level. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ad77e5a88d672aa401d607c8bb65de994}{N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S}~0x7\+F
+\begin{DoxyCompactList}\small\item\em Mask \char`\"{}\# of bytes\char`\"{} field in \+\_\+\+R\+X\+B\+Y\+T\+E\+S. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Other memory locations}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a107f2eeb5b18f9e0b6f63050ef435445}{P\+A\+T\+A\+B\+L\+E}~0x3\+E
+\begin{DoxyCompactList}\small\item\em Address for P\+A\+T\+A\+B\+L\+E. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a1daa02e093ccc73ccaf55cddf7cb3732}{T\+X\+F\+I\+F\+O}~0x3\+F
+\begin{DoxyCompactList}\small\item\em Address for T\+X F\+I\+F\+O. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a8fa3f54307dbb4e9d5390197899393a5}{R\+X\+F\+I\+F\+O}~0x3\+F
+\begin{DoxyCompactList}\small\item\em Address for R\+X F\+I\+F\+O. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Masks for status bytes}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a1283f9201a61744100ef036377c0afa1}{L\+Q\+I\+\_\+\+R\+X}~0x01
+\begin{DoxyCompactList}\small\item\em Position of L\+Q\+I byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a6e747c4b63385af3521c8587c46c503d}{C\+R\+C\+\_\+\+O\+K}~0x80
+\begin{DoxyCompactList}\small\item\em Mask \char`\"{}\+C\+R\+C\+\_\+\+O\+K\char`\"{} bit within L\+Q\+I byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_af2964543d5f95ea44e56ac9dbf78aec0}{F\+I\+F\+O\+\_\+\+Bytes}~0b00001111
+\begin{DoxyCompactList}\small\item\em Mask the number of F\+I\+F\+O bytes in the status byte. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a51583b807e735146829f97c6d56fc062}{State\+\_\+\+Bits}~0b01110000
+\begin{DoxyCompactList}\small\item\em Masks off the state bits from the status byte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf State bit values}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a216a074e2762e5fa63a1baeef161abdd}{S\+B\+\_\+\+Idle}~0b00000000
+\begin{DoxyCompactList}\small\item\em Radio is in idle state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_af9a1c94baecbdd010da295f3a3b4ba15}{S\+B\+\_\+\+R\+X}~0b00010000
+\begin{DoxyCompactList}\small\item\em Radio is currently receiving. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a639b9ca0ca81cbd8bd14ad4d43691e70}{S\+B\+\_\+\+T\+X}~0b00100000
+\begin{DoxyCompactList}\small\item\em Radio is currently transmitting. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ac8c9b53d1d375aea229b44d4bd241373}{S\+B\+\_\+\+F\+S\+T\+X\+O\+N}~0b01000000
+\begin{DoxyCompactList}\small\item\em Radio is ready for Fast T\+X. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a3b201b92d8119aa11bdfd68ff6593192}{S\+B\+\_\+\+Settle}~0b01010000
+\begin{DoxyCompactList}\small\item\em Radio is waiting for P\+L\+L to settle. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_adeba6d2439171218748191e2d03ad523}{S\+B\+\_\+\+R\+X\+\_\+\+Over}~0b01100000
+\begin{DoxyCompactList}\small\item\em Radio R\+X Fifo has overflowed. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a73a5eb25cfacfc1072f3052e4267aab8}{S\+B\+\_\+\+T\+X\+\_\+\+Over}~0b01110000
+\begin{DoxyCompactList}\small\item\em Radio T\+X Fifo has underflowed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Definitions to support burst/single access\+:}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a614ae1783616ef41f49f3000c25f3540}{W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T}~0x40
+\begin{DoxyCompactList}\small\item\em Burst write bits. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a549850eb399ab873a7a7c37696adcd5a}{R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E}~0x80
+\begin{DoxyCompactList}\small\item\em Read bits. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_a49bb249f0a97c0bbfdcb2f8c54c0a41f}{R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T}~0x\+C0
+\begin{DoxyCompactList}\small\item\em Burst read bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Definitions for strobes}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_c110l_8h_a21b90494861c23d41ef1573c46a63513}{Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O}~0x00
+\begin{DoxyCompactList}\small\item\em Makes strobe return bytes in T\+X F\+I\+F\+O. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_c110l_8h_ad276f192d13d495ce9bbbf472e0197e2}{Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O}~0x80
+\begin{DoxyCompactList}\small\item\em Makes strobe return bytes in R\+X F\+I\+F\+O. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Contains definitions for the registers, strobes, and bit masks for the C\+C110l. 
+
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_c_c110l_8h_ac9f31f726d2933782e2efda7136a25fd}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!A\+D\+D\+R@{A\+D\+D\+R}}
+\index{A\+D\+D\+R@{A\+D\+D\+R}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{A\+D\+D\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+D\+R~0x09}\label{_c_c110l_8h_ac9f31f726d2933782e2efda7136a25fd}
+
+
+Device address. 
+
+\hypertarget{_c_c110l_8h_a2b146a11145e2370da8db5044aba0afc}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!A\+G\+C\+C\+T\+R\+L0@{A\+G\+C\+C\+T\+R\+L0}}
+\index{A\+G\+C\+C\+T\+R\+L0@{A\+G\+C\+C\+T\+R\+L0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{A\+G\+C\+C\+T\+R\+L0}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+G\+C\+C\+T\+R\+L0~0x1\+D}\label{_c_c110l_8h_a2b146a11145e2370da8db5044aba0afc}
+
+
+A\+G\+C control. 
+
+\hypertarget{_c_c110l_8h_a2620a8b1c9a344fb7989502946689848}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!A\+G\+C\+C\+T\+R\+L1@{A\+G\+C\+C\+T\+R\+L1}}
+\index{A\+G\+C\+C\+T\+R\+L1@{A\+G\+C\+C\+T\+R\+L1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{A\+G\+C\+C\+T\+R\+L1}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+G\+C\+C\+T\+R\+L1~0x1\+C}\label{_c_c110l_8h_a2620a8b1c9a344fb7989502946689848}
+
+
+A\+G\+C control. 
+
+\hypertarget{_c_c110l_8h_a617370d4b4b2a1a1368739ee172ecf19}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!A\+G\+C\+C\+T\+R\+L2@{A\+G\+C\+C\+T\+R\+L2}}
+\index{A\+G\+C\+C\+T\+R\+L2@{A\+G\+C\+C\+T\+R\+L2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{A\+G\+C\+C\+T\+R\+L2}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+G\+C\+C\+T\+R\+L2~0x1\+B}\label{_c_c110l_8h_a617370d4b4b2a1a1368739ee172ecf19}
+
+
+A\+G\+C control. 
+
+\hypertarget{_c_c110l_8h_ac3aaf5c3eec5b58c5be975b8b842d8e9}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!A\+G\+C\+T\+E\+S\+T@{A\+G\+C\+T\+E\+S\+T}}
+\index{A\+G\+C\+T\+E\+S\+T@{A\+G\+C\+T\+E\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{A\+G\+C\+T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+G\+C\+T\+E\+S\+T~0x2\+B}\label{_c_c110l_8h_ac3aaf5c3eec5b58c5be975b8b842d8e9}
+
+
+A\+G\+C test. 
+
+\hypertarget{_c_c110l_8h_a9ad1a221b397cdae7cebcf1c248b2b30}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!B\+S\+C\+F\+G@{B\+S\+C\+F\+G}}
+\index{B\+S\+C\+F\+G@{B\+S\+C\+F\+G}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{B\+S\+C\+F\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+S\+C\+F\+G~0x1\+A}\label{_c_c110l_8h_a9ad1a221b397cdae7cebcf1c248b2b30}
+
+
+Bit Synchronization configuration. 
+
+\hypertarget{_c_c110l_8h_a27cd13ed559b193e4a35fc9a6005b1ae}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!C\+H\+A\+N\+N\+R@{C\+H\+A\+N\+N\+R}}
+\index{C\+H\+A\+N\+N\+R@{C\+H\+A\+N\+N\+R}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{C\+H\+A\+N\+N\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+A\+N\+N\+R~0x0\+A}\label{_c_c110l_8h_a27cd13ed559b193e4a35fc9a6005b1ae}
+
+
+Channel number. 
+
+\hypertarget{_c_c110l_8h_a6e747c4b63385af3521c8587c46c503d}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!C\+R\+C\+\_\+\+O\+K@{C\+R\+C\+\_\+\+O\+K}}
+\index{C\+R\+C\+\_\+\+O\+K@{C\+R\+C\+\_\+\+O\+K}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{C\+R\+C\+\_\+\+O\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+R\+C\+\_\+\+O\+K~0x80}\label{_c_c110l_8h_a6e747c4b63385af3521c8587c46c503d}
+
+
+Mask \char`\"{}\+C\+R\+C\+\_\+\+O\+K\char`\"{} bit within L\+Q\+I byte. 
+
+\hypertarget{_c_c110l_8h_afda7e6f9fb7386c73859497a6bfcf12c}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!D\+E\+V\+I\+A\+T\+N@{D\+E\+V\+I\+A\+T\+N}}
+\index{D\+E\+V\+I\+A\+T\+N@{D\+E\+V\+I\+A\+T\+N}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{D\+E\+V\+I\+A\+T\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+V\+I\+A\+T\+N~0x15}\label{_c_c110l_8h_afda7e6f9fb7386c73859497a6bfcf12c}
+
+
+Modem deviation setting. 
+
+\hypertarget{_c_c110l_8h_af2964543d5f95ea44e56ac9dbf78aec0}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+I\+F\+O\+\_\+\+Bytes@{F\+I\+F\+O\+\_\+\+Bytes}}
+\index{F\+I\+F\+O\+\_\+\+Bytes@{F\+I\+F\+O\+\_\+\+Bytes}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+I\+F\+O\+\_\+\+Bytes}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+I\+F\+O\+\_\+\+Bytes~0b00001111}\label{_c_c110l_8h_af2964543d5f95ea44e56ac9dbf78aec0}
+
+
+Mask the number of F\+I\+F\+O bytes in the status byte. 
+
+\hypertarget{_c_c110l_8h_ade955c36d2c4e3902850236945010243}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+I\+F\+O\+\_\+\+Level@{F\+I\+F\+O\+\_\+\+Level}}
+\index{F\+I\+F\+O\+\_\+\+Level@{F\+I\+F\+O\+\_\+\+Level}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+I\+F\+O\+\_\+\+Level}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+I\+F\+O\+\_\+\+Level~0b01111111}\label{_c_c110l_8h_ade955c36d2c4e3902850236945010243}
+
+
+Masks off the F\+I\+F\+O level. 
+
+\hypertarget{_c_c110l_8h_a33642600de6c703bb5122234d4a8dec6}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+I\+F\+O\+T\+H\+R@{F\+I\+F\+O\+T\+H\+R}}
+\index{F\+I\+F\+O\+T\+H\+R@{F\+I\+F\+O\+T\+H\+R}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+I\+F\+O\+T\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+I\+F\+O\+T\+H\+R~0x03}\label{_c_c110l_8h_a33642600de6c703bb5122234d4a8dec6}
+
+
+R\+X F\+I\+F\+O and T\+X F\+I\+F\+O thresholds. 
+
+\hypertarget{_c_c110l_8h_ae24810e04beb0d2178a92e0673499496}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+O\+C\+C\+F\+G@{F\+O\+C\+C\+F\+G}}
+\index{F\+O\+C\+C\+F\+G@{F\+O\+C\+C\+F\+G}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+O\+C\+C\+F\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+C\+C\+F\+G~0x19}\label{_c_c110l_8h_ae24810e04beb0d2178a92e0673499496}
+
+
+Frequency Offset Compensation config. 
+
+\hypertarget{_c_c110l_8h_a779f4559a0136208a2c990ee0ba5124f}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+R\+E\+N\+D0@{F\+R\+E\+N\+D0}}
+\index{F\+R\+E\+N\+D0@{F\+R\+E\+N\+D0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+R\+E\+N\+D0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+N\+D0~0x22}\label{_c_c110l_8h_a779f4559a0136208a2c990ee0ba5124f}
+
+
+Front end T\+X configuration. 
+
+\hypertarget{_c_c110l_8h_a07c63bb610a23f75a0b3ebfef8ae65e7}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+R\+E\+N\+D1@{F\+R\+E\+N\+D1}}
+\index{F\+R\+E\+N\+D1@{F\+R\+E\+N\+D1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+R\+E\+N\+D1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+N\+D1~0x21}\label{_c_c110l_8h_a07c63bb610a23f75a0b3ebfef8ae65e7}
+
+
+Front end R\+X configuration. 
+
+\hypertarget{_c_c110l_8h_adf6c435c455a2f169dd8b0361cdcbb1c}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+R\+E\+Q0@{F\+R\+E\+Q0}}
+\index{F\+R\+E\+Q0@{F\+R\+E\+Q0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+R\+E\+Q0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+Q0~0x0\+F}\label{_c_c110l_8h_adf6c435c455a2f169dd8b0361cdcbb1c}
+
+
+Frequency control word, low byte. 
+
+\hypertarget{_c_c110l_8h_a80cabcfa28f947501898b1cdc2ffa5df}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+R\+E\+Q1@{F\+R\+E\+Q1}}
+\index{F\+R\+E\+Q1@{F\+R\+E\+Q1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+R\+E\+Q1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+Q1~0x0\+E}\label{_c_c110l_8h_a80cabcfa28f947501898b1cdc2ffa5df}
+
+
+Frequency control word, middle byte. 
+
+\hypertarget{_c_c110l_8h_a1c7beac2b32c50b9c86877e146c442c3}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+R\+E\+Q2@{F\+R\+E\+Q2}}
+\index{F\+R\+E\+Q2@{F\+R\+E\+Q2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+R\+E\+Q2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+Q2~0x0\+D}\label{_c_c110l_8h_a1c7beac2b32c50b9c86877e146c442c3}
+
+
+Frequency control word, high byte. 
+
+\hypertarget{_c_c110l_8h_a34d16356d5a3448a2aacd8c80ff25270}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+R\+E\+Q\+E\+S\+T@{F\+R\+E\+Q\+E\+S\+T}}
+\index{F\+R\+E\+Q\+E\+S\+T@{F\+R\+E\+Q\+E\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+R\+E\+Q\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+R\+E\+Q\+E\+S\+T~0x32}\label{_c_c110l_8h_a34d16356d5a3448a2aacd8c80ff25270}
+
+
+Frequency offset estimate. 
+
+\hypertarget{_c_c110l_8h_a335ebafae859135220b54e93e8deeec5}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+C\+A\+L0@{F\+S\+C\+A\+L0}}
+\index{F\+S\+C\+A\+L0@{F\+S\+C\+A\+L0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+C\+A\+L0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+C\+A\+L0~0x26}\label{_c_c110l_8h_a335ebafae859135220b54e93e8deeec5}
+
+
+Frequency synthesizer calibration. 
+
+\hypertarget{_c_c110l_8h_a88d4df9c7bb9e0e8f5bc0ab2266de1f3}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+C\+A\+L1@{F\+S\+C\+A\+L1}}
+\index{F\+S\+C\+A\+L1@{F\+S\+C\+A\+L1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+C\+A\+L1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+C\+A\+L1~0x25}\label{_c_c110l_8h_a88d4df9c7bb9e0e8f5bc0ab2266de1f3}
+
+
+Frequency synthesizer calibration. 
+
+\hypertarget{_c_c110l_8h_a85adcb436e62701a8a35af467e70e16b}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+C\+A\+L2@{F\+S\+C\+A\+L2}}
+\index{F\+S\+C\+A\+L2@{F\+S\+C\+A\+L2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+C\+A\+L2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+C\+A\+L2~0x24}\label{_c_c110l_8h_a85adcb436e62701a8a35af467e70e16b}
+
+
+Frequency synthesizer calibration. 
+
+\hypertarget{_c_c110l_8h_ac86903ecd6b7d9921060ec81cb3a8ab3}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+C\+A\+L3@{F\+S\+C\+A\+L3}}
+\index{F\+S\+C\+A\+L3@{F\+S\+C\+A\+L3}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+C\+A\+L3}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+C\+A\+L3~0x23}\label{_c_c110l_8h_ac86903ecd6b7d9921060ec81cb3a8ab3}
+
+
+Frequency synthesizer calibration. 
+
+\hypertarget{_c_c110l_8h_af50bd30a5ae1be32bf83c054552cbc8a}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+C\+T\+R\+L0@{F\+S\+C\+T\+R\+L0}}
+\index{F\+S\+C\+T\+R\+L0@{F\+S\+C\+T\+R\+L0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+C\+T\+R\+L0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+C\+T\+R\+L0~0x0\+C}\label{_c_c110l_8h_af50bd30a5ae1be32bf83c054552cbc8a}
+
+
+Frequency synthesizer control. 
+
+\hypertarget{_c_c110l_8h_a8ff86e3979c5f096719c1aaacedd2a82}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+C\+T\+R\+L1@{F\+S\+C\+T\+R\+L1}}
+\index{F\+S\+C\+T\+R\+L1@{F\+S\+C\+T\+R\+L1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+C\+T\+R\+L1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+C\+T\+R\+L1~0x0\+B}\label{_c_c110l_8h_a8ff86e3979c5f096719c1aaacedd2a82}
+
+
+Frequency synthesizer control. 
+
+\hypertarget{_c_c110l_8h_a778654dd7a32e2e6c25dc0c1de5e072f}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!F\+S\+T\+E\+S\+T@{F\+S\+T\+E\+S\+T}}
+\index{F\+S\+T\+E\+S\+T@{F\+S\+T\+E\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{F\+S\+T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+S\+T\+E\+S\+T~0x29}\label{_c_c110l_8h_a778654dd7a32e2e6c25dc0c1de5e072f}
+
+
+Frequency synthesizer cal control. 
+
+\hypertarget{_c_c110l_8h_ad276f192d13d495ce9bbbf472e0197e2}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O@{Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O}}
+\index{Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O@{Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O~0x80}\label{_c_c110l_8h_ad276f192d13d495ce9bbbf472e0197e2}
+
+
+Makes strobe return bytes in R\+X F\+I\+F\+O. 
+
+\hypertarget{_c_c110l_8h_a21b90494861c23d41ef1573c46a63513}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O@{Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O}}
+\index{Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O@{Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O~0x00}\label{_c_c110l_8h_a21b90494861c23d41ef1573c46a63513}
+
+
+Makes strobe return bytes in T\+X F\+I\+F\+O. 
+
+\hypertarget{_c_c110l_8h_aa05cfcf3fc75713dc691d1ead9e05736}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!I\+O\+C\+F\+G0@{I\+O\+C\+F\+G0}}
+\index{I\+O\+C\+F\+G0@{I\+O\+C\+F\+G0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{I\+O\+C\+F\+G0}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+O\+C\+F\+G0~0x02}\label{_c_c110l_8h_aa05cfcf3fc75713dc691d1ead9e05736}
+
+
+G\+D\+O0 output pin configuration. 
+
+\hypertarget{_c_c110l_8h_a53a1d054e4f61a08fce122ac0fbd520e}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!I\+O\+C\+F\+G1@{I\+O\+C\+F\+G1}}
+\index{I\+O\+C\+F\+G1@{I\+O\+C\+F\+G1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{I\+O\+C\+F\+G1}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+O\+C\+F\+G1~0x01}\label{_c_c110l_8h_a53a1d054e4f61a08fce122ac0fbd520e}
+
+
+G\+D\+O1 output pin configuration. 
+
+\hypertarget{_c_c110l_8h_a9da836dbbf177b6f1912355cf62cb73d}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!I\+O\+C\+F\+G2@{I\+O\+C\+F\+G2}}
+\index{I\+O\+C\+F\+G2@{I\+O\+C\+F\+G2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{I\+O\+C\+F\+G2}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+O\+C\+F\+G2~0x00}\label{_c_c110l_8h_a9da836dbbf177b6f1912355cf62cb73d}
+
+
+G\+D\+O2 output pin configuration. 
+
+\hypertarget{_c_c110l_8h_a78336b0d46d50c8312a6b29044554ab3}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!L\+Q\+I@{L\+Q\+I}}
+\index{L\+Q\+I@{L\+Q\+I}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{L\+Q\+I}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+Q\+I~0x33}\label{_c_c110l_8h_a78336b0d46d50c8312a6b29044554ab3}
+
+
+Demodulator estimate for link quality. 
+
+\hypertarget{_c_c110l_8h_a1283f9201a61744100ef036377c0afa1}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!L\+Q\+I\+\_\+\+R\+X@{L\+Q\+I\+\_\+\+R\+X}}
+\index{L\+Q\+I\+\_\+\+R\+X@{L\+Q\+I\+\_\+\+R\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{L\+Q\+I\+\_\+\+R\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+Q\+I\+\_\+\+R\+X~0x01}\label{_c_c110l_8h_a1283f9201a61744100ef036377c0afa1}
+
+
+Position of L\+Q\+I byte. 
+
+\hypertarget{_c_c110l_8h_aa469366522b44a259354ca58ccde0f93}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+A\+R\+C\+S\+T\+A\+T\+E@{M\+A\+R\+C\+S\+T\+A\+T\+E}}
+\index{M\+A\+R\+C\+S\+T\+A\+T\+E@{M\+A\+R\+C\+S\+T\+A\+T\+E}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+A\+R\+C\+S\+T\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+R\+C\+S\+T\+A\+T\+E~0x35}\label{_c_c110l_8h_aa469366522b44a259354ca58ccde0f93}
+
+
+Control state machine state. 
+
+\hypertarget{_c_c110l_8h_a8b544cfc24a995246f2a973e327b48e1}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+C\+S\+M0@{M\+C\+S\+M0}}
+\index{M\+C\+S\+M0@{M\+C\+S\+M0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+C\+S\+M0}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+C\+S\+M0~0x18}\label{_c_c110l_8h_a8b544cfc24a995246f2a973e327b48e1}
+
+
+Main Radio Cntrl State Machine config. 
+
+\hypertarget{_c_c110l_8h_af9d17a0852a5dc803395aa5a5e9998f0}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+C\+S\+M1@{M\+C\+S\+M1}}
+\index{M\+C\+S\+M1@{M\+C\+S\+M1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+C\+S\+M1}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+C\+S\+M1~0x17}\label{_c_c110l_8h_af9d17a0852a5dc803395aa5a5e9998f0}
+
+
+Main Radio Cntrl State Machine config. 
+
+\hypertarget{_c_c110l_8h_aa049f54d36d36cd25df7fb1a80913fc1}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+C\+S\+M2@{M\+C\+S\+M2}}
+\index{M\+C\+S\+M2@{M\+C\+S\+M2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+C\+S\+M2}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+C\+S\+M2~0x16}\label{_c_c110l_8h_aa049f54d36d36cd25df7fb1a80913fc1}
+
+
+Main Radio Cntrl State Machine config. 
+
+\hypertarget{_c_c110l_8h_a6ad36a2fd474d8b4c094b6a68ebe36a2}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+D\+M\+C\+F\+G0@{M\+D\+M\+C\+F\+G0}}
+\index{M\+D\+M\+C\+F\+G0@{M\+D\+M\+C\+F\+G0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+D\+M\+C\+F\+G0}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+D\+M\+C\+F\+G0~0x14}\label{_c_c110l_8h_a6ad36a2fd474d8b4c094b6a68ebe36a2}
+
+
+Modem configuration. 
+
+\hypertarget{_c_c110l_8h_a3caad8c7db9e2a843da62486ba20a5bc}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+D\+M\+C\+F\+G1@{M\+D\+M\+C\+F\+G1}}
+\index{M\+D\+M\+C\+F\+G1@{M\+D\+M\+C\+F\+G1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+D\+M\+C\+F\+G1}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+D\+M\+C\+F\+G1~0x13}\label{_c_c110l_8h_a3caad8c7db9e2a843da62486ba20a5bc}
+
+
+Modem configuration. 
+
+\hypertarget{_c_c110l_8h_ac5750cb986d051c6489f85a9051f1038}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+D\+M\+C\+F\+G2@{M\+D\+M\+C\+F\+G2}}
+\index{M\+D\+M\+C\+F\+G2@{M\+D\+M\+C\+F\+G2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+D\+M\+C\+F\+G2}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+D\+M\+C\+F\+G2~0x12}\label{_c_c110l_8h_ac5750cb986d051c6489f85a9051f1038}
+
+
+Modem configuration. 
+
+\hypertarget{_c_c110l_8h_a589e4d4ef33f73e8b2db027147ba7be4}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+D\+M\+C\+F\+G3@{M\+D\+M\+C\+F\+G3}}
+\index{M\+D\+M\+C\+F\+G3@{M\+D\+M\+C\+F\+G3}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+D\+M\+C\+F\+G3}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+D\+M\+C\+F\+G3~0x11}\label{_c_c110l_8h_a589e4d4ef33f73e8b2db027147ba7be4}
+
+
+Modem configuration. 
+
+\hypertarget{_c_c110l_8h_a38cf085a5cfeb29e4b1b90ae764047b2}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!M\+D\+M\+C\+F\+G4@{M\+D\+M\+C\+F\+G4}}
+\index{M\+D\+M\+C\+F\+G4@{M\+D\+M\+C\+F\+G4}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{M\+D\+M\+C\+F\+G4}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+D\+M\+C\+F\+G4~0x10}\label{_c_c110l_8h_a38cf085a5cfeb29e4b1b90ae764047b2}
+
+
+Modem configuration. 
+
+\hypertarget{_c_c110l_8h_ad77e5a88d672aa401d607c8bb65de994}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S@{N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S}}
+\index{N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S@{N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+U\+M\+\_\+\+R\+X\+B\+Y\+T\+E\+S~0x7\+F}\label{_c_c110l_8h_ad77e5a88d672aa401d607c8bb65de994}
+
+
+Mask \char`\"{}\# of bytes\char`\"{} field in \+\_\+\+R\+X\+B\+Y\+T\+E\+S. 
+
+\hypertarget{_c_c110l_8h_a2c4932ebcc1e0bcb3e4a7d8d8307453a}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!Over\+Flow@{Over\+Flow}}
+\index{Over\+Flow@{Over\+Flow}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{Over\+Flow}]{\setlength{\rightskip}{0pt plus 5cm}\#define Over\+Flow~0b10000000}\label{_c_c110l_8h_a2c4932ebcc1e0bcb3e4a7d8d8307453a}
+
+
+Masks off the overflow bit. 
+
+\hypertarget{_c_c110l_8h_abf47da671d641e6da1802fd95e52e23b}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+A\+R\+T\+N\+U\+M@{P\+A\+R\+T\+N\+U\+M}}
+\index{P\+A\+R\+T\+N\+U\+M@{P\+A\+R\+T\+N\+U\+M}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+A\+R\+T\+N\+U\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+R\+T\+N\+U\+M~0x30}\label{_c_c110l_8h_abf47da671d641e6da1802fd95e52e23b}
+
+
+Part number. 
+
+\hypertarget{_c_c110l_8h_a107f2eeb5b18f9e0b6f63050ef435445}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+A\+T\+A\+B\+L\+E@{P\+A\+T\+A\+B\+L\+E}}
+\index{P\+A\+T\+A\+B\+L\+E@{P\+A\+T\+A\+B\+L\+E}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+A\+T\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+T\+A\+B\+L\+E~0x3\+E}\label{_c_c110l_8h_a107f2eeb5b18f9e0b6f63050ef435445}
+
+
+Address for P\+A\+T\+A\+B\+L\+E. 
+
+\hypertarget{_c_c110l_8h_a47cb7d5d48dd0e71781409815d4fbbfa}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+K\+T\+C\+T\+R\+L0@{P\+K\+T\+C\+T\+R\+L0}}
+\index{P\+K\+T\+C\+T\+R\+L0@{P\+K\+T\+C\+T\+R\+L0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+K\+T\+C\+T\+R\+L0}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+K\+T\+C\+T\+R\+L0~0x08}\label{_c_c110l_8h_a47cb7d5d48dd0e71781409815d4fbbfa}
+
+
+Packet automation control. 
+
+\hypertarget{_c_c110l_8h_a677bd90f5ee6fe7cf9e1388785b6b1bc}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+K\+T\+C\+T\+R\+L1@{P\+K\+T\+C\+T\+R\+L1}}
+\index{P\+K\+T\+C\+T\+R\+L1@{P\+K\+T\+C\+T\+R\+L1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+K\+T\+C\+T\+R\+L1}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+K\+T\+C\+T\+R\+L1~0x07}\label{_c_c110l_8h_a677bd90f5ee6fe7cf9e1388785b6b1bc}
+
+
+Packet automation control. 
+
+\hypertarget{_c_c110l_8h_aeb4aac5f7c9599c10c864d0353cf6bce}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+K\+T\+L\+E\+N@{P\+K\+T\+L\+E\+N}}
+\index{P\+K\+T\+L\+E\+N@{P\+K\+T\+L\+E\+N}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+K\+T\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+K\+T\+L\+E\+N~0x06}\label{_c_c110l_8h_aeb4aac5f7c9599c10c864d0353cf6bce}
+
+
+Packet length. 
+
+\hypertarget{_c_c110l_8h_a92460c1fb268e0f30a23bb7163ffb465}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+K\+T\+S\+T\+A\+T\+U\+S@{P\+K\+T\+S\+T\+A\+T\+U\+S}}
+\index{P\+K\+T\+S\+T\+A\+T\+U\+S@{P\+K\+T\+S\+T\+A\+T\+U\+S}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+K\+T\+S\+T\+A\+T\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+K\+T\+S\+T\+A\+T\+U\+S~0x38}\label{_c_c110l_8h_a92460c1fb268e0f30a23bb7163ffb465}
+
+
+Current G\+D\+Ox status and packet status. 
+
+\hypertarget{_c_c110l_8h_a64646998088bad22debf7f6529bc9164}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!P\+T\+E\+S\+T@{P\+T\+E\+S\+T}}
+\index{P\+T\+E\+S\+T@{P\+T\+E\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{P\+T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+T\+E\+S\+T~0x2\+A}\label{_c_c110l_8h_a64646998088bad22debf7f6529bc9164}
+
+
+Production test. 
+
+\hypertarget{_c_c110l_8h_a034b2b62a2deaa00e2fac556c0c4bf0c}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+C\+C\+T\+R\+L0@{R\+C\+C\+T\+R\+L0}}
+\index{R\+C\+C\+T\+R\+L0@{R\+C\+C\+T\+R\+L0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+C\+C\+T\+R\+L0}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+C\+C\+T\+R\+L0~0x28}\label{_c_c110l_8h_a034b2b62a2deaa00e2fac556c0c4bf0c}
+
+
+R\+C oscillator configuration. 
+
+\hypertarget{_c_c110l_8h_a46f432c892af43d8a437e077bafaae07}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+C\+C\+T\+R\+L1@{R\+C\+C\+T\+R\+L1}}
+\index{R\+C\+C\+T\+R\+L1@{R\+C\+C\+T\+R\+L1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+C\+C\+T\+R\+L1}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+C\+C\+T\+R\+L1~0x27}\label{_c_c110l_8h_a46f432c892af43d8a437e077bafaae07}
+
+
+R\+C oscillator configuration. 
+
+\hypertarget{_c_c110l_8h_a49bb249f0a97c0bbfdcb2f8c54c0a41f}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T@{R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T}}
+\index{R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T@{R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+\_\+\+B\+U\+R\+S\+T~0x\+C0}\label{_c_c110l_8h_a49bb249f0a97c0bbfdcb2f8c54c0a41f}
+
+
+Burst read bits. 
+
+\hypertarget{_c_c110l_8h_a549850eb399ab873a7a7c37696adcd5a}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E@{R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E}}
+\index{R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E@{R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+L\+E~0x80}\label{_c_c110l_8h_a549850eb399ab873a7a7c37696adcd5a}
+
+
+Read bits. 
+
+\hypertarget{_c_c110l_8h_a91888bdc573835ec5a22972f6c7d69ba}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+S\+S\+I@{R\+S\+S\+I}}
+\index{R\+S\+S\+I@{R\+S\+S\+I}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+S\+S\+I}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+S\+S\+I~0x34}\label{_c_c110l_8h_a91888bdc573835ec5a22972f6c7d69ba}
+
+
+Received signal strength indication. 
+
+\hypertarget{_c_c110l_8h_a8eca6a8fbb83bb59880f98786169519a}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+X\+B\+Y\+T\+E\+S@{R\+X\+B\+Y\+T\+E\+S}}
+\index{R\+X\+B\+Y\+T\+E\+S@{R\+X\+B\+Y\+T\+E\+S}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+X\+B\+Y\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+X\+B\+Y\+T\+E\+S~0x3\+B}\label{_c_c110l_8h_a8eca6a8fbb83bb59880f98786169519a}
+
+
+Overflow and \# of bytes in R\+X\+F\+I\+F\+O. 
+
+\hypertarget{_c_c110l_8h_a8fa3f54307dbb4e9d5390197899393a5}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!R\+X\+F\+I\+F\+O@{R\+X\+F\+I\+F\+O}}
+\index{R\+X\+F\+I\+F\+O@{R\+X\+F\+I\+F\+O}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{R\+X\+F\+I\+F\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+X\+F\+I\+F\+O~0x3\+F}\label{_c_c110l_8h_a8fa3f54307dbb4e9d5390197899393a5}
+
+
+Address for R\+X F\+I\+F\+O. 
+
+\hypertarget{_c_c110l_8h_aefc6afd072a63b1cbf4faad2a598aa76}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+A\+F\+C@{S\+A\+F\+C}}
+\index{S\+A\+F\+C@{S\+A\+F\+C}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+A\+F\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+F\+C~0x37}\label{_c_c110l_8h_aefc6afd072a63b1cbf4faad2a598aa76}
+
+
+A\+F\+C adjustment of freq synthesizer. 
+
+\hypertarget{_c_c110l_8h_ac8c9b53d1d375aea229b44d4bd241373}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+F\+S\+T\+X\+O\+N@{S\+B\+\_\+\+F\+S\+T\+X\+O\+N}}
+\index{S\+B\+\_\+\+F\+S\+T\+X\+O\+N@{S\+B\+\_\+\+F\+S\+T\+X\+O\+N}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+F\+S\+T\+X\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+F\+S\+T\+X\+O\+N~0b01000000}\label{_c_c110l_8h_ac8c9b53d1d375aea229b44d4bd241373}
+
+
+Radio is ready for Fast T\+X. 
+
+\hypertarget{_c_c110l_8h_a216a074e2762e5fa63a1baeef161abdd}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+Idle@{S\+B\+\_\+\+Idle}}
+\index{S\+B\+\_\+\+Idle@{S\+B\+\_\+\+Idle}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+Idle}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+Idle~0b00000000}\label{_c_c110l_8h_a216a074e2762e5fa63a1baeef161abdd}
+
+
+Radio is in idle state. 
+
+\hypertarget{_c_c110l_8h_af9a1c94baecbdd010da295f3a3b4ba15}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+R\+X@{S\+B\+\_\+\+R\+X}}
+\index{S\+B\+\_\+\+R\+X@{S\+B\+\_\+\+R\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+R\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+R\+X~0b00010000}\label{_c_c110l_8h_af9a1c94baecbdd010da295f3a3b4ba15}
+
+
+Radio is currently receiving. 
+
+\hypertarget{_c_c110l_8h_adeba6d2439171218748191e2d03ad523}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+R\+X\+\_\+\+Over@{S\+B\+\_\+\+R\+X\+\_\+\+Over}}
+\index{S\+B\+\_\+\+R\+X\+\_\+\+Over@{S\+B\+\_\+\+R\+X\+\_\+\+Over}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+R\+X\+\_\+\+Over}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+R\+X\+\_\+\+Over~0b01100000}\label{_c_c110l_8h_adeba6d2439171218748191e2d03ad523}
+
+
+Radio R\+X Fifo has overflowed. 
+
+\hypertarget{_c_c110l_8h_a3b201b92d8119aa11bdfd68ff6593192}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+Settle@{S\+B\+\_\+\+Settle}}
+\index{S\+B\+\_\+\+Settle@{S\+B\+\_\+\+Settle}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+Settle}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+Settle~0b01010000}\label{_c_c110l_8h_a3b201b92d8119aa11bdfd68ff6593192}
+
+
+Radio is waiting for P\+L\+L to settle. 
+
+\hypertarget{_c_c110l_8h_a639b9ca0ca81cbd8bd14ad4d43691e70}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+T\+X@{S\+B\+\_\+\+T\+X}}
+\index{S\+B\+\_\+\+T\+X@{S\+B\+\_\+\+T\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+T\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+T\+X~0b00100000}\label{_c_c110l_8h_a639b9ca0ca81cbd8bd14ad4d43691e70}
+
+
+Radio is currently transmitting. 
+
+\hypertarget{_c_c110l_8h_a73a5eb25cfacfc1072f3052e4267aab8}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+B\+\_\+\+T\+X\+\_\+\+Over@{S\+B\+\_\+\+T\+X\+\_\+\+Over}}
+\index{S\+B\+\_\+\+T\+X\+\_\+\+Over@{S\+B\+\_\+\+T\+X\+\_\+\+Over}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+B\+\_\+\+T\+X\+\_\+\+Over}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B\+\_\+\+T\+X\+\_\+\+Over~0b01110000}\label{_c_c110l_8h_a73a5eb25cfacfc1072f3052e4267aab8}
+
+
+Radio T\+X Fifo has underflowed. 
+
+\hypertarget{_c_c110l_8h_a2e5a7fc6242912904ee264d30f7de82c}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+C\+A\+L@{S\+C\+A\+L}}
+\index{S\+C\+A\+L@{S\+C\+A\+L}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+C\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+A\+L~0x33}\label{_c_c110l_8h_a2e5a7fc6242912904ee264d30f7de82c}
+
+
+Calibrate freq synthesizer \& disable. 
+
+\hypertarget{_c_c110l_8h_a793903e47409c82e0b914da66c2d3885}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+F\+R\+X@{S\+F\+R\+X}}
+\index{S\+F\+R\+X@{S\+F\+R\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+F\+R\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+F\+R\+X~0x3\+A}\label{_c_c110l_8h_a793903e47409c82e0b914da66c2d3885}
+
+
+Flush the R\+X F\+I\+F\+O buffer. 
+
+\hypertarget{_c_c110l_8h_a50567015192abe4cc66cd2c1f2d3af43}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+F\+S\+T\+X\+O\+N@{S\+F\+S\+T\+X\+O\+N}}
+\index{S\+F\+S\+T\+X\+O\+N@{S\+F\+S\+T\+X\+O\+N}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+F\+S\+T\+X\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+F\+S\+T\+X\+O\+N~0x31}\label{_c_c110l_8h_a50567015192abe4cc66cd2c1f2d3af43}
+
+
+Enable/calibrate freq synthesizer. 
+
+\hypertarget{_c_c110l_8h_aaf4806b0f66e2e4909e7d23aa4d4d981}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+F\+T\+X@{S\+F\+T\+X}}
+\index{S\+F\+T\+X@{S\+F\+T\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+F\+T\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+F\+T\+X~0x3\+B}\label{_c_c110l_8h_aaf4806b0f66e2e4909e7d23aa4d4d981}
+
+
+Flush the T\+X F\+I\+F\+O buffer. 
+
+\hypertarget{_c_c110l_8h_aef368d9ea417d6c5df128fee7164cdd8}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+I\+D\+L\+E@{S\+I\+D\+L\+E}}
+\index{S\+I\+D\+L\+E@{S\+I\+D\+L\+E}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+I\+D\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+I\+D\+L\+E~0x36}\label{_c_c110l_8h_aef368d9ea417d6c5df128fee7164cdd8}
+
+
+Exit R\+X / T\+X. 
+
+\hypertarget{_c_c110l_8h_aa3d7d1f0fe23d7285647e73b9d2a8022}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+N\+O\+P@{S\+N\+O\+P}}
+\index{S\+N\+O\+P@{S\+N\+O\+P}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+N\+O\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+N\+O\+P~0x3\+D}\label{_c_c110l_8h_aa3d7d1f0fe23d7285647e73b9d2a8022}
+
+
+No operation. 
+
+\hypertarget{_c_c110l_8h_a20caf81f2a416bdd4d30f40ab96b14c0}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+P\+W\+D@{S\+P\+W\+D}}
+\index{S\+P\+W\+D@{S\+P\+W\+D}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+P\+W\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+W\+D~0x39}\label{_c_c110l_8h_a20caf81f2a416bdd4d30f40ab96b14c0}
+
+
+Enter pwr down mode when C\+Sn goes hi. 
+
+\hypertarget{_c_c110l_8h_a33f928e7de646c2942c2ff3d8b85f0f7}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+R\+E\+S@{S\+R\+E\+S}}
+\index{S\+R\+E\+S@{S\+R\+E\+S}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+R\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+R\+E\+S~0x30}\label{_c_c110l_8h_a33f928e7de646c2942c2ff3d8b85f0f7}
+
+
+Reset chip. 
+
+\hypertarget{_c_c110l_8h_ab2c756686b69cc7d7f8b94a3bb7805d7}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+R\+X@{S\+R\+X}}
+\index{S\+R\+X@{S\+R\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+R\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+R\+X~0x34}\label{_c_c110l_8h_ab2c756686b69cc7d7f8b94a3bb7805d7}
+
+
+Enable R\+X. 
+
+\hypertarget{_c_c110l_8h_a51583b807e735146829f97c6d56fc062}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!State\+\_\+\+Bits@{State\+\_\+\+Bits}}
+\index{State\+\_\+\+Bits@{State\+\_\+\+Bits}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{State\+\_\+\+Bits}]{\setlength{\rightskip}{0pt plus 5cm}\#define State\+\_\+\+Bits~0b01110000}\label{_c_c110l_8h_a51583b807e735146829f97c6d56fc062}
+
+
+Masks off the state bits from the status byte. 
+
+\hypertarget{_c_c110l_8h_aacd744a917e61146ec8b7175b4761683}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+T\+X@{S\+T\+X}}
+\index{S\+T\+X@{S\+T\+X}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+T\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+X~0x35}\label{_c_c110l_8h_aacd744a917e61146ec8b7175b4761683}
+
+
+Enable T\+X. 
+
+\hypertarget{_c_c110l_8h_a13bc96dbb8fe222006b5d6cbd09601cc}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+W\+O\+R@{S\+W\+O\+R}}
+\index{S\+W\+O\+R@{S\+W\+O\+R}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+W\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+W\+O\+R~0x38}\label{_c_c110l_8h_a13bc96dbb8fe222006b5d6cbd09601cc}
+
+
+Start automatic R\+X polling sequence. 
+
+\hypertarget{_c_c110l_8h_ab0612d97465763e9a6d0d2153c54ff01}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+W\+O\+R\+R\+S\+T@{S\+W\+O\+R\+R\+S\+T}}
+\index{S\+W\+O\+R\+R\+S\+T@{S\+W\+O\+R\+R\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+W\+O\+R\+R\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+W\+O\+R\+R\+S\+T~0x3\+C}\label{_c_c110l_8h_ab0612d97465763e9a6d0d2153c54ff01}
+
+
+Reset real time clock. 
+
+\hypertarget{_c_c110l_8h_a2ba866e663962a4971cfaa63ebbf101b}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+X\+O\+F\+F@{S\+X\+O\+F\+F}}
+\index{S\+X\+O\+F\+F@{S\+X\+O\+F\+F}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+X\+O\+F\+F}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+X\+O\+F\+F~0x32}\label{_c_c110l_8h_a2ba866e663962a4971cfaa63ebbf101b}
+
+
+Turn off crystal oscillator. 
+
+\hypertarget{_c_c110l_8h_a15ee00f2e8b514a2f2dd3be3ba2cf00d}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+Y\+N\+C0@{S\+Y\+N\+C0}}
+\index{S\+Y\+N\+C0@{S\+Y\+N\+C0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+Y\+N\+C0}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+Y\+N\+C0~0x05}\label{_c_c110l_8h_a15ee00f2e8b514a2f2dd3be3ba2cf00d}
+
+
+Sync word, low byte. 
+
+\hypertarget{_c_c110l_8h_ad41ec329474c8e0c7d2c9f7bbc729c83}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!S\+Y\+N\+C1@{S\+Y\+N\+C1}}
+\index{S\+Y\+N\+C1@{S\+Y\+N\+C1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{S\+Y\+N\+C1}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+Y\+N\+C1~0x04}\label{_c_c110l_8h_ad41ec329474c8e0c7d2c9f7bbc729c83}
+
+
+Sync word, high byte. 
+
+\hypertarget{_c_c110l_8h_ae898d2284301fc88393371e470f8db52}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!T\+E\+S\+T0@{T\+E\+S\+T0}}
+\index{T\+E\+S\+T0@{T\+E\+S\+T0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{T\+E\+S\+T0}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T0~0x2\+E}\label{_c_c110l_8h_ae898d2284301fc88393371e470f8db52}
+
+
+Various test settings. 
+
+\hypertarget{_c_c110l_8h_aef8471770769d5643c8d0e9d49de0678}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!T\+E\+S\+T1@{T\+E\+S\+T1}}
+\index{T\+E\+S\+T1@{T\+E\+S\+T1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{T\+E\+S\+T1}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T1~0x2\+D}\label{_c_c110l_8h_aef8471770769d5643c8d0e9d49de0678}
+
+
+Various test settings. 
+
+\hypertarget{_c_c110l_8h_a1b5997c11166c594b80d44bfde1cfa9c}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!T\+E\+S\+T2@{T\+E\+S\+T2}}
+\index{T\+E\+S\+T2@{T\+E\+S\+T2}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{T\+E\+S\+T2}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T2~0x2\+C}\label{_c_c110l_8h_a1b5997c11166c594b80d44bfde1cfa9c}
+
+
+Various test settings. 
+
+\hypertarget{_c_c110l_8h_a9f180f03f3cd38aadc9e61001ba8d872}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!T\+X\+B\+Y\+T\+E\+S@{T\+X\+B\+Y\+T\+E\+S}}
+\index{T\+X\+B\+Y\+T\+E\+S@{T\+X\+B\+Y\+T\+E\+S}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{T\+X\+B\+Y\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+B\+Y\+T\+E\+S~0x3\+A}\label{_c_c110l_8h_a9f180f03f3cd38aadc9e61001ba8d872}
+
+
+Underflow and \# of bytes in T\+X\+F\+I\+F\+O. 
+
+\hypertarget{_c_c110l_8h_a1daa02e093ccc73ccaf55cddf7cb3732}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!T\+X\+F\+I\+F\+O@{T\+X\+F\+I\+F\+O}}
+\index{T\+X\+F\+I\+F\+O@{T\+X\+F\+I\+F\+O}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{T\+X\+F\+I\+F\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+X\+F\+I\+F\+O~0x3\+F}\label{_c_c110l_8h_a1daa02e093ccc73ccaf55cddf7cb3732}
+
+
+Address for T\+X F\+I\+F\+O. 
+
+\hypertarget{_c_c110l_8h_a548602f9bb60705a5af3978d93786e41}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C@{V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C}}
+\index{V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C@{V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+A\+C~0x39}\label{_c_c110l_8h_a548602f9bb60705a5af3978d93786e41}
+
+
+Current setting from P\+L\+L cal module. 
+
+\hypertarget{_c_c110l_8h_a1c6d5de492ac61ad29aec7aa9a436bbf}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!V\+E\+R\+S\+I\+O\+N@{V\+E\+R\+S\+I\+O\+N}}
+\index{V\+E\+R\+S\+I\+O\+N@{V\+E\+R\+S\+I\+O\+N}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+R\+S\+I\+O\+N~0x31}\label{_c_c110l_8h_a1c6d5de492ac61ad29aec7aa9a436bbf}
+
+
+Current version number. 
+
+\hypertarget{_c_c110l_8h_a186156bc9caf0835e59d796d768834f7}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!W\+O\+R\+C\+T\+R\+L@{W\+O\+R\+C\+T\+R\+L}}
+\index{W\+O\+R\+C\+T\+R\+L@{W\+O\+R\+C\+T\+R\+L}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{W\+O\+R\+C\+T\+R\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+O\+R\+C\+T\+R\+L~0x20}\label{_c_c110l_8h_a186156bc9caf0835e59d796d768834f7}
+
+
+Wake On Radio control. 
+
+\hypertarget{_c_c110l_8h_a2c80b405ab8435d969d16663085a35d1}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!W\+O\+R\+E\+V\+T0@{W\+O\+R\+E\+V\+T0}}
+\index{W\+O\+R\+E\+V\+T0@{W\+O\+R\+E\+V\+T0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{W\+O\+R\+E\+V\+T0}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+O\+R\+E\+V\+T0~0x1\+F}\label{_c_c110l_8h_a2c80b405ab8435d969d16663085a35d1}
+
+
+Low byte Event 0 timeout. 
+
+\hypertarget{_c_c110l_8h_a7553c7d007023e8c870cb949480a46e8}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!W\+O\+R\+E\+V\+T1@{W\+O\+R\+E\+V\+T1}}
+\index{W\+O\+R\+E\+V\+T1@{W\+O\+R\+E\+V\+T1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{W\+O\+R\+E\+V\+T1}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+O\+R\+E\+V\+T1~0x1\+E}\label{_c_c110l_8h_a7553c7d007023e8c870cb949480a46e8}
+
+
+High byte Event 0 timeout. 
+
+\hypertarget{_c_c110l_8h_a1da1e27efc55ce042befbac710370731}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!W\+O\+R\+T\+I\+M\+E0@{W\+O\+R\+T\+I\+M\+E0}}
+\index{W\+O\+R\+T\+I\+M\+E0@{W\+O\+R\+T\+I\+M\+E0}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{W\+O\+R\+T\+I\+M\+E0}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+O\+R\+T\+I\+M\+E0~0x37}\label{_c_c110l_8h_a1da1e27efc55ce042befbac710370731}
+
+
+Low byte of W\+O\+R timer. 
+
+\hypertarget{_c_c110l_8h_afceafb2c4cfe329e00aca3170cef8b55}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!W\+O\+R\+T\+I\+M\+E1@{W\+O\+R\+T\+I\+M\+E1}}
+\index{W\+O\+R\+T\+I\+M\+E1@{W\+O\+R\+T\+I\+M\+E1}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{W\+O\+R\+T\+I\+M\+E1}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+O\+R\+T\+I\+M\+E1~0x36}\label{_c_c110l_8h_afceafb2c4cfe329e00aca3170cef8b55}
+
+
+High byte of W\+O\+R timer. 
+
+\hypertarget{_c_c110l_8h_a614ae1783616ef41f49f3000c25f3540}{}\index{C\+C110l.\+h@{C\+C110l.\+h}!W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T@{W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T}}
+\index{W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T@{W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T}!C\+C110l.\+h@{C\+C110l.\+h}}
+\subsubsection[{W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+S\+T~0x40}\label{_c_c110l_8h_a614ae1783616ef41f49f3000c25f3540}
+
+
+Burst write bits. 
+

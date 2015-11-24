@@ -1,0 +1,60 @@
+.TH "Listen_Struct" 3 "Mon Nov 23 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Listen_Struct \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Radio\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBLBT_Status\fP \fBStatus\fP"
+.br
+.RI "\fIAn LBT_Status, indicates whether timeout occured or a message was recieved\&. \fP"
+.ti -1c
+.RI "uint8_t \fBaddress\fP"
+.br
+.RI "\fIThe address of the sender\&. \fP"
+.ti -1c
+.RI "uint8_t \fBsignal\fP"
+.br
+.RI "\fIThe RSSI from the transmission\&. \fP"
+.ti -1c
+.RI "uint8_t \fBlength\fP"
+.br
+.RI "\fIThe length of the message payload\&. \fP"
+.ti -1c
+.RI "uint8_t \fBpayload\fP [60]"
+.br
+.RI "\fIThe actual message which was sent\&. \fP"
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "uint8_t address"
+
+.PP
+The address of the sender\&. 
+.SS "uint8_t length"
+
+.PP
+The length of the message payload\&. 
+.SS "uint8_t payload[60]"
+
+.PP
+The actual message which was sent\&. 
+.SS "uint8_t signal"
+
+.PP
+The RSSI from the transmission\&. 
+.SS "\fBLBT_Status\fP Status"
+
+.PP
+An LBT_Status, indicates whether timeout occured or a message was recieved\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

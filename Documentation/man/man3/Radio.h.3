@@ -1,0 +1,125 @@
+.TH "Radio.h" 3 "Mon Nov 23 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Radio.h \- Library for transmitting using listen before talk\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBListen_Struct\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.PP
+.RI "\fBEnumerated type for tx/rx statuses\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "enum \fBLBT_Status\fP { \fBTransmit_Success\fP, \fBRadio_Busy\fP, \fBAck_Timeout\fP, \fBTX_Buffer_Overflow\fP, \fBChannel_Busy\fP, \fBRX_Timeout\fP, \fBMessage_Recieved\fP, \fBRX_Buffer_Overflow\fP }"
+.br
+.in -1c
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLBT_Status\fP \fBLBT_Send\fP (uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length)"
+.br
+.RI "\fISends a message over the CC110l radio using listen before talk\&. \fP"
+.ti -1c
+.RI "struct \fBListen_Struct\fP \fBLBT_Listen\fP (uint16_t timeoutPeriod)"
+.br
+.RI "\fIPuts the radio into listen mode for the specified amount of time\&. Blocking function, does not return until timeout occurs or a message is recieved\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Library for transmitting using listen before talk\&. 
+
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBLBT_Status\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITransmit_Success \fP\fP
+Transmission was successful\&. 
+.TP
+\fB\fIRadio_Busy \fP\fP
+Radio was not in idle state\&. 
+.TP
+\fB\fIAck_Timeout \fP\fP
+Acknowledgement not Rec'd before timeout expired\&. 
+.TP
+\fB\fITX_Buffer_Overflow \fP\fP
+Message overflowed the TX FIFO\&. 
+.TP
+\fB\fIChannel_Busy \fP\fP
+Channel clear assessment returns negative\&. 
+.TP
+\fB\fIRX_Timeout \fP\fP
+Specified listen period reached\&. 
+.TP
+\fB\fIMessage_Recieved \fP\fP
+Successfully got a message\&. 
+.TP
+\fB\fIRX_Buffer_Overflow \fP\fP
+RX FIFO was overflowed\&. 
+.SH "Function Documentation"
+.PP 
+.SS "struct \fBListen_Struct\fP LBT_Listen (uint16_t timeoutPeriod)"
+
+.PP
+Puts the radio into listen mode for the specified amount of time\&. Blocking function, does not return until timeout occurs or a message is recieved\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeoutPeriod\fP The amount of time, in ACLK cycles to wait for a transmission to come in\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a \fBListen_Struct\fP which contains a status field and the payload\&. 
+.RE
+.PP
+
+.SS "\fBLBT_Status\fP LBT_Send (uint8_t dest_address, uint8_t source_address, uint8_t * message, uint8_t length)"
+
+.PP
+Sends a message over the CC110l radio using listen before talk\&. Function checks the status of the radio prior to tansmission\&. If the state is anything but 'idle' the function abort and return a status indicating the fail state\&. Maximum message length is 59 bytes because of the extra bytes included for the hardware packet handling and appended RSSI and CRC bytes at the receiver\&.
+.PP
+Blocking function, returns after the transmission is complete\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdest_address\fP The address of the recipient\&. This address is what the CC110l hardware address filter operates against 
+.br
+\fIsource_address\fP The address of this node, not used for hardware filtering 
+.br
+\fImessage\fP The payload of the transmission, can be up to 59 bytes long 
+.br
+\fIlength\fP The length of the payload\&. The function will adjust this value to accomodate the addresses being attached to the transmission 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns an LBT_Status enum\&. This can be checked to ensure the transmission was successful\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

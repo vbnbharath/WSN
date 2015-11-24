@@ -1,0 +1,123 @@
+\hypertarget{_radio_8h}{}\section{Radio.\+h File Reference}
+\label{_radio_8h}\index{Radio.\+h@{Radio.\+h}}
+
+
+Library for transmitting using listen before talk.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_listen___struct}{Listen\+\_\+\+Struct}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{Indent}{\bf Enumerated type for tx/rx statuses}\par
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269}{L\+B\+T\+\_\+\+Status} \{ \\*
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269a75831e37a7d6f48374ad22954db65c21}{Transmit\+\_\+\+Success}, 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269a2337ca0a96c03450a134e1b0811cca0a}{Radio\+\_\+\+Busy}, 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269a98655b1eb396083ca3bb34ddabf889bf}{Ack\+\_\+\+Timeout}, 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269a88f79101946c4fcf8d73849a3ed30fb8}{T\+X\+\_\+\+Buffer\+\_\+\+Overflow}, 
+\\*
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269aa6a377b9acd57c310e8144a1803a70ae}{Channel\+\_\+\+Busy}, 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269a428ef2a01c076969b204d5625bff9217}{R\+X\+\_\+\+Timeout}, 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269abcb456268858e9aaf0068d1e38230624}{Message\+\_\+\+Recieved}, 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269a3dc02ad933a4af6ad5ce6f79d164399f}{R\+X\+\_\+\+Buffer\+\_\+\+Overflow}
+ \}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269}{L\+B\+T\+\_\+\+Status} \hyperlink{_radio_8h_a132dfd3d132f9f4ff3f625da6f009a41}{L\+B\+T\+\_\+\+Send} (uint8\+\_\+t dest\+\_\+address, uint8\+\_\+t source\+\_\+address, uint8\+\_\+t $\ast$message, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Sends a message over the C\+C110l radio using listen before talk. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_listen___struct}{Listen\+\_\+\+Struct} \hyperlink{_radio_8h_a19cb6297b59cbbcf09e4580641c9a901}{L\+B\+T\+\_\+\+Listen} (uint16\+\_\+t timeout\+Period)
+\begin{DoxyCompactList}\small\item\em Puts the radio into listen mode for the specified amount of time. Blocking function, does not return until timeout occurs or a message is recieved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Library for transmitting using listen before talk. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269}{}\index{Radio.\+h@{Radio.\+h}!L\+B\+T\+\_\+\+Status@{L\+B\+T\+\_\+\+Status}}
+\index{L\+B\+T\+\_\+\+Status@{L\+B\+T\+\_\+\+Status}!Radio.\+h@{Radio.\+h}}
+\subsubsection[{L\+B\+T\+\_\+\+Status}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf L\+B\+T\+\_\+\+Status}}\label{_radio_8h_a9ea8776ed870286764cea56e58956269}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Transmit\+\_\+\+Success@{Transmit\+\_\+\+Success}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!Transmit\+\_\+\+Success@{Transmit\+\_\+\+Success}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269a75831e37a7d6f48374ad22954db65c21}{}Transmit\+\_\+\+Success\label{_radio_8h_a9ea8776ed870286764cea56e58956269a75831e37a7d6f48374ad22954db65c21}
+}]Transmission was successful. \index{Radio\+\_\+\+Busy@{Radio\+\_\+\+Busy}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!Radio\+\_\+\+Busy@{Radio\+\_\+\+Busy}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269a2337ca0a96c03450a134e1b0811cca0a}{}Radio\+\_\+\+Busy\label{_radio_8h_a9ea8776ed870286764cea56e58956269a2337ca0a96c03450a134e1b0811cca0a}
+}]Radio was not in idle state. \index{Ack\+\_\+\+Timeout@{Ack\+\_\+\+Timeout}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!Ack\+\_\+\+Timeout@{Ack\+\_\+\+Timeout}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269a98655b1eb396083ca3bb34ddabf889bf}{}Ack\+\_\+\+Timeout\label{_radio_8h_a9ea8776ed870286764cea56e58956269a98655b1eb396083ca3bb34ddabf889bf}
+}]Acknowledgement not Rec\textquotesingle{}d before timeout expired. \index{T\+X\+\_\+\+Buffer\+\_\+\+Overflow@{T\+X\+\_\+\+Buffer\+\_\+\+Overflow}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!T\+X\+\_\+\+Buffer\+\_\+\+Overflow@{T\+X\+\_\+\+Buffer\+\_\+\+Overflow}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269a88f79101946c4fcf8d73849a3ed30fb8}{}T\+X\+\_\+\+Buffer\+\_\+\+Overflow\label{_radio_8h_a9ea8776ed870286764cea56e58956269a88f79101946c4fcf8d73849a3ed30fb8}
+}]Message overflowed the T\+X F\+I\+F\+O. \index{Channel\+\_\+\+Busy@{Channel\+\_\+\+Busy}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!Channel\+\_\+\+Busy@{Channel\+\_\+\+Busy}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269aa6a377b9acd57c310e8144a1803a70ae}{}Channel\+\_\+\+Busy\label{_radio_8h_a9ea8776ed870286764cea56e58956269aa6a377b9acd57c310e8144a1803a70ae}
+}]Channel clear assessment returns negative. \index{R\+X\+\_\+\+Timeout@{R\+X\+\_\+\+Timeout}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!R\+X\+\_\+\+Timeout@{R\+X\+\_\+\+Timeout}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269a428ef2a01c076969b204d5625bff9217}{}R\+X\+\_\+\+Timeout\label{_radio_8h_a9ea8776ed870286764cea56e58956269a428ef2a01c076969b204d5625bff9217}
+}]Specified listen period reached. \index{Message\+\_\+\+Recieved@{Message\+\_\+\+Recieved}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!Message\+\_\+\+Recieved@{Message\+\_\+\+Recieved}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269abcb456268858e9aaf0068d1e38230624}{}Message\+\_\+\+Recieved\label{_radio_8h_a9ea8776ed870286764cea56e58956269abcb456268858e9aaf0068d1e38230624}
+}]Successfully got a message. \index{R\+X\+\_\+\+Buffer\+\_\+\+Overflow@{R\+X\+\_\+\+Buffer\+\_\+\+Overflow}!Radio.\+h@{Radio.\+h}}\index{Radio.\+h@{Radio.\+h}!R\+X\+\_\+\+Buffer\+\_\+\+Overflow@{R\+X\+\_\+\+Buffer\+\_\+\+Overflow}}\item[{\em 
+\hypertarget{_radio_8h_a9ea8776ed870286764cea56e58956269a3dc02ad933a4af6ad5ce6f79d164399f}{}R\+X\+\_\+\+Buffer\+\_\+\+Overflow\label{_radio_8h_a9ea8776ed870286764cea56e58956269a3dc02ad933a4af6ad5ce6f79d164399f}
+}]R\+X F\+I\+F\+O was overflowed. \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{_radio_8h_a19cb6297b59cbbcf09e4580641c9a901}{}\index{Radio.\+h@{Radio.\+h}!L\+B\+T\+\_\+\+Listen@{L\+B\+T\+\_\+\+Listen}}
+\index{L\+B\+T\+\_\+\+Listen@{L\+B\+T\+\_\+\+Listen}!Radio.\+h@{Radio.\+h}}
+\subsubsection[{L\+B\+T\+\_\+\+Listen(uint16\+\_\+t timeout\+Period)}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Listen\+\_\+\+Struct} L\+B\+T\+\_\+\+Listen (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{timeout\+Period}
+\end{DoxyParamCaption}
+)}\label{_radio_8h_a19cb6297b59cbbcf09e4580641c9a901}
+
+
+Puts the radio into listen mode for the specified amount of time. Blocking function, does not return until timeout occurs or a message is recieved. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Period} & The amount of time, in A\+C\+L\+K cycles to wait for a transmission to come in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a \hyperlink{struct_listen___struct}{Listen\+\_\+\+Struct} which contains a status field and the payload. 
+\end{DoxyReturn}
+\hypertarget{_radio_8h_a132dfd3d132f9f4ff3f625da6f009a41}{}\index{Radio.\+h@{Radio.\+h}!L\+B\+T\+\_\+\+Send@{L\+B\+T\+\_\+\+Send}}
+\index{L\+B\+T\+\_\+\+Send@{L\+B\+T\+\_\+\+Send}!Radio.\+h@{Radio.\+h}}
+\subsubsection[{L\+B\+T\+\_\+\+Send(uint8\+\_\+t dest\+\_\+address, uint8\+\_\+t source\+\_\+address, uint8\+\_\+t $\ast$message, uint8\+\_\+t length)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+B\+T\+\_\+\+Status} L\+B\+T\+\_\+\+Send (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{dest\+\_\+address, }
+\item[{uint8\+\_\+t}]{source\+\_\+address, }
+\item[{uint8\+\_\+t $\ast$}]{message, }
+\item[{uint8\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)}\label{_radio_8h_a132dfd3d132f9f4ff3f625da6f009a41}
+
+
+Sends a message over the C\+C110l radio using listen before talk. 
+
+Function checks the status of the radio prior to tansmission. If the state is anything but \textquotesingle{}idle\textquotesingle{} the function abort and return a status indicating the fail state. Maximum message length is 59 bytes because of the extra bytes included for the hardware packet handling and appended R\+S\+S\+I and C\+R\+C bytes at the receiver.
+
+Blocking function, returns after the transmission is complete.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+\_\+address} & The address of the recipient. This address is what the C\+C110l hardware address filter operates against \\
+\hline
+{\em source\+\_\+address} & The address of this node, not used for hardware filtering \\
+\hline
+{\em message} & The payload of the transmission, can be up to 59 bytes long \\
+\hline
+{\em length} & The length of the payload. The function will adjust this value to accomodate the addresses being attached to the transmission \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an L\+B\+T\+\_\+\+Status enum. This can be checked to ensure the transmission was successful. 
+\end{DoxyReturn}
