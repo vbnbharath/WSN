@@ -39,6 +39,7 @@ int main(void) {
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
+	LBT_Status status;
 
 	uint8_t i;
 	for (i = 0; i < 50; i++) {
@@ -46,8 +47,13 @@ int main(void) {
 	}
 
 	while (True) {
-		Sleep_Timer(0, 32768);
-		LBT_Send(0xFF, 0xAA, message, 50);
+		Sleep_Timer(0, 2);
+		status = LBT_Send(0xFF, 0xAA, message, 50);
+
+		if(status == Transmit_Success)
+		{
+			LED1Reg ^= LED1;
+		}
 	}
 }
 
