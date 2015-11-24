@@ -54,7 +54,6 @@ int main(void)
 
 
 	SPI_Send(CHANNR,0);					//Tell radio what channel to use
-	UARTSendArray("k");
 	__bis_SR_register(LPM3_bits + GIE);		//Send into sleep mode (Wont Need After addition of sleep mode function for specific time.
     while(1)
     {
