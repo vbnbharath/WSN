@@ -39,12 +39,12 @@ void Board_Init()
 void Timer_Init()
 {
 
-	// Timer A0 Slow Clock
-	TACTL = TASSEL_1 + MC_0; // Set timer A source to SMCLK and stop the clock
-	TAR = 0; // Initial count value is 0
-	TACCR0 = 65535; // Count up to 12,000, adjust for different timing.
-	TACCTL0 = CCIE; // Enable interrupt on TACCR0
-	TACTL |= MC_1; // Start counting up to TACCR0
+	// Timer A0 init
+	TA0CTL |= TASSEL_1; // TA clock source is ACLK, input divider 1
+	TA0CTL &= ~(TAIFG); // Clear interrupt flags
+	TA0CTL |= TAIE;		// Enable rollover interrupt
+	TA0CCR0 = 65535; 	// Set rollover for max value
+	TA0CTL |= MC_2; // enable TA in continuous mode
 }
 #endif
 
