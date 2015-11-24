@@ -53,10 +53,15 @@ int main(void)
 	SPI_Strobe(SRX, Get_RX_FIFO);  //Set to recieve mode
 
 
-	SPI_Send(CHANNR,1);					//Tell radio what channel to use
+	SPI_Send(CHANNR,0);					//Tell radio what channel to use
 	UARTSendArray("k");
 	__bis_SR_register(LPM3_bits + GIE);		//Send into sleep mode (Wont Need After addition of sleep mode function for specific time.
-    return 0; // Never get here
+    while(1)
+    {
+    	__delay_cycles(10);
+    }
+	return 0; // Never get here
+
 }
 
 
