@@ -39,15 +39,23 @@ int main(void) {
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
+<<<<<<< HEAD
 	LBT_Status status;
 
 	uint8_t i;
 	for (i = 0; i < 50; i++) {
 		message[i] = i;
+=======
+
+	while(True)
+	{
+		// Some merge example test lines.
+		// More testing.
+>>>>>>> bc6dbae708ae6da492e2f3e57ba71703070ed4fa
 	}
 
 	while (True) {
-		Sleep_Timer(0, 32768);
+		Sleep_Timer(0, 2);
 		status = LBT_Send(0xFF, 0xAA, message, 50);
 
 		if(status == Transmit_Success)

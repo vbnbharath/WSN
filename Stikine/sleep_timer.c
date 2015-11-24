@@ -17,12 +17,9 @@ void Sleep_Timer(uint8_t rollovers, uint16_t cycles) {
 	TA0CCR1 &= ~CCIFG;
 	TA0CCR1 |= CCIE;
 	LPM3;
-	for (i = 0; i < rollovers; i++) {	// Sleeps for i rollovers
-		if (Break_Sleep) {
-			Break_Sleep = False;
-			break;
-		}
+	for (i = 0; i < rollovers && !Break_Sleep; i++) {	// Sleeps for i rollovers
 		LPM3;
 	}
+	Break_Sleep = False;
 	TA0CCR1 &= ~CCIE;
 }
