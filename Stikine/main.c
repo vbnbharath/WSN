@@ -167,6 +167,18 @@ void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
 
 		if(Buff == 13)
 		{
+
+			if(Command[0] == 'B')
+			{
+				SPI_Strobe(SIDLE,Get_RX_FIFO);
+				LBT_Send()
+
+
+			}
+
+			else
+			{
+
 			for(i=0;i<Pointer;i++)
 			{
 				Number = Command[i] - '0';			//Set command to number in decimal
@@ -176,6 +188,7 @@ void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
 			SPI_Send(CHANNR,Channel);				//Change frequency after in idle
 			SPI_Strobe(SRX,Get_RX_FIFO);			//Put back into receive mode
 			Pointer = 0;
+			}
 		}
 
 		else
