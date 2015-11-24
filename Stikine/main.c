@@ -42,7 +42,8 @@ int main(void)
 
 	while(True)
 	{
-
+		// Some merge example test lines.
+		// More testing.
 	}
 }
 
