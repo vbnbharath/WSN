@@ -39,19 +39,10 @@ int main(void)
 	Timer_Init();
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
-	uint8_t message[50];
-
-	int i = 0;
-	for(i=0;i < 50; i++)
-	{
-		message[i] = i;
-	}
 
 	while(True)
 	{
-		LBT_Send(0xFF, 0xBB, message, 50);
-		Sleep_Timer(0, 32768);
-		LED1Reg ^= LED1;
+
 	}
 }
 
