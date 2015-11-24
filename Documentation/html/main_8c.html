@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -102,7 +103,9 @@ $(document).ready(function(){initNavTree('main_8c.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">main.c File Reference</div>  </div>
 </div><!--header-->
@@ -112,33 +115,80 @@ $(document).ready(function(){initNavTree('main_8c.html','');});
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;msp430.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;pinDefs.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="_c_c110l_8h_source.html">CC110l.h</a>&gt;</code><br />
-<code>#include &lt;MSP_Init.h&gt;</code><br />
-<code>#include &lt;SPI_Library.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="pin_defs_8h_source.html">pinDefs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_c_c110l_8h_source.html">CC110l.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_m_s_p___init_8h_source.html">MSP_Init.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_radio_8h_source.html">Radio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_s_p_i___library_8h_source.html">SPI_Library.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sleep__timer_8h_source.html">sleep_timer.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a1fded6e3acf9cbcb7b68e43bdc4ada19"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19">Machine_State</a> { <br />
+&#160;&#160;<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f">Waiting_For_Start</a>, 
+<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f">Localizing</a>, 
+<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e">Clustering</a>, 
+<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906">CH_TDMA_Assignment</a>, 
+<br />
+&#160;&#160;<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2">CH_Sensing</a>, 
+<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a">TDMA_Assignment</a>, 
+<a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363">Sensing</a>
+<br />
+ }<tr class="separator:a1fded6e3acf9cbcb7b68e43bdc4ada19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main control sequence for sensor node.  <a href="#a840291bc02cba5474a4cb46a9b9566fe">More...</a><br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39a5d44a12b99aecce08f543fd528445"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39a5d44a12b99aecce08f543fd528445"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a39a5d44a12b99aecce08f543fd528445">TimerA_0_ISR</a> (void)</td></tr>
-<tr class="memdesc:a39a5d44a12b99aecce08f543fd528445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt service routine for slow timer. <br /></td></tr>
+<tr class="memitem:a39a5d44a12b99aecce08f543fd528445"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a39a5d44a12b99aecce08f543fd528445">TimerA_0_ISR</a> (void)</td></tr>
+<tr class="memdesc:a39a5d44a12b99aecce08f543fd528445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt service routine for slow timer.  <a href="#a39a5d44a12b99aecce08f543fd528445">More...</a><br /></td></tr>
 <tr class="separator:a39a5d44a12b99aecce08f543fd528445"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace52e64096364178d4c78b871b4f2bf1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace52e64096364178d4c78b871b4f2bf1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ace52e64096364178d4c78b871b4f2bf1">TimerA_1_ISR</a> (void)</td></tr>
-<tr class="memdesc:ace52e64096364178d4c78b871b4f2bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt service routine for fast timer. <br /></td></tr>
-<tr class="separator:ace52e64096364178d4c78b871b4f2bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a249eff783fe7740fa64de432e57dc801"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a249eff783fe7740fa64de432e57dc801"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a249eff783fe7740fa64de432e57dc801">MSP_RX_ISR</a> (void)</td></tr>
-<tr class="memdesc:a249eff783fe7740fa64de432e57dc801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt service routine for packet received pin from CC100l. <br /></td></tr>
+<tr class="memitem:a249eff783fe7740fa64de432e57dc801"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a249eff783fe7740fa64de432e57dc801">MSP_RX_ISR</a> (void)</td></tr>
+<tr class="memdesc:a249eff783fe7740fa64de432e57dc801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt service routine for packet received pin from CC100l.  <a href="#a249eff783fe7740fa64de432e57dc801">More...</a><br /></td></tr>
 <tr class="separator:a249eff783fe7740fa64de432e57dc801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a7d1a8a7702ccf1396765b36f5842f781"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a7d1a8a7702ccf1396765b36f5842f781">Timer_Rollover_Count</a> = 0</td></tr>
+<tr class="separator:a7d1a8a7702ccf1396765b36f5842f781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62757ff97f14648950ece3c497498c2e"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a62757ff97f14648950ece3c497498c2e">Break_Sleep</a> = <a class="el" href="pin_defs_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></td></tr>
+<tr class="separator:a62757ff97f14648950ece3c497498c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main control code and interrupt definitions for sensor node. </p>
 <p>Initializes both the MSP430 controller and the attached CC110l radio. After completing the initialization process the controller goes into LPM3 and waits. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19">Machine_State</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a7e7a507632bc612429614efeff46123f"></a>Waiting_For_Start&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a0a71832ea21e4d867b6aa677b0faeb6f"></a>Localizing&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a081c2c4798c4f94c6e9f42b00b51dc5e"></a>Clustering&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19ab96d7012e260aed5e5c7c340b50ac906"></a>CH_TDMA_Assignment&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a1df7362e43515c2f5ce7c8eab33366a2"></a>CH_Sensing&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a"></a>TDMA_Assignment&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363"></a>Sensing&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <div class="memitem">
 <div class="memproto">
@@ -155,6 +205,67 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main
 
 <p>Main control sequence for sensor node. </p>
 <dl class="section return"><dt>Returns</dt><dd>Constant 0, but it has nowhere to go. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a249eff783fe7740fa64de432e57dc801"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MSP_RX_ISR </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interrupt service routine for packet received pin from CC100l. </p>
+
+</div>
+</div>
+<a class="anchor" id="a39a5d44a12b99aecce08f543fd528445"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TimerA_0_ISR </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interrupt service routine for slow timer. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a62757ff97f14648950ece3c497498c2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t Break_Sleep = <a class="el" href="pin_defs_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7d1a8a7702ccf1396765b36f5842f781"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint16_t Timer_Rollover_Count = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -5,10 +5,11 @@
  *      Author: Cody Gossel
  */
 
+#include "Radio.h"
+
 #include "SPI_Library.h"
 #include "CC110l.h"
 #include "stdint.h"
-#include "Radio_LBT.h"
 #include "msp430.h"
 #include "sleep_timer.h"
 

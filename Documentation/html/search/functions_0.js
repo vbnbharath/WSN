@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]],
-  ['msp_5frx_5fisr',['MSP_RX_ISR',['../main_8c.html#a249eff783fe7740fa64de432e57dc801',1,'main.c']]]
+  ['board_5finit',['Board_Init',['../_m_s_p___init_8h.html#ae8d2d761b984f48c3dbb27dd32a8c119',1,'MSP_Init.h']]]
 ];

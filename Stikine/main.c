@@ -11,8 +11,8 @@
 #include "pinDefs.h" // Pin defines
 #include "CC110l.h" // Literals for helping with the radio
 #include "MSP_Init.h" // Code to set initial board state
+#include "Radio.h"
 #include "SPI_Library.h" // SPI control for the radio
-#include "Radio_LBT.h"
 #include "sleep_timer.h" // Sleep code for controller
 
 typedef enum {

@@ -4,6 +4,13 @@
  *  Created on: Oct 16, 2015
  *      Author: cgoss
  */
+
+/**
+ * \file SPI_Library.h
+ * \brief Library for communicating with CC110l over SPI
+ *
+ */
+
 #include <stdint.h>
 
 #ifndef SPI_LIBRARY_H_
