@@ -171,7 +171,7 @@ void __attribute__((__interrupt__(USCIAB0RX_VECTOR)))USCI0RX_ISR(void)
 			if(Command[0] == 'B')
 			{
 				SPI_Strobe(SIDLE,Get_RX_FIFO);
-				LBT_Send()
+
 
 
 			}
