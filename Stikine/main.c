@@ -142,7 +142,14 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 							Mpos++;
 						}
 
-		Convert_to_Hex(&Message[Mpos++], &Data[3], length-6);
+		Message[Mpos++] = ' ';
+		Message[Mpos++] = '>';
+		Message[Mpos++] = '>';
+		Message[Mpos++] = '>';
+		Message[Mpos++] = ' ';
+
+
+		Convert_to_Hex(&Message[Mpos++], &Data[3], length-5);
 
 		UARTSendArray(Message);
 		SPI_Strobe(SRX,Get_RX_FIFO);
