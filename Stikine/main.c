@@ -14,6 +14,7 @@
 #include "Radio.h"
 #include "SPI_Library.h" // SPI control for the radio
 #include "sleep_timer.h" // Sleep code for controller
+#include "Temperature_Measurement.h"
 
 typedef enum {
 	Waiting_For_Start,
@@ -40,6 +41,8 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
+	Get_Temperature();
+
 	while(True)
 	{
 		// Some merge example test lines.
@@ -51,6 +54,7 @@ int main(void)
 #ifdef __MSP430G2553__
 #define Slow_Timer_Vector_1 TIMER0_A1_VECTOR
 #define GDO_Pin_Vector PORT1_VECTOR
+#define ADC_Vector ADC10_VECTOR
 #endif
 
 /**
@@ -79,5 +83,22 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
 	Break_Sleep = True;
 	LPM3_EXIT; // Wake up on interrupt
+}
+
+void __attribute__((__interrupt__(ADC_Vector)))ADC_ISR(void)
+{
+	static uint8_t i = 0;
+	ADC10CTL0 &= ~ADC10IFG; // Clear flag
+
+	if(i < 8)	// Do 8 samples
+	{
+
+	}
+
+	if(i == 8) // wake up when done
+	{
+		LPM0_EXIT;
+		i = 0;
+	}
 }
 
