@@ -24,5 +24,5 @@ void Sleep_Timer(uint8_t rollovers, uint16_t cycles) {
 		}
 		LPM3;
 	}
-	TA0CCR1 &= ~CCIE;
+	TA0CCTL1 &= ~CCIE;
 }
