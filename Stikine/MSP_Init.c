@@ -45,8 +45,6 @@ void Timer_Init()
 	TA0CTL |= TASSEL_1; // TA clock source is ACLK, input divider 1
 	TA0CTL &= ~(TAIFG);
 	TA0CTL |= TAIE;
-	TA0CCTL1 &= ~(CCIFG);
-	TA0CCTL1 |= CCIE;
 	TA0CTL |= MC_2; // enable TA in continuous mode
 
 }
