@@ -224,3 +224,19 @@ struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod)
 
 	return retVal;
 }
+
+void int_divide (uint16_t two_byte_data, uint8_t *ptr)
+{
+	*ptr = two_byte_data & 0xFF; 	// lower 8 bit
+	*(ptr+1) = two_byte_data >> 8; 	// upper 8 bit, shifts by 8 bit to the rignt
+}
+
+uint16_t int_merge (uint8_t lower, uint8_t upper)
+{
+	uint16_t temp1 = 0;
+	uint16_t temp2 = 0;
+
+	temp1 = upper << 8; 	// places upper 8 bit to their final position by shifting to the left
+	temp2 = temp1 | lower;	// merges lower and upper bits into an uint16_t
+	return temp2;
+}

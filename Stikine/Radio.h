@@ -79,4 +79,18 @@ struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod);
  */
 LBT_Status TDMA_Send(uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length);
 
+/**
+* \brief Gets a 16 bit unsigned integer and divides it into two 8 bit unsigned integers
+* @param two_byte_data Input 16 bit integer
+* @param *ptr Points where to store the result
+*/
+void int_divide (uint16_t two_byte_data, uint8_t *ptr);
+
+/**
+* \brief Gets two 8 bit unsigned integers and merges them into 16 bit unsigned integer
+* @param lower Lower 8 bits to be merged
+* @param upper Upper 8 bits to be merged
+*/
+uint16_t int_merge (uint8_t lower, uint8_t upper);
+
 #endif /* RADIO_LBT_H_ */
