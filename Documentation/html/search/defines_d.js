@@ -1,6 +1,7 @@
 var searchData=
 [
   ['safc',['SAFC',['../_c_c110l_8h.html#aefc6afd072a63b1cbf4faad2a598aa76',1,'CC110l.h']]],
+  ['sample_5fcount',['Sample_Count',['../_temperature___measurement_8c.html#ad492b9595e28595b025480f9ffa0a3ea',1,'Temperature_Measurement.c']]],
   ['sb_5ffstxon',['SB_FSTXON',['../_c_c110l_8h.html#ac8c9b53d1d375aea229b44d4bd241373',1,'CC110l.h']]],
   ['sb_5fidle',['SB_Idle',['../_c_c110l_8h.html#a216a074e2762e5fa63a1baeef161abdd',1,'CC110l.h']]],
   ['sb_5frx',['SB_RX',['../_c_c110l_8h.html#af9a1c94baecbdd010da295f3a3b4ba15',1,'CC110l.h']]],

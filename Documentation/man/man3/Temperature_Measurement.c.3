@@ -1,0 +1,48 @@
+.TH "Temperature_Measurement.c" 3 "Sun Nov 29 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Temperature_Measurement.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <msp430\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSample_Count\fP   8"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBGet_Temperature\fP ()"
+.br
+.RI "\fIA function to take a temperature measurement using the on-board temperature sensor\&. \fP"
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define Sample_Count   8"
+
+.SH "Function Documentation"
+.PP 
+.SS "uint8_t Get_Temperature ()"
+
+.PP
+A function to take a temperature measurement using the on-board temperature sensor\&. Computes the silicon temperature of the MSP430\&. The temperature is reported as a integer value of thousands of degrees celsius, IE 29551 is 29\&.551 celsius\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The integer value, in hundreths of degrees celsius 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

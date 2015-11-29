@@ -87,18 +87,8 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 
 void __attribute__((__interrupt__(ADC_Vector)))ADC_ISR(void)
 {
-	static uint8_t i = 0;
 	ADC10CTL0 &= ~ADC10IFG; // Clear flag
+	LPM0_EXIT;
 
-	if(i < 8)	// Do 8 samples
-	{
-
-	}
-
-	if(i == 8) // wake up when done
-	{
-		LPM0_EXIT;
-		i = 0;
-	}
 }
 

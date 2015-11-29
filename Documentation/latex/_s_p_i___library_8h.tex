@@ -1,0 +1,194 @@
+\hypertarget{_s_p_i___library_8h}{}\section{S\+P\+I\+\_\+\+Library.\+h File Reference}
+\label{_s_p_i___library_8h}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+
+
+Library for communicating with C\+C110l over S\+P\+I.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_s_p_i___library_8h_a292196e767158c66f03cbcc244fc802b}{S\+P\+I\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initialization function for the S\+P\+I link. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_s_p_i___library_8h_aabf72034a6f247cd08d8bfc651129e93}{S\+P\+I\+\_\+\+Send} (uint8\+\_\+t address, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em A function for sending a single byte to the radio. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_s_p_i___library_8h_a1f5dae77a438cc14d2286590b1768811}{S\+P\+I\+\_\+\+Read} (uint8\+\_\+t address, uint8\+\_\+t $\ast$out)
+\begin{DoxyCompactList}\small\item\em Reads a single register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_s_p_i___library_8h_a1f7eca85804b4c8cde6314b5562d52c4}{S\+P\+I\+\_\+\+Send\+\_\+\+Burst} (uint8\+\_\+t address, uint8\+\_\+t $\ast$value, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Makes a burst write into a set of registers, beginning with the register pointed by the address value. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_s_p_i___library_8h_a8811cc7044570e78a7d29671a6b670ba}{S\+P\+I\+\_\+\+Read\+\_\+\+Burst} (uint8\+\_\+t address, uint8\+\_\+t $\ast$out, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Makes a burst read of the registers in the C\+C110l. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_s_p_i___library_8h_ac25bdf7cadc2429611e0aa1bb416e8be}{S\+P\+I\+\_\+\+Strobe} (uint8\+\_\+t strobe, uint8\+\_\+t F\+I\+F\+O)
+\begin{DoxyCompactList}\small\item\em Sends a strobe command to the C\+C110l. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{_s_p_i___library_8h_a030f83b4c2ce4a1ce824e4174c888ab8}{S\+P\+I\+\_\+\+Read\+\_\+\+Status} (uint8\+\_\+t status\+\_\+reg, uint8\+\_\+t $\ast$out)
+\begin{DoxyCompactList}\small\item\em Reads a value from one of the special status registers in the C\+C110l. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Library for communicating with C\+C110l over S\+P\+I. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_s_p_i___library_8h_a292196e767158c66f03cbcc244fc802b}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Init@{S\+P\+I\+\_\+\+Init}}
+\index{S\+P\+I\+\_\+\+Init@{S\+P\+I\+\_\+\+Init}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void S\+P\+I\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_a292196e767158c66f03cbcc244fc802b}
+
+
+Initialization function for the S\+P\+I link. 
+
+Uses the Port/\+Pin mapping values in \hyperlink{_s_p_i___pins_8h}{S\+P\+I\+\_\+\+Pins.\+h} to configure the necessary registers for S\+P\+I communication with the C\+C110l. These mappings are device specific and would need to be changed depending on which M\+S\+P430 is being targetted, and which U\+S\+C\+I module is being used. The preferred method of handling multiple boards is to use \#ifdef blocks targetted at the define value used with the M\+S\+P430.\+h file. \hypertarget{_s_p_i___library_8h_a1f5dae77a438cc14d2286590b1768811}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Read@{S\+P\+I\+\_\+\+Read}}
+\index{S\+P\+I\+\_\+\+Read@{S\+P\+I\+\_\+\+Read}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Read(uint8\+\_\+t address, uint8\+\_\+t $\ast$out)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t S\+P\+I\+\_\+\+Read (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{address, }
+\item[{uint8\+\_\+t $\ast$}]{out}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_a1f5dae77a438cc14d2286590b1768811}
+
+
+Reads a single register. 
+
+Fetches the value stored in the specified register. Returns the status byte and copies the register value into the out parameter
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The register to be read. \\
+\hline
+{\em out} & Pointer to write the stored register value into. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The status byte from the C\+C110l, for a read operation the 4 L\+S\+B of the byte represent the new data in the R\+X F\+I\+F\+O. 
+\end{DoxyReturn}
+\hypertarget{_s_p_i___library_8h_a8811cc7044570e78a7d29671a6b670ba}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Read\+\_\+\+Burst@{S\+P\+I\+\_\+\+Read\+\_\+\+Burst}}
+\index{S\+P\+I\+\_\+\+Read\+\_\+\+Burst@{S\+P\+I\+\_\+\+Read\+\_\+\+Burst}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Read\+\_\+\+Burst(uint8\+\_\+t address, uint8\+\_\+t $\ast$out, uint8\+\_\+t length)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t S\+P\+I\+\_\+\+Read\+\_\+\+Burst (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{address, }
+\item[{uint8\+\_\+t $\ast$}]{out, }
+\item[{uint8\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_a8811cc7044570e78a7d29671a6b670ba}
+
+
+Makes a burst read of the registers in the C\+C110l. 
+
+A succession of registers in the C\+C110l will be copied into the array. The register value at the provided address will be written into the first position of the array, the next register into the second position in the array, and so on.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The beginning register address. \\
+\hline
+{\em out} & Pointer to the array the register values are going to be written into. \\
+\hline
+{\em length} & The number of elements to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The C\+C110l status byte 
+\end{DoxyReturn}
+\hypertarget{_s_p_i___library_8h_a030f83b4c2ce4a1ce824e4174c888ab8}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Read\+\_\+\+Status@{S\+P\+I\+\_\+\+Read\+\_\+\+Status}}
+\index{S\+P\+I\+\_\+\+Read\+\_\+\+Status@{S\+P\+I\+\_\+\+Read\+\_\+\+Status}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Read\+\_\+\+Status(uint8\+\_\+t status\+\_\+reg, uint8\+\_\+t $\ast$out)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t S\+P\+I\+\_\+\+Read\+\_\+\+Status (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{status\+\_\+reg, }
+\item[{uint8\+\_\+t $\ast$}]{out}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_a030f83b4c2ce4a1ce824e4174c888ab8}
+
+
+Reads a value from one of the special status registers in the C\+C110l. 
+
+The C\+C110l has a set of special read only status registers. They contain information such as the version number of the chip, the current state machine state, and the F\+I\+F\+O buffer levels.
+
+
+\begin{DoxyParams}{Parameters}
+{\em status\+\_\+reg} & The status register to read the value from. \\
+\hline
+{\em out} & A pointer to the value that the status register should be written into. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The C\+C110l status byte. 
+\end{DoxyReturn}
+\hypertarget{_s_p_i___library_8h_aabf72034a6f247cd08d8bfc651129e93}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Send@{S\+P\+I\+\_\+\+Send}}
+\index{S\+P\+I\+\_\+\+Send@{S\+P\+I\+\_\+\+Send}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Send(uint8\+\_\+t address, uint8\+\_\+t value)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t S\+P\+I\+\_\+\+Send (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{address, }
+\item[{uint8\+\_\+t}]{value}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_aabf72034a6f247cd08d8bfc651129e93}
+
+
+A function for sending a single byte to the radio. 
+
+Writes a byte to the specified register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The register in the C\+C110l that the byte is to be written to. \\
+\hline
+{\em value} & The value to write to the target register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The status byte from the C\+C110l. For a write operation the 4 L\+S\+B of the byte will represent the space left in the T\+X\+\_\+\+F\+I\+F\+O. 
+\end{DoxyReturn}
+\hypertarget{_s_p_i___library_8h_a1f7eca85804b4c8cde6314b5562d52c4}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Send\+\_\+\+Burst@{S\+P\+I\+\_\+\+Send\+\_\+\+Burst}}
+\index{S\+P\+I\+\_\+\+Send\+\_\+\+Burst@{S\+P\+I\+\_\+\+Send\+\_\+\+Burst}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Send\+\_\+\+Burst(uint8\+\_\+t address, uint8\+\_\+t $\ast$value, uint8\+\_\+t length)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t S\+P\+I\+\_\+\+Send\+\_\+\+Burst (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{address, }
+\item[{uint8\+\_\+t $\ast$}]{value, }
+\item[{uint8\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_a1f7eca85804b4c8cde6314b5562d52c4}
+
+
+Makes a burst write into a set of registers, beginning with the register pointed by the address value. 
+
+The first value in the input array is written into the register at address. The second value is written into the next register, and so on. The status byte is captured from the transmission of the final byte in the burst, and will represent the space left in the T\+X F\+I\+F\+O just before the final byte is transmitted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address for the first register to write. \\
+\hline
+{\em value} & An array of values to write into C\+C110l registers. \\
+\hline
+{\em length} & The number of values that are going to be written to the C\+C110l. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The status byte of the C\+C110l 
+\end{DoxyReturn}
+\hypertarget{_s_p_i___library_8h_ac25bdf7cadc2429611e0aa1bb416e8be}{}\index{S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}!S\+P\+I\+\_\+\+Strobe@{S\+P\+I\+\_\+\+Strobe}}
+\index{S\+P\+I\+\_\+\+Strobe@{S\+P\+I\+\_\+\+Strobe}!S\+P\+I\+\_\+\+Library.\+h@{S\+P\+I\+\_\+\+Library.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+Strobe(uint8\+\_\+t strobe, uint8\+\_\+t F\+I\+F\+O)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t S\+P\+I\+\_\+\+Strobe (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{strobe, }
+\item[{uint8\+\_\+t}]{F\+I\+F\+O}
+\end{DoxyParamCaption}
+)}\label{_s_p_i___library_8h_ac25bdf7cadc2429611e0aa1bb416e8be}
+
+
+Sends a strobe command to the C\+C110l. 
+
+The operation of the C\+C110l is a basic state machine. It will move between states based on either internal events or through strobe commands which are passed to it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em strobe} & One of the strobe commands from \hyperlink{_c_c110l_8h}{C\+C110l.\+h} \\
+\hline
+{\em F\+I\+F\+O} & Get\+\_\+\+T\+X\+\_\+\+F\+I\+F\+O or Get\+\_\+\+R\+X\+\_\+\+F\+I\+F\+O \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The C\+C110l status byte 
+\end{DoxyReturn}

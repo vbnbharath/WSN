@@ -11,5 +11,7 @@ var files =
     [ "sleep_timer.h", "sleep__timer_8h.html", "sleep__timer_8h" ],
     [ "SPI_Library.c", "_s_p_i___library_8c.html", "_s_p_i___library_8c" ],
     [ "SPI_Library.h", "_s_p_i___library_8h.html", "_s_p_i___library_8h" ],
-    [ "SPI_Pins.h", "_s_p_i___pins_8h.html", null ]
+    [ "SPI_Pins.h", "_s_p_i___pins_8h.html", null ],
+    [ "Temperature_Measurement.c", "_temperature___measurement_8c.html", "_temperature___measurement_8c" ],
+    [ "Temperature_Measurement.h", "_temperature___measurement_8h.html", "_temperature___measurement_8h" ]
 ];

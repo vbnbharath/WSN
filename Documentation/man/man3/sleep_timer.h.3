@@ -1,0 +1,40 @@
+.TH "sleep_timer.h" 3 "Sun Nov 29 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sleep_timer.h \- Sleep library for the MSP430\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSleep_Timer\fP (uint8_t rollovers, uint16_t cycles)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Sleep library for the MSP430\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "void Sleep_Timer (uint8_t rollovers, uint16_t cycles)"
+Puts the MCU to sleep for the specified number of ACLK rollovers and cycles\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrollovers\fP The number of rollovers to sleep for, each rollover is 65536 ticks of ACLK 
+.br
+\fIcycles\fP The number of cycles to sleep for, in terms of ACLK ticks 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.
