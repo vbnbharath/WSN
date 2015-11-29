@@ -41,8 +41,6 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	Get_Temperature();
-
 	while(True)
 	{
 		// Some merge example test lines.

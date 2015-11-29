@@ -13,10 +13,10 @@
 uint8_t Get_Temperature()
 {
 	volatile uint16_t ADCValues[Sample_Count];
-	volatile int16_t AvgValue = 0;
-	volatile int32_t Temperature = 0;
-	volatile int16_t Cal30;
-	volatile uint16_t Cal85;
+	 int16_t AvgValue = 0;
+	 int32_t Temperature = 0;
+	 int16_t Cal30;
+	 uint16_t Cal85;
 
 	ADC10CTL0 = ADC10ON; 	// Turn on the ADC10 first
 

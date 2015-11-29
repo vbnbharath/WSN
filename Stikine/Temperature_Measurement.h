@@ -20,6 +20,8 @@
  *
  * Computes the silicon temperature of the MSP430. The temperature is reported as a integer value of
  * thousands of degrees celsius, IE 29551 is 29.551 celsius.
+ *
+ * Takes roughly 2 ms to complete
  * @return	The integer value, in hundreths of degrees celsius
  */
 uint16_t Get_Temperature();
