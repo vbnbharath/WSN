@@ -1,0 +1,69 @@
+\hypertarget{_radio_8c}{}\section{Radio.\+c File Reference}
+\label{_radio_8c}\index{Radio.\+c@{Radio.\+c}}
+{\ttfamily \#include \char`\"{}Radio.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\+P\+I\+\_\+\+Library.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}C\+C110l.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdint.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}msp430.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sleep\+\_\+timer.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_radio_8h_a9ea8776ed870286764cea56e58956269}{L\+B\+T\+\_\+\+Status} \hyperlink{_radio_8c_a132dfd3d132f9f4ff3f625da6f009a41}{L\+B\+T\+\_\+\+Send} (uint8\+\_\+t dest\+\_\+address, uint8\+\_\+t source\+\_\+address, uint8\+\_\+t $\ast$message, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Sends a message over the C\+C110l radio using listen before talk. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_listen___struct}{Listen\+\_\+\+Struct} \hyperlink{_radio_8c_a19cb6297b59cbbcf09e4580641c9a901}{L\+B\+T\+\_\+\+Listen} (uint16\+\_\+t timeout\+Period)
+\begin{DoxyCompactList}\small\item\em Puts the radio into listen mode for the specified amount of time. Blocking function, does not return until timeout occurs or a message is recieved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_radio_8c_a19cb6297b59cbbcf09e4580641c9a901}{}\index{Radio.\+c@{Radio.\+c}!L\+B\+T\+\_\+\+Listen@{L\+B\+T\+\_\+\+Listen}}
+\index{L\+B\+T\+\_\+\+Listen@{L\+B\+T\+\_\+\+Listen}!Radio.\+c@{Radio.\+c}}
+\subsubsection[{L\+B\+T\+\_\+\+Listen(uint16\+\_\+t timeout\+Period)}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Listen\+\_\+\+Struct} L\+B\+T\+\_\+\+Listen (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{timeout\+Period}
+\end{DoxyParamCaption}
+)}\label{_radio_8c_a19cb6297b59cbbcf09e4580641c9a901}
+
+
+Puts the radio into listen mode for the specified amount of time. Blocking function, does not return until timeout occurs or a message is recieved. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Period} & The amount of time, in A\+C\+L\+K cycles to wait for a transmission to come in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a \hyperlink{struct_listen___struct}{Listen\+\_\+\+Struct} which contains a status field and the payload. 
+\end{DoxyReturn}
+\hypertarget{_radio_8c_a132dfd3d132f9f4ff3f625da6f009a41}{}\index{Radio.\+c@{Radio.\+c}!L\+B\+T\+\_\+\+Send@{L\+B\+T\+\_\+\+Send}}
+\index{L\+B\+T\+\_\+\+Send@{L\+B\+T\+\_\+\+Send}!Radio.\+c@{Radio.\+c}}
+\subsubsection[{L\+B\+T\+\_\+\+Send(uint8\+\_\+t dest\+\_\+address, uint8\+\_\+t source\+\_\+address, uint8\+\_\+t $\ast$message, uint8\+\_\+t length)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+B\+T\+\_\+\+Status} L\+B\+T\+\_\+\+Send (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{dest\+\_\+address, }
+\item[{uint8\+\_\+t}]{source\+\_\+address, }
+\item[{uint8\+\_\+t $\ast$}]{message, }
+\item[{uint8\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)}\label{_radio_8c_a132dfd3d132f9f4ff3f625da6f009a41}
+
+
+Sends a message over the C\+C110l radio using listen before talk. 
+
+Function checks the status of the radio prior to tansmission. If the state is anything but \textquotesingle{}idle\textquotesingle{} the function abort and return a status indicating the fail state. Maximum message length is 59 bytes because of the extra bytes included for the hardware packet handling and appended R\+S\+S\+I and C\+R\+C bytes at the receiver.
+
+Blocking function, returns after the transmission is complete.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+\_\+address} & The address of the recipient. This address is what the C\+C110l hardware address filter operates against \\
+\hline
+{\em source\+\_\+address} & The address of this node, not used for hardware filtering \\
+\hline
+{\em message} & The payload of the transmission, can be up to 59 bytes long \\
+\hline
+{\em length} & The length of the payload. The function will adjust this value to accomodate the addresses being attached to the transmission \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an L\+B\+T\+\_\+\+Status enum. This can be checked to ensure the transmission was successful. 
+\end{DoxyReturn}

@@ -9,6 +9,7 @@ var main_8c =
       [ "TDMA_Assignment", "main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19aba5648d130c4a275615aee843b4fe28a", null ],
       [ "Sensing", "main_8c.html#a1fded6e3acf9cbcb7b68e43bdc4ada19a2108faf0a603737aa0277ccf92dec363", null ]
     ] ],
+    [ "ADC_ISR", "main_8c.html#a6ed0a222ba29d6365791b9cc27d9af14", null ],
     [ "main", "main_8c.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
     [ "MSP_RX_ISR", "main_8c.html#a249eff783fe7740fa64de432e57dc801", null ],
     [ "TimerA_0_ISR", "main_8c.html#a39a5d44a12b99aecce08f543fd528445", null ],

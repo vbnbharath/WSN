@@ -1,0 +1,41 @@
+\hypertarget{sleep__timer_8c}{}\section{sleep\+\_\+timer.\+c File Reference}
+\label{sleep__timer_8c}\index{sleep\+\_\+timer.\+c@{sleep\+\_\+timer.\+c}}
+{\ttfamily \#include $<$M\+S\+P430.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}pin\+Defs.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sleep__timer_8c_a44b2963ce8f12cb873cf3ae771246dcb}{Sleep\+\_\+\+Timer} (uint8\+\_\+t rollovers, uint16\+\_\+t cycles)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{sleep__timer_8c_a51670b759300738593f37dc4427e2d70}{Break\+\_\+\+Sleep}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{sleep__timer_8c_a44b2963ce8f12cb873cf3ae771246dcb}{}\index{sleep\+\_\+timer.\+c@{sleep\+\_\+timer.\+c}!Sleep\+\_\+\+Timer@{Sleep\+\_\+\+Timer}}
+\index{Sleep\+\_\+\+Timer@{Sleep\+\_\+\+Timer}!sleep\+\_\+timer.\+c@{sleep\+\_\+timer.\+c}}
+\subsubsection[{Sleep\+\_\+\+Timer(uint8\+\_\+t rollovers, uint16\+\_\+t cycles)}]{\setlength{\rightskip}{0pt plus 5cm}void Sleep\+\_\+\+Timer (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{rollovers, }
+\item[{uint16\+\_\+t}]{cycles}
+\end{DoxyParamCaption}
+)}\label{sleep__timer_8c_a44b2963ce8f12cb873cf3ae771246dcb}
+Puts the M\+C\+U to sleep for the specified number of A\+C\+L\+K rollovers and cycles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rollovers} & The number of rollovers to sleep for, each rollover is 65536 ticks of A\+C\+L\+K \\
+\hline
+{\em cycles} & The number of cycles to sleep for, in terms of A\+C\+L\+K ticks \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{sleep__timer_8c_a51670b759300738593f37dc4427e2d70}{}\index{sleep\+\_\+timer.\+c@{sleep\+\_\+timer.\+c}!Break\+\_\+\+Sleep@{Break\+\_\+\+Sleep}}
+\index{Break\+\_\+\+Sleep@{Break\+\_\+\+Sleep}!sleep\+\_\+timer.\+c@{sleep\+\_\+timer.\+c}}
+\subsubsection[{Break\+\_\+\+Sleep}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Break\+\_\+\+Sleep}\label{sleep__timer_8c_a51670b759300738593f37dc4427e2d70}

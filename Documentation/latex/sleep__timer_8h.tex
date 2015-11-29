@@ -1,0 +1,38 @@
+\hypertarget{sleep__timer_8h}{}\section{sleep\+\_\+timer.\+h File Reference}
+\label{sleep__timer_8h}\index{sleep\+\_\+timer.\+h@{sleep\+\_\+timer.\+h}}
+
+
+Sleep library for the M\+S\+P430.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sleep__timer_8h_a44b2963ce8f12cb873cf3ae771246dcb}{Sleep\+\_\+\+Timer} (uint8\+\_\+t rollovers, uint16\+\_\+t cycles)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sleep library for the M\+S\+P430. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{sleep__timer_8h_a44b2963ce8f12cb873cf3ae771246dcb}{}\index{sleep\+\_\+timer.\+h@{sleep\+\_\+timer.\+h}!Sleep\+\_\+\+Timer@{Sleep\+\_\+\+Timer}}
+\index{Sleep\+\_\+\+Timer@{Sleep\+\_\+\+Timer}!sleep\+\_\+timer.\+h@{sleep\+\_\+timer.\+h}}
+\subsubsection[{Sleep\+\_\+\+Timer(uint8\+\_\+t rollovers, uint16\+\_\+t cycles)}]{\setlength{\rightskip}{0pt plus 5cm}void Sleep\+\_\+\+Timer (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{rollovers, }
+\item[{uint16\+\_\+t}]{cycles}
+\end{DoxyParamCaption}
+)}\label{sleep__timer_8h_a44b2963ce8f12cb873cf3ae771246dcb}
+Puts the M\+C\+U to sleep for the specified number of A\+C\+L\+K rollovers and cycles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rollovers} & The number of rollovers to sleep for, each rollover is 65536 ticks of A\+C\+L\+K \\
+\hline
+{\em cycles} & The number of cycles to sleep for, in terms of A\+C\+L\+K ticks \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,122 @@
+.TH "main.c" 3 "Sun Nov 29 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.c \- Main control code and interrupt definitions for sensor node\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <msp430\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include 'pinDefs\&.h'\fP
+.br
+\fC#include 'CC110l\&.h'\fP
+.br
+\fC#include 'MSP_Init\&.h'\fP
+.br
+\fC#include 'Radio\&.h'\fP
+.br
+\fC#include 'SPI_Library\&.h'\fP
+.br
+\fC#include 'sleep_timer\&.h'\fP
+.br
+\fC#include 'Temperature_Measurement\&.h'\fP
+.br
+
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMachine_State\fP { \fBWaiting_For_Start\fP, \fBLocalizing\fP, \fBClustering\fP, \fBCH_TDMA_Assignment\fP, \fBCH_Sensing\fP, \fBTDMA_Assignment\fP, \fBSensing\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP (void)"
+.br
+.RI "\fIMain control sequence for sensor node\&. \fP"
+.ti -1c
+.RI "void \fBTimerA_0_ISR\fP (void)"
+.br
+.RI "\fIInterrupt service routine for slow timer\&. \fP"
+.ti -1c
+.RI "void \fBMSP_RX_ISR\fP (void)"
+.br
+.RI "\fIInterrupt service routine for packet received pin from CC100l\&. \fP"
+.ti -1c
+.RI "void \fBADC_ISR\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "volatile uint16_t \fBTimer_Rollover_Count\fP = 0"
+.br
+.ti -1c
+.RI "volatile uint8_t \fBBreak_Sleep\fP = \fBFalse\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Main control code and interrupt definitions for sensor node\&. 
+
+Initializes both the MSP430 controller and the attached CC110l radio\&. After completing the initialization process the controller goes into LPM3 and waits\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBMachine_State\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIWaiting_For_Start \fP\fP
+.TP
+\fB\fILocalizing \fP\fP
+.TP
+\fB\fIClustering \fP\fP
+.TP
+\fB\fICH_TDMA_Assignment \fP\fP
+.TP
+\fB\fICH_Sensing \fP\fP
+.TP
+\fB\fITDMA_Assignment \fP\fP
+.TP
+\fB\fISensing \fP\fP
+.SH "Function Documentation"
+.PP 
+.SS "void ADC_ISR (void)"
+
+.SS "int main (void)"
+
+.PP
+Main control sequence for sensor node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Constant 0, but it has nowhere to go\&. 
+.RE
+.PP
+
+.SS "void MSP_RX_ISR (void)"
+
+.PP
+Interrupt service routine for packet received pin from CC100l\&. 
+.SS "void TimerA_0_ISR (void)"
+
+.PP
+Interrupt service routine for slow timer\&. 
+.SH "Variable Documentation"
+.PP 
+.SS "volatile uint8_t Break_Sleep = \fBFalse\fP"
+
+.SS "volatile uint16_t Timer_Rollover_Count = 0"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

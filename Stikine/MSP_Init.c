@@ -42,11 +42,12 @@ void Board_Init()
 void Timer_Init()
 {
 	// Timer A0 init
+	TA0R = 0;	// Start at 0
+	TA0CCR0 = 65535; // Count up to max value
 	TA0CTL |= TASSEL_1; // TA clock source is ACLK, input divider 1
 	TA0CTL &= ~(TAIFG);
 	TA0CTL |= TAIE;
 	TA0CTL |= MC_2; // enable TA in continuous mode
-
 }
 #endif
 

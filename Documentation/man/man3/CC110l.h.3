@@ -1,0 +1,853 @@
+.TH "CC110l.h" 3 "Sun Nov 29 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CC110l.h \- Contains definitions for the registers, strobes, and bit masks for the CC110l\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.PP
+.RI "\fBConfiguration Registers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBIOCFG2\fP   0x00"
+.br
+.RI "\fIGDO2 output pin configuration\&. \fP"
+.ti -1c
+.RI "#define \fBIOCFG1\fP   0x01"
+.br
+.RI "\fIGDO1 output pin configuration\&. \fP"
+.ti -1c
+.RI "#define \fBIOCFG0\fP   0x02"
+.br
+.RI "\fIGDO0 output pin configuration\&. \fP"
+.ti -1c
+.RI "#define \fBFIFOTHR\fP   0x03"
+.br
+.RI "\fIRX FIFO and TX FIFO thresholds\&. \fP"
+.ti -1c
+.RI "#define \fBSYNC1\fP   0x04"
+.br
+.RI "\fISync word, high byte\&. \fP"
+.ti -1c
+.RI "#define \fBSYNC0\fP   0x05"
+.br
+.RI "\fISync word, low byte\&. \fP"
+.ti -1c
+.RI "#define \fBPKTLEN\fP   0x06"
+.br
+.RI "\fIPacket length\&. \fP"
+.ti -1c
+.RI "#define \fBPKTCTRL1\fP   0x07"
+.br
+.RI "\fIPacket automation control\&. \fP"
+.ti -1c
+.RI "#define \fBPKTCTRL0\fP   0x08"
+.br
+.RI "\fIPacket automation control\&. \fP"
+.ti -1c
+.RI "#define \fBADDR\fP   0x09"
+.br
+.RI "\fIDevice address\&. \fP"
+.ti -1c
+.RI "#define \fBCHANNR\fP   0x0A"
+.br
+.RI "\fIChannel number\&. \fP"
+.ti -1c
+.RI "#define \fBFSCTRL1\fP   0x0B"
+.br
+.RI "\fIFrequency synthesizer control\&. \fP"
+.ti -1c
+.RI "#define \fBFSCTRL0\fP   0x0C"
+.br
+.RI "\fIFrequency synthesizer control\&. \fP"
+.ti -1c
+.RI "#define \fBFREQ2\fP   0x0D"
+.br
+.RI "\fIFrequency control word, high byte\&. \fP"
+.ti -1c
+.RI "#define \fBFREQ1\fP   0x0E"
+.br
+.RI "\fIFrequency control word, middle byte\&. \fP"
+.ti -1c
+.RI "#define \fBFREQ0\fP   0x0F"
+.br
+.RI "\fIFrequency control word, low byte\&. \fP"
+.ti -1c
+.RI "#define \fBMDMCFG4\fP   0x10"
+.br
+.RI "\fIModem configuration\&. \fP"
+.ti -1c
+.RI "#define \fBMDMCFG3\fP   0x11"
+.br
+.RI "\fIModem configuration\&. \fP"
+.ti -1c
+.RI "#define \fBMDMCFG2\fP   0x12"
+.br
+.RI "\fIModem configuration\&. \fP"
+.ti -1c
+.RI "#define \fBMDMCFG1\fP   0x13"
+.br
+.RI "\fIModem configuration\&. \fP"
+.ti -1c
+.RI "#define \fBMDMCFG0\fP   0x14"
+.br
+.RI "\fIModem configuration\&. \fP"
+.ti -1c
+.RI "#define \fBDEVIATN\fP   0x15"
+.br
+.RI "\fIModem deviation setting\&. \fP"
+.ti -1c
+.RI "#define \fBMCSM2\fP   0x16"
+.br
+.RI "\fIMain Radio Cntrl State Machine config\&. \fP"
+.ti -1c
+.RI "#define \fBMCSM1\fP   0x17"
+.br
+.RI "\fIMain Radio Cntrl State Machine config\&. \fP"
+.ti -1c
+.RI "#define \fBMCSM0\fP   0x18"
+.br
+.RI "\fIMain Radio Cntrl State Machine config\&. \fP"
+.ti -1c
+.RI "#define \fBFOCCFG\fP   0x19"
+.br
+.RI "\fIFrequency Offset Compensation config\&. \fP"
+.ti -1c
+.RI "#define \fBBSCFG\fP   0x1A"
+.br
+.RI "\fIBit Synchronization configuration\&. \fP"
+.ti -1c
+.RI "#define \fBAGCCTRL2\fP   0x1B"
+.br
+.RI "\fIAGC control\&. \fP"
+.ti -1c
+.RI "#define \fBAGCCTRL1\fP   0x1C"
+.br
+.RI "\fIAGC control\&. \fP"
+.ti -1c
+.RI "#define \fBAGCCTRL0\fP   0x1D"
+.br
+.RI "\fIAGC control\&. \fP"
+.ti -1c
+.RI "#define \fBWOREVT1\fP   0x1E"
+.br
+.RI "\fIHigh byte Event 0 timeout\&. \fP"
+.ti -1c
+.RI "#define \fBWOREVT0\fP   0x1F"
+.br
+.RI "\fILow byte Event 0 timeout\&. \fP"
+.ti -1c
+.RI "#define \fBWORCTRL\fP   0x20"
+.br
+.RI "\fIWake On Radio control\&. \fP"
+.ti -1c
+.RI "#define \fBFREND1\fP   0x21"
+.br
+.RI "\fIFront end RX configuration\&. \fP"
+.ti -1c
+.RI "#define \fBFREND0\fP   0x22"
+.br
+.RI "\fIFront end TX configuration\&. \fP"
+.ti -1c
+.RI "#define \fBFSCAL3\fP   0x23"
+.br
+.RI "\fIFrequency synthesizer calibration\&. \fP"
+.ti -1c
+.RI "#define \fBFSCAL2\fP   0x24"
+.br
+.RI "\fIFrequency synthesizer calibration\&. \fP"
+.ti -1c
+.RI "#define \fBFSCAL1\fP   0x25"
+.br
+.RI "\fIFrequency synthesizer calibration\&. \fP"
+.ti -1c
+.RI "#define \fBFSCAL0\fP   0x26"
+.br
+.RI "\fIFrequency synthesizer calibration\&. \fP"
+.ti -1c
+.RI "#define \fBRCCTRL1\fP   0x27"
+.br
+.RI "\fIRC oscillator configuration\&. \fP"
+.ti -1c
+.RI "#define \fBRCCTRL0\fP   0x28"
+.br
+.RI "\fIRC oscillator configuration\&. \fP"
+.ti -1c
+.RI "#define \fBFSTEST\fP   0x29"
+.br
+.RI "\fIFrequency synthesizer cal control\&. \fP"
+.ti -1c
+.RI "#define \fBPTEST\fP   0x2A"
+.br
+.RI "\fIProduction test\&. \fP"
+.ti -1c
+.RI "#define \fBAGCTEST\fP   0x2B"
+.br
+.RI "\fIAGC test\&. \fP"
+.ti -1c
+.RI "#define \fBTEST2\fP   0x2C"
+.br
+.RI "\fIVarious test settings\&. \fP"
+.ti -1c
+.RI "#define \fBTEST1\fP   0x2D"
+.br
+.RI "\fIVarious test settings\&. \fP"
+.ti -1c
+.RI "#define \fBTEST0\fP   0x2E"
+.br
+.RI "\fIVarious test settings\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBStrobe commands\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBSRES\fP   0x30"
+.br
+.RI "\fIReset chip\&. \fP"
+.ti -1c
+.RI "#define \fBSFSTXON\fP   0x31"
+.br
+.RI "\fIEnable/calibrate freq synthesizer\&. \fP"
+.ti -1c
+.RI "#define \fBSXOFF\fP   0x32"
+.br
+.RI "\fITurn off crystal oscillator\&. \fP"
+.ti -1c
+.RI "#define \fBSCAL\fP   0x33"
+.br
+.RI "\fICalibrate freq synthesizer & disable\&. \fP"
+.ti -1c
+.RI "#define \fBSRX\fP   0x34"
+.br
+.RI "\fIEnable RX\&. \fP"
+.ti -1c
+.RI "#define \fBSTX\fP   0x35"
+.br
+.RI "\fIEnable TX\&. \fP"
+.ti -1c
+.RI "#define \fBSIDLE\fP   0x36"
+.br
+.RI "\fIExit RX / TX\&. \fP"
+.ti -1c
+.RI "#define \fBSAFC\fP   0x37"
+.br
+.RI "\fIAFC adjustment of freq synthesizer\&. \fP"
+.ti -1c
+.RI "#define \fBSWOR\fP   0x38"
+.br
+.RI "\fIStart automatic RX polling sequence\&. \fP"
+.ti -1c
+.RI "#define \fBSPWD\fP   0x39"
+.br
+.RI "\fIEnter pwr down mode when CSn goes hi\&. \fP"
+.ti -1c
+.RI "#define \fBSFRX\fP   0x3A"
+.br
+.RI "\fIFlush the RX FIFO buffer\&. \fP"
+.ti -1c
+.RI "#define \fBSFTX\fP   0x3B"
+.br
+.RI "\fIFlush the TX FIFO buffer\&. \fP"
+.ti -1c
+.RI "#define \fBSWORRST\fP   0x3C"
+.br
+.RI "\fIReset real time clock\&. \fP"
+.ti -1c
+.RI "#define \fBSNOP\fP   0x3D"
+.br
+.RI "\fINo operation\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBStatus registers\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBPARTNUM\fP   0x30"
+.br
+.RI "\fIPart number\&. \fP"
+.ti -1c
+.RI "#define \fBVERSION\fP   0x31"
+.br
+.RI "\fICurrent version number\&. \fP"
+.ti -1c
+.RI "#define \fBFREQEST\fP   0x32"
+.br
+.RI "\fIFrequency offset estimate\&. \fP"
+.ti -1c
+.RI "#define \fBLQI\fP   0x33"
+.br
+.RI "\fIDemodulator estimate for link quality\&. \fP"
+.ti -1c
+.RI "#define \fBRSSI\fP   0x34"
+.br
+.RI "\fIReceived signal strength indication\&. \fP"
+.ti -1c
+.RI "#define \fBMARCSTATE\fP   0x35"
+.br
+.RI "\fIControl state machine state\&. \fP"
+.ti -1c
+.RI "#define \fBWORTIME1\fP   0x36"
+.br
+.RI "\fIHigh byte of WOR timer\&. \fP"
+.ti -1c
+.RI "#define \fBWORTIME0\fP   0x37"
+.br
+.RI "\fILow byte of WOR timer\&. \fP"
+.ti -1c
+.RI "#define \fBPKTSTATUS\fP   0x38"
+.br
+.RI "\fICurrent GDOx status and packet status\&. \fP"
+.ti -1c
+.RI "#define \fBVCO_VC_DAC\fP   0x39"
+.br
+.RI "\fICurrent setting from PLL cal module\&. \fP"
+.ti -1c
+.RI "#define \fBTXBYTES\fP   0x3A"
+.br
+.RI "\fIUnderflow and # of bytes in TXFIFO\&. \fP"
+.ti -1c
+.RI "#define \fBRXBYTES\fP   0x3B"
+.br
+.RI "\fIOverflow and # of bytes in RXFIFO\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMasks for packet status register\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBOverFlow\fP   0b10000000"
+.br
+.RI "\fIMasks off the overflow bit\&. \fP"
+.ti -1c
+.RI "#define \fBFIFO_Level\fP   0b01111111"
+.br
+.RI "\fIMasks off the FIFO level\&. \fP"
+.ti -1c
+.RI "#define \fBNUM_RXBYTES\fP   0x7F"
+.br
+.RI "\fIMask '# of bytes' field in _RXBYTES\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBOther memory locations\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBPATABLE\fP   0x3E"
+.br
+.RI "\fIAddress for PATABLE\&. \fP"
+.ti -1c
+.RI "#define \fBTXFIFO\fP   0x3F"
+.br
+.RI "\fIAddress for TX FIFO\&. \fP"
+.ti -1c
+.RI "#define \fBRXFIFO\fP   0x3F"
+.br
+.RI "\fIAddress for RX FIFO\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBMasks for status bytes\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBLQI_RX\fP   0x01"
+.br
+.RI "\fIPosition of LQI byte\&. \fP"
+.ti -1c
+.RI "#define \fBCRC_OK\fP   0x80"
+.br
+.RI "\fIMask 'CRC_OK' bit within LQI byte\&. \fP"
+.ti -1c
+.RI "#define \fBFIFO_Bytes\fP   0b00001111"
+.br
+.RI "\fIMask the number of FIFO bytes in the status byte\&. \fP"
+.ti -1c
+.RI "#define \fBState_Bits\fP   0b01110000"
+.br
+.RI "\fIMasks off the state bits from the status byte\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBState bit values\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBSB_Idle\fP   0b00000000"
+.br
+.RI "\fIRadio is in idle state\&. \fP"
+.ti -1c
+.RI "#define \fBSB_RX\fP   0b00010000"
+.br
+.RI "\fIRadio is currently receiving\&. \fP"
+.ti -1c
+.RI "#define \fBSB_TX\fP   0b00100000"
+.br
+.RI "\fIRadio is currently transmitting\&. \fP"
+.ti -1c
+.RI "#define \fBSB_FSTXON\fP   0b01000000"
+.br
+.RI "\fIRadio is ready for Fast TX\&. \fP"
+.ti -1c
+.RI "#define \fBSB_Settle\fP   0b01010000"
+.br
+.RI "\fIRadio is waiting for PLL to settle\&. \fP"
+.ti -1c
+.RI "#define \fBSB_RX_Over\fP   0b01100000"
+.br
+.RI "\fIRadio RX Fifo has overflowed\&. \fP"
+.ti -1c
+.RI "#define \fBSB_TX_Over\fP   0b01110000"
+.br
+.RI "\fIRadio TX Fifo has underflowed\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBDefinitions to support burst/single access:\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBWRITE_BURST\fP   0x40"
+.br
+.RI "\fIBurst write bits\&. \fP"
+.ti -1c
+.RI "#define \fBREAD_SINGLE\fP   0x80"
+.br
+.RI "\fIRead bits\&. \fP"
+.ti -1c
+.RI "#define \fBREAD_BURST\fP   0xC0"
+.br
+.RI "\fIBurst read bits\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fBDefinitions for strobes\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBGet_TX_FIFO\fP   0x00"
+.br
+.RI "\fIMakes strobe return bytes in TX FIFO\&. \fP"
+.ti -1c
+.RI "#define \fBGet_RX_FIFO\fP   0x80"
+.br
+.RI "\fIMakes strobe return bytes in RX FIFO\&. \fP"
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contains definitions for the registers, strobes, and bit masks for the CC110l\&. 
+
+
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADDR   0x09"
+
+.PP
+Device address\&. 
+.SS "#define AGCCTRL0   0x1D"
+
+.PP
+AGC control\&. 
+.SS "#define AGCCTRL1   0x1C"
+
+.PP
+AGC control\&. 
+.SS "#define AGCCTRL2   0x1B"
+
+.PP
+AGC control\&. 
+.SS "#define AGCTEST   0x2B"
+
+.PP
+AGC test\&. 
+.SS "#define BSCFG   0x1A"
+
+.PP
+Bit Synchronization configuration\&. 
+.SS "#define CHANNR   0x0A"
+
+.PP
+Channel number\&. 
+.SS "#define CRC_OK   0x80"
+
+.PP
+Mask 'CRC_OK' bit within LQI byte\&. 
+.SS "#define DEVIATN   0x15"
+
+.PP
+Modem deviation setting\&. 
+.SS "#define FIFO_Bytes   0b00001111"
+
+.PP
+Mask the number of FIFO bytes in the status byte\&. 
+.SS "#define FIFO_Level   0b01111111"
+
+.PP
+Masks off the FIFO level\&. 
+.SS "#define FIFOTHR   0x03"
+
+.PP
+RX FIFO and TX FIFO thresholds\&. 
+.SS "#define FOCCFG   0x19"
+
+.PP
+Frequency Offset Compensation config\&. 
+.SS "#define FREND0   0x22"
+
+.PP
+Front end TX configuration\&. 
+.SS "#define FREND1   0x21"
+
+.PP
+Front end RX configuration\&. 
+.SS "#define FREQ0   0x0F"
+
+.PP
+Frequency control word, low byte\&. 
+.SS "#define FREQ1   0x0E"
+
+.PP
+Frequency control word, middle byte\&. 
+.SS "#define FREQ2   0x0D"
+
+.PP
+Frequency control word, high byte\&. 
+.SS "#define FREQEST   0x32"
+
+.PP
+Frequency offset estimate\&. 
+.SS "#define FSCAL0   0x26"
+
+.PP
+Frequency synthesizer calibration\&. 
+.SS "#define FSCAL1   0x25"
+
+.PP
+Frequency synthesizer calibration\&. 
+.SS "#define FSCAL2   0x24"
+
+.PP
+Frequency synthesizer calibration\&. 
+.SS "#define FSCAL3   0x23"
+
+.PP
+Frequency synthesizer calibration\&. 
+.SS "#define FSCTRL0   0x0C"
+
+.PP
+Frequency synthesizer control\&. 
+.SS "#define FSCTRL1   0x0B"
+
+.PP
+Frequency synthesizer control\&. 
+.SS "#define FSTEST   0x29"
+
+.PP
+Frequency synthesizer cal control\&. 
+.SS "#define Get_RX_FIFO   0x80"
+
+.PP
+Makes strobe return bytes in RX FIFO\&. 
+.SS "#define Get_TX_FIFO   0x00"
+
+.PP
+Makes strobe return bytes in TX FIFO\&. 
+.SS "#define IOCFG0   0x02"
+
+.PP
+GDO0 output pin configuration\&. 
+.SS "#define IOCFG1   0x01"
+
+.PP
+GDO1 output pin configuration\&. 
+.SS "#define IOCFG2   0x00"
+
+.PP
+GDO2 output pin configuration\&. 
+.SS "#define LQI   0x33"
+
+.PP
+Demodulator estimate for link quality\&. 
+.SS "#define LQI_RX   0x01"
+
+.PP
+Position of LQI byte\&. 
+.SS "#define MARCSTATE   0x35"
+
+.PP
+Control state machine state\&. 
+.SS "#define MCSM0   0x18"
+
+.PP
+Main Radio Cntrl State Machine config\&. 
+.SS "#define MCSM1   0x17"
+
+.PP
+Main Radio Cntrl State Machine config\&. 
+.SS "#define MCSM2   0x16"
+
+.PP
+Main Radio Cntrl State Machine config\&. 
+.SS "#define MDMCFG0   0x14"
+
+.PP
+Modem configuration\&. 
+.SS "#define MDMCFG1   0x13"
+
+.PP
+Modem configuration\&. 
+.SS "#define MDMCFG2   0x12"
+
+.PP
+Modem configuration\&. 
+.SS "#define MDMCFG3   0x11"
+
+.PP
+Modem configuration\&. 
+.SS "#define MDMCFG4   0x10"
+
+.PP
+Modem configuration\&. 
+.SS "#define NUM_RXBYTES   0x7F"
+
+.PP
+Mask '# of bytes' field in _RXBYTES\&. 
+.SS "#define OverFlow   0b10000000"
+
+.PP
+Masks off the overflow bit\&. 
+.SS "#define PARTNUM   0x30"
+
+.PP
+Part number\&. 
+.SS "#define PATABLE   0x3E"
+
+.PP
+Address for PATABLE\&. 
+.SS "#define PKTCTRL0   0x08"
+
+.PP
+Packet automation control\&. 
+.SS "#define PKTCTRL1   0x07"
+
+.PP
+Packet automation control\&. 
+.SS "#define PKTLEN   0x06"
+
+.PP
+Packet length\&. 
+.SS "#define PKTSTATUS   0x38"
+
+.PP
+Current GDOx status and packet status\&. 
+.SS "#define PTEST   0x2A"
+
+.PP
+Production test\&. 
+.SS "#define RCCTRL0   0x28"
+
+.PP
+RC oscillator configuration\&. 
+.SS "#define RCCTRL1   0x27"
+
+.PP
+RC oscillator configuration\&. 
+.SS "#define READ_BURST   0xC0"
+
+.PP
+Burst read bits\&. 
+.SS "#define READ_SINGLE   0x80"
+
+.PP
+Read bits\&. 
+.SS "#define RSSI   0x34"
+
+.PP
+Received signal strength indication\&. 
+.SS "#define RXBYTES   0x3B"
+
+.PP
+Overflow and # of bytes in RXFIFO\&. 
+.SS "#define RXFIFO   0x3F"
+
+.PP
+Address for RX FIFO\&. 
+.SS "#define SAFC   0x37"
+
+.PP
+AFC adjustment of freq synthesizer\&. 
+.SS "#define SB_FSTXON   0b01000000"
+
+.PP
+Radio is ready for Fast TX\&. 
+.SS "#define SB_Idle   0b00000000"
+
+.PP
+Radio is in idle state\&. 
+.SS "#define SB_RX   0b00010000"
+
+.PP
+Radio is currently receiving\&. 
+.SS "#define SB_RX_Over   0b01100000"
+
+.PP
+Radio RX Fifo has overflowed\&. 
+.SS "#define SB_Settle   0b01010000"
+
+.PP
+Radio is waiting for PLL to settle\&. 
+.SS "#define SB_TX   0b00100000"
+
+.PP
+Radio is currently transmitting\&. 
+.SS "#define SB_TX_Over   0b01110000"
+
+.PP
+Radio TX Fifo has underflowed\&. 
+.SS "#define SCAL   0x33"
+
+.PP
+Calibrate freq synthesizer & disable\&. 
+.SS "#define SFRX   0x3A"
+
+.PP
+Flush the RX FIFO buffer\&. 
+.SS "#define SFSTXON   0x31"
+
+.PP
+Enable/calibrate freq synthesizer\&. 
+.SS "#define SFTX   0x3B"
+
+.PP
+Flush the TX FIFO buffer\&. 
+.SS "#define SIDLE   0x36"
+
+.PP
+Exit RX / TX\&. 
+.SS "#define SNOP   0x3D"
+
+.PP
+No operation\&. 
+.SS "#define SPWD   0x39"
+
+.PP
+Enter pwr down mode when CSn goes hi\&. 
+.SS "#define SRES   0x30"
+
+.PP
+Reset chip\&. 
+.SS "#define SRX   0x34"
+
+.PP
+Enable RX\&. 
+.SS "#define State_Bits   0b01110000"
+
+.PP
+Masks off the state bits from the status byte\&. 
+.SS "#define STX   0x35"
+
+.PP
+Enable TX\&. 
+.SS "#define SWOR   0x38"
+
+.PP
+Start automatic RX polling sequence\&. 
+.SS "#define SWORRST   0x3C"
+
+.PP
+Reset real time clock\&. 
+.SS "#define SXOFF   0x32"
+
+.PP
+Turn off crystal oscillator\&. 
+.SS "#define SYNC0   0x05"
+
+.PP
+Sync word, low byte\&. 
+.SS "#define SYNC1   0x04"
+
+.PP
+Sync word, high byte\&. 
+.SS "#define TEST0   0x2E"
+
+.PP
+Various test settings\&. 
+.SS "#define TEST1   0x2D"
+
+.PP
+Various test settings\&. 
+.SS "#define TEST2   0x2C"
+
+.PP
+Various test settings\&. 
+.SS "#define TXBYTES   0x3A"
+
+.PP
+Underflow and # of bytes in TXFIFO\&. 
+.SS "#define TXFIFO   0x3F"
+
+.PP
+Address for TX FIFO\&. 
+.SS "#define VCO_VC_DAC   0x39"
+
+.PP
+Current setting from PLL cal module\&. 
+.SS "#define VERSION   0x31"
+
+.PP
+Current version number\&. 
+.SS "#define WORCTRL   0x20"
+
+.PP
+Wake On Radio control\&. 
+.SS "#define WOREVT0   0x1F"
+
+.PP
+Low byte Event 0 timeout\&. 
+.SS "#define WOREVT1   0x1E"
+
+.PP
+High byte Event 0 timeout\&. 
+.SS "#define WORTIME0   0x37"
+
+.PP
+Low byte of WOR timer\&. 
+.SS "#define WORTIME1   0x36"
+
+.PP
+High byte of WOR timer\&. 
+.SS "#define WRITE_BURST   0x40"
+
+.PP
+Burst write bits\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.
