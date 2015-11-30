@@ -121,7 +121,7 @@ LBT_Status TDMA_Send(uint8_t dest_address, uint8_t source_address, uint8_t *mess
 	SPI_Send(TXFIFO, dest_address);
 	SPI_Send(TXFIFO, source_address);
 	status = SPI_Send_Burst(TXFIFO, message, length);	// Load the TX fifo
-	FIFO_Space = status & FIFO_Bytes;		// Get the space left in the FIFO
+	FIFO_Space = status & FIFO_Bytes;		// Get the space left in the FIFO0.......................................................................................................................................................................................................................................
 
 	if(FIFO_Space == 0)	// FIFO space remaining of 0 means overflow
 	{

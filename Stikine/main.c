@@ -25,10 +25,25 @@ typedef enum {
 	TDMA_Assignment,
 	Sensing
 } Machine_State;
+Machine_State state;
+
+typedef enum {NODE, CLUSTER_HEAD} nd;
+nd node = CLUSTER_HEAD;
+//nd node = NODE;
 
 // Globals
 volatile uint16_t Timer_Rollover_Count = 0;
 volatile uint8_t Break_Sleep = False;
+uint8_t message[3];
+uint8_t length = 3;
+uint8_t rollovers_tdma;
+uint16_t cycles_tdma;
+
+typedef enum {
+	NODE1=1, NODE2, NODE3, NODE4, NODE5, NODE6, NODE7, NODE8, NODE9, NODE10,
+	NODE11, NODE12, NODE13, NODE14, NODE15, NODE16, NODE17, NODE18, NODE19, NODE20,
+	NODE21, NODE22, NODE23, NODE24, NODE25, NODE26, NODE27, NODE28, NODE29, NODE30} nd_addr;
+nd_addr node_address;
 
 /**
  * \brief Main control sequence for sensor node
@@ -41,10 +56,26 @@ int main(void)
 	SPI_Init(); // Start SPI
 	Radio_Init(); // Prep the radio
 
-	while(True)
+	if (node == CLUSTER_HEAD)
+		state = CH_TDMA_Assignment;
+	else if (node == NODE)
+		state = TDMA_Assignment;
+
+	while(1)
 	{
-		// Some merge example test lines.
-		// More testing.
+		if (state == CH_TDMA_Assignment) {
+			rollovers_tdma=0;
+			cycles_tdma=32441; // defines a sleep period of 990 ms
+			message[0]=rollovers_tdma;
+			int_divide (cycles_tdma, &message[1]);
+			uint8_t i = 0;
+			for (i=1; i<11; i++) {
+				node_address=i;
+				//TDMA_Send((node_address = i), NODE11, message, length);
+			}
+		}
+		if (state == TDMA_Assignment)
+			;
 	}
 }
 
