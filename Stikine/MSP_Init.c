@@ -36,6 +36,9 @@ void Board_Init()
 	P2DIR = 0xFF;
 	P3DIR = 0XFF;
 
+//	P1DIR |= BIT0; // Configure LED 1 for output
+//	P1DIR |= BIT6; // Configure LED 2 for output
+
 	_EINT();
 }
 

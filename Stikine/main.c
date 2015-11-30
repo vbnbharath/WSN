@@ -44,6 +44,10 @@ typedef enum {
 	NODE11, NODE12, NODE13, NODE14, NODE15, NODE16, NODE17, NODE18, NODE19, NODE20,
 	NODE21, NODE22, NODE23, NODE24, NODE25, NODE26, NODE27, NODE28, NODE29, NODE30} nd_addr;
 nd_addr node_address;
+volatile uint16_t start = 0;
+volatile uint16_t stop = 0;
+volatile uint16_t duration = 0;
+// CH has address 11 or NODE11
 
 /**
  * \brief Main control sequence for sensor node
@@ -64,14 +68,22 @@ int main(void)
 	while(1)
 	{
 		if (state == CH_TDMA_Assignment) {
+			uint8_t i;
+//			uint16_t start = 0;
+//			uint16_t stop = 0;
+//			uint16_t duration = 0;
 			rt=2;
 			cycles_tdma=32441; // defines a sleep period of 990 ms
 			message[0]=rt;
 			int_divide (cycles_tdma, &message[1]);
-			uint8_t i;
+
 			for (i=1; i<11; i++) {
-				node_address=i;
-				//TDMA_Send((node_address = i), NODE11, message, length);
+				P1OUT ^= BIT0; // red
+				start = TA0R;
+				TDMA_Send((node_address = i), NODE11, &message[0], length); // 70 cycles (69 excluding stop)
+				Sleep_Timer(0,257); // makes interval of 10 ms
+				stop = TA0R; // TDMA_send + sleep 328 cycles or 10010 us (error less then resolution)
+				P1OUT ^= BIT0; // red
 			}
 		}
 //		if (state == TDMA_Assignment)
