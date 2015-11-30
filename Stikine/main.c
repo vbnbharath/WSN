@@ -36,7 +36,7 @@ volatile uint16_t Timer_Rollover_Count = 0;
 volatile uint8_t Break_Sleep = False;
 uint8_t message[3];
 uint8_t length = 3;
-uint8_t rollovers_tdma;
+uint8_t rt;
 uint16_t cycles_tdma;
 
 typedef enum {
@@ -64,18 +64,18 @@ int main(void)
 	while(1)
 	{
 		if (state == CH_TDMA_Assignment) {
-			rollovers_tdma=0;
+			rt=2;
 			cycles_tdma=32441; // defines a sleep period of 990 ms
-			message[0]=rollovers_tdma;
+			message[0]=rt;
 			int_divide (cycles_tdma, &message[1]);
-			uint8_t i = 0;
+			uint8_t i;
 			for (i=1; i<11; i++) {
 				node_address=i;
 				//TDMA_Send((node_address = i), NODE11, message, length);
 			}
 		}
-		if (state == TDMA_Assignment)
-			;
+//		if (state == TDMA_Assignment)
+//			;
 	}
 }
 
