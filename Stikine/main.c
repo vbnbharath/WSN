@@ -41,10 +41,12 @@ cl cluster = CLUSTER1;
 
 #define TDMA_SLOT 257 // defines time slot of 10 ms
 #define TDMA_SLEEP 32441  // defines a sleep period of 990 ms
+#define GUARD_TIME 66 // guard time of 65 cycles or 2 ms or 2014 us
 
 // Globals
 volatile uint16_t Timer_Rollover_Count = 0;
 volatile uint8_t Break_Sleep = False;
+
 uint8_t message[3];
 uint8_t length = 3;
 uint8_t rollovers_tdma;
@@ -68,9 +70,7 @@ volatile uint16_t start; // number of cycles when TDMA assign starts
 volatile uint16_t stop; // number of cycles when TDMA assign stops
 volatile uint8_t ro_start_TDMA; // number of rollovers when TDMA assign starts
 volatile uint8_t ro_stop_TDMA; // number of rollovers when TDMA assign stops
-
-volatile uint16_t guard_time;
-volatile uint16_t cycles_TDMA; // cycles spend during TDMA time slots dissemination
+volatile uint16_t cycles_TDMA; // cycles spent during TDMA time slots dissemination
 
 /**
  * \brief Main control sequence for sensor node
@@ -140,7 +140,7 @@ int main(void)
 			cycles = int_merge(RX_Message.payload[CYCLES_POS_LOWER],RX_Message.payload[CYCLES_POS_UPPER]);
 
 			//state == Sensing;
-			Sleep_Timer(rollovers, (cycles - guard_time));
+			Sleep_Timer(rollovers, (cycles - GUARD_TIME));
 			// RX message, go to sleep
 			// wake up for Sensing
 			// do Sensing for 25 sec, then return to TDMA_Assignment
