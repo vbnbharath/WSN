@@ -14,7 +14,21 @@
 #include "Radio.h"
 #include "SPI_Library.h" // SPI control for the radio
 #include "sleep_timer.h" // Sleep code for controller
+<<<<<<< HEAD
 #include "states.h" // Enum for the possible machine states.
+=======
+#include "Temperature_Measurement.h"
+
+typedef enum {
+	Waiting_For_Start,
+	Localizing,
+	Clustering,
+	CH_TDMA_Assignment,
+	CH_Sensing,
+	TDMA_Assignment,
+	Sensing
+} Machine_State;
+>>>>>>> master
 
 // Globals
 volatile uint16_t Timer_Rollover_Count = 0;
@@ -52,6 +66,7 @@ int main(void)
 
 	while(True)
 	{
+<<<<<<< HEAD
 		if(state == Waiting_For_Start)
 		{
 			state = Wait_For_Start();
@@ -64,6 +79,10 @@ int main(void)
 				// Spin here.
 			}
 		}
+=======
+		// Some merge example test lines.
+		// More testing.
+>>>>>>> master
 	}
 }
 
@@ -71,6 +90,7 @@ int main(void)
 #ifdef __MSP430G2553__
 #define Slow_Timer_Vector_1 TIMER0_A1_VECTOR
 #define GDO_Pin_Vector PORT1_VECTOR
+#define ADC_Vector ADC10_VECTOR
 #endif
 
 /**
@@ -99,5 +119,12 @@ void __attribute__((__interrupt__(GDO_Pin_Vector)))MSP_RX_ISR(void)
 	MSP_RX_Port_IFG &= ~MSP_RX_Pin; // Clear the interrupt flag
 	Break_Sleep = True;
 	LPM3_EXIT; // Wake up on interrupt
+}
+
+void __attribute__((__interrupt__(ADC_Vector)))ADC_ISR(void)
+{
+	ADC10CTL0 &= ~ADC10IFG; // Clear flag
+	LPM0_EXIT;
+
 }
 

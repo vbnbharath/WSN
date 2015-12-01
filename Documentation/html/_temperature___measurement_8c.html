@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>Stikine: MSP_Init.h Source File</title>
+<title>Stikine: Temperature_Measurement.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('_m_s_p___init_8h_source.html','');});
+$(document).ready(function(){initNavTree('_temperature___measurement_8c.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -102,34 +102,65 @@ $(document).ready(function(){initNavTree('_m_s_p___init_8h_source.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">MSP_Init.h</div>  </div>
+<div class="title">Temperature_Measurement.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_m_s_p___init_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * MSP_Value.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Oct 19, 2015</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Author: cgoss</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef MSP_INIT_H_</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define MSP_INIT_H_</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_s_p___init_8h.html#ae8d2d761b984f48c3dbb27dd32a8c119">Board_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_s_p___init_8h.html#a92a70e2775796b1a7a6b49a983f570e3">Timer_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_m_s_p___init_8h.html#a5b1d92f41745535bd5187e6065e11023">Radio_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MSP_VALUE_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="_m_s_p___init_8h_html_a92a70e2775796b1a7a6b49a983f570e3"><div class="ttname"><a href="_m_s_p___init_8h.html#a92a70e2775796b1a7a6b49a983f570e3">Timer_Init</a></div><div class="ttdeci">void Timer_Init(void)</div></div>
-<div class="ttc" id="_m_s_p___init_8h_html_a5b1d92f41745535bd5187e6065e11023"><div class="ttname"><a href="_m_s_p___init_8h.html#a5b1d92f41745535bd5187e6065e11023">Radio_Init</a></div><div class="ttdeci">void Radio_Init(void)</div><div class="ttdef"><b>Definition:</b> MSP_Init.c:56</div></div>
-<div class="ttc" id="_m_s_p___init_8h_html_ae8d2d761b984f48c3dbb27dd32a8c119"><div class="ttname"><a href="_m_s_p___init_8h.html#ae8d2d761b984f48c3dbb27dd32a8c119">Board_Init</a></div><div class="ttdeci">void Board_Init(void)</div></div>
-</div><!-- fragment --></div><!-- contents -->
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;msp430.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ad492b9595e28595b025480f9ffa0a3ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_temperature___measurement_8c.html#ad492b9595e28595b025480f9ffa0a3ea">Sample_Count</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ad492b9595e28595b025480f9ffa0a3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a964a9b6db396cc4ba6fb77bdfd3fe915"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_temperature___measurement_8c.html#a964a9b6db396cc4ba6fb77bdfd3fe915">Get_Temperature</a> ()</td></tr>
+<tr class="memdesc:a964a9b6db396cc4ba6fb77bdfd3fe915"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to take a temperature measurement using the on-board temperature sensor.  <a href="#a964a9b6db396cc4ba6fb77bdfd3fe915">More...</a><br /></td></tr>
+<tr class="separator:a964a9b6db396cc4ba6fb77bdfd3fe915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ad492b9595e28595b025480f9ffa0a3ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Sample_Count&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a964a9b6db396cc4ba6fb77bdfd3fe915"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Get_Temperature </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A function to take a temperature measurement using the on-board temperature sensor. </p>
+<p>Computes the silicon temperature of the MSP430. The temperature is reported as a integer value of thousands of degrees celsius, IE 29551 is 29.551 celsius. </p><dl class="section return"><dt>Returns</dt><dd>The integer value, in hundreths of degrees celsius </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_a68ce9f702b01e936f36b0bc23d4b891.html">Stikine</a></li><li class="navelem"><a class="el" href="_m_s_p___init_8h.html">MSP_Init.h</a></li>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_a68ce9f702b01e936f36b0bc23d4b891.html">Stikine</a></li><li class="navelem"><a class="el" href="_temperature___measurement_8c.html">Temperature_Measurement.c</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>

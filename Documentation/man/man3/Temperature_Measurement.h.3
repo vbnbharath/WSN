@@ -1,0 +1,41 @@
+.TH "Temperature_Measurement.h" 3 "Sun Nov 29 2015" "Stikine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Temperature_Measurement.h \- ADC Temperature measurement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "uint16_t \fBGet_Temperature\fP ()"
+.br
+.RI "\fIA function to take a temperature measurement using the on-board temperature sensor\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+ADC Temperature measurement\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "uint16_t Get_Temperature ()"
+
+.PP
+A function to take a temperature measurement using the on-board temperature sensor\&. Computes the silicon temperature of the MSP430\&. The temperature is reported as a integer value of thousands of degrees celsius, IE 29551 is 29\&.551 celsius\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The integer value, in hundreths of degrees celsius 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Stikine from the source code\&.

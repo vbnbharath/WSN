@@ -1,0 +1,37 @@
+\hypertarget{_temperature___measurement_8c}{}\section{Temperature\+\_\+\+Measurement.\+c File Reference}
+\label{_temperature___measurement_8c}\index{Temperature\+\_\+\+Measurement.\+c@{Temperature\+\_\+\+Measurement.\+c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$msp430.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_temperature___measurement_8c_ad492b9595e28595b025480f9ffa0a3ea}{Sample\+\_\+\+Count}~8
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{_temperature___measurement_8c_a964a9b6db396cc4ba6fb77bdfd3fe915}{Get\+\_\+\+Temperature} ()
+\begin{DoxyCompactList}\small\item\em A function to take a temperature measurement using the on-\/board temperature sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_temperature___measurement_8c_ad492b9595e28595b025480f9ffa0a3ea}{}\index{Temperature\+\_\+\+Measurement.\+c@{Temperature\+\_\+\+Measurement.\+c}!Sample\+\_\+\+Count@{Sample\+\_\+\+Count}}
+\index{Sample\+\_\+\+Count@{Sample\+\_\+\+Count}!Temperature\+\_\+\+Measurement.\+c@{Temperature\+\_\+\+Measurement.\+c}}
+\subsubsection[{Sample\+\_\+\+Count}]{\setlength{\rightskip}{0pt plus 5cm}\#define Sample\+\_\+\+Count~8}\label{_temperature___measurement_8c_ad492b9595e28595b025480f9ffa0a3ea}
+
+
+\subsection{Function Documentation}
+\hypertarget{_temperature___measurement_8c_a964a9b6db396cc4ba6fb77bdfd3fe915}{}\index{Temperature\+\_\+\+Measurement.\+c@{Temperature\+\_\+\+Measurement.\+c}!Get\+\_\+\+Temperature@{Get\+\_\+\+Temperature}}
+\index{Get\+\_\+\+Temperature@{Get\+\_\+\+Temperature}!Temperature\+\_\+\+Measurement.\+c@{Temperature\+\_\+\+Measurement.\+c}}
+\subsubsection[{Get\+\_\+\+Temperature()}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Get\+\_\+\+Temperature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_temperature___measurement_8c_a964a9b6db396cc4ba6fb77bdfd3fe915}
+
+
+A function to take a temperature measurement using the on-\/board temperature sensor. 
+
+Computes the silicon temperature of the M\+S\+P430. The temperature is reported as a integer value of thousands of degrees celsius, I\+E 29551 is 29.\+551 celsius. \begin{DoxyReturn}{Returns}
+The integer value, in hundreths of degrees celsius 
+\end{DoxyReturn}

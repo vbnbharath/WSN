@@ -69,4 +69,14 @@ LBT_Status LBT_Send(uint8_t dest_address, uint8_t source_address, uint8_t *messa
  */
 struct Listen_Struct LBT_Listen(uint16_t timeoutPeriod);
 
+/**
+ * \brief Sends a message without checking for clear channel first
+ * @param dest_address Address of the message recipient
+ * @param source_address Address of the sender
+ * @param message The message payload
+ * @param length Length of the payload
+ * @return
+ */
+LBT_Status TDMA_Send(uint8_t dest_address, uint8_t source_address, uint8_t *message, uint8_t length);
+
 #endif /* RADIO_LBT_H_ */
